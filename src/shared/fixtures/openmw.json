@@ -1,0 +1,16 @@
+{
+  "assets": [
+    "openmw-0.51.0-Linux-64Bit-debug.tar.gz",
+    "openmw-0.51.0-Linux-64Bit.tar.gz",
+    "OpenMW-0.51.0-macOS-arm64.dmg",
+    "OpenMW-0.51.0-macOS-x86_64.dmg",
+    "OpenMW-0.51.0-Windows-x64.exe"
+  ],
+  "picks": [
+    ["darwin", "arm64", "OpenMW-0.51.0-macOS-arm64.dmg"],
+    ["darwin", "x64", "OpenMW-0.51.0-macOS-x86_64.dmg"],
+    ["linux", "x64", "openmw-0.51.0-Linux-64Bit.tar.gz"],
+    ["linux", "arm64", null],
+    ["win32", "x64", null]
+  ]
+}

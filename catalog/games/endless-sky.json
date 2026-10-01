@@ -1,0 +1,76 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "endless-sky",
+  "name": "Endless Sky",
+  "mark": "ES",
+  "tagline": "Explore the galaxy in a 2D space trading and combat game. Buy ships, take jobs, and get drawn into a civil war.",
+  "website": "https://endless-sky.github.io",
+  "accent": "#2f5f9e",
+  "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_eab3f8ba47f7b85030a98c3423caaef4852f0063.jpg",
+  "icon": "https://raw.githubusercontent.com/endless-sky/endless-sky/master/icons/icon_512x512.png",
+  "screenshots": [
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_eab3f8ba47f7b85030a98c3423caaef4852f0063.jpg",
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_c7f18a682e8df27368c2c6a421624a395719c6c5.jpg",
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_af75baf860ad0dddcdc86f00dfb7b3ff3761133f.jpg",
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_93d13da0bdfe2c4b987eb4f5e06fb67344df518d.jpg",
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_df5a65876c0a23d178f047d53ed5f9944a6c438b.jpg",
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/404410/ss_1e369b0752dba42ad18503e4ae6326faef4337b3.jpg"
+  ],
+  "tags": ["Space", "Simulation"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "endless-sky",
+        "repo": "endless-sky",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "unstable",
+      "label": "Unstable",
+      "description": "Unstable releases with new content and features. Saves may not go back to stable.",
+      "source": {
+        "type": "github-releases",
+        "owner": "endless-sky",
+        "repo": "endless-sky",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"],
+        "exclude": ["continuous"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "Endless Sky.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["win"],
+        "exclude": ["setup", "continuous"],
+        "arch": {
+          "x64": ["win64"],
+          "ia32": ["win32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Endless Sky.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["continuous"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

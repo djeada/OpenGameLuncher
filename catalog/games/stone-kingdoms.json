@@ -1,0 +1,71 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "stone-kingdoms",
+  "name": "Stone Kingdoms",
+  "mark": "SK",
+  "tagline": "Build castles, run an economy and hold off sieges. An open-source remake of Stronghold.",
+  "website": "https://gitlab.com/stone-kingdoms/stone-kingdoms",
+  "note": "Mac and Linux also download the LÖVE 11.5 engine it runs on.",
+  "accent": "#8a6d3b",
+  "cover": "https://img.itch.zone/aW1hZ2UvNTcyNTIxLzEyMzI5Mjg1LmpwZw==/original/O%2BiTTv.jpg",
+  "icon": "https://gitlab.com/uploads/-/system/project/avatar/3860085/sk-icon.png",
+  "screenshots": [
+    "https://img.itch.zone/aW1hZ2UvNTcyNTIxLzEyMzI5Mjg1LmpwZw==/original/O%2BiTTv.jpg",
+    "https://img.itch.zone/aW1hZ2UvNTcyNTIxLzEwNjY1NTYyLmpwZw==/original/%2BjXxcJ.jpg",
+    "https://img.itch.zone/aW1hZ2UvNTcyNTIxLzEwNjY1NjUxLnBuZw==/original/%2B24EYH.png",
+    "https://img.itch.zone/aW1hZ2UvNTcyNTIxLzEwNjY1NjY4LmpwZw==/original/6chkKg.jpg"
+  ],
+  "tags": ["Strategy", "RTS", "City builder"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "itch",
+        "page": "https://stonekingdoms.itch.io/stone-kingdoms-rts"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["mac"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "StoneKingdoms.love" },
+      "runtime": {
+        "owner": "love2d",
+        "repo": "love",
+        "tag": "11.5",
+        "asset": {
+          "include": ["macos"]
+        },
+        "archive": "zip",
+        "launch": { "app": "love.app" }
+      }
+    },
+    "win32": {
+      "asset": {
+        "include": ["win64"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "StoneKingdoms_Win64_*.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "StoneKingdoms.love" },
+      "runtime": {
+        "owner": "love2d",
+        "repo": "love",
+        "tag": "11.5",
+        "asset": {
+          "include": ["x86_64.appimage"]
+        },
+        "archive": "file"
+      }
+    }
+  }
+}

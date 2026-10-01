@@ -1,0 +1,61 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "daggerfall-unity",
+  "name": "Daggerfall Unity",
+  "mark": "DF",
+  "tagline": "Open-source recreation of The Elder Scrolls II: Daggerfall in the Unity engine, with widescreen, smooth controls and mod support.",
+  "website": "https://github.com/Interkarma/daggerfall-unity",
+  "note": "Needs the original Daggerfall files, which are free on Steam. Point the game at that folder on first start.",
+  "accent": "#8b1e1e",
+  "cover": "https://github.com/Interkarma/daggerfall-unity/assets/5789925/7dd3402b-869a-452e-82c2-c5697060e253",
+  "icon": "https://raw.githubusercontent.com/Interkarma/daggerfall-unity/master/Assets/Resources/DFUIcon.png",
+  "screenshots": [
+    "https://github.com/Interkarma/daggerfall-unity/assets/5789925/7dd3402b-869a-452e-82c2-c5697060e253",
+    "https://github.com/Interkarma/daggerfall-unity/assets/5789925/2213145f-4a0e-4efa-8c12-dd1f0c1e3a69",
+    "https://raw.githubusercontent.com/Interkarma/daggerfall-unity/master/Assets/Resources/StartupBackground.jpg"
+  ],
+  "tags": ["RPG"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "Interkarma",
+        "repo": "daggerfall-unity",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["mac"]
+      },
+      "archive": "zip",
+      "launch": { "app": "DaggerfallUnity.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "arch": {
+          "x64": ["64bit"],
+          "ia32": ["32bit"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "DaggerfallUnity.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "arch": {
+          "x64": ["64bit"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "DaggerfallUnity.x86_64" }
+    }
+  }
+}

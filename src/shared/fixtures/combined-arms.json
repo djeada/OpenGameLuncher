@@ -1,0 +1,19 @@
+{
+  "assets": [
+    "CombinedArms-1.09-x64-winportable.zip",
+    "CombinedArms-1.09-x64.exe",
+    "CombinedArms-1.09-x86-winportable.zip",
+    "CombinedArms-1.09-x86.exe",
+    "CombinedArms-1.09-x86_64.AppImage",
+    "CombinedArms-1.09.dmg"
+  ],
+  "picks": [
+    ["darwin", "arm64", "CombinedArms-1.09.dmg"],
+    ["darwin", "x64", "CombinedArms-1.09.dmg"],
+    ["win32", "x64", "CombinedArms-1.09-x64-winportable.zip"],
+    ["win32", "ia32", "CombinedArms-1.09-x86-winportable.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", "CombinedArms-1.09-x86_64.AppImage"],
+    ["linux", "arm64", null]
+  ]
+}

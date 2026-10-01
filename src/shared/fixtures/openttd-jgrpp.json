@@ -1,0 +1,22 @@
+{
+  "assets": [
+    "openttd-jgrpp-0.73.3-linux--bookworm-amd64.deb",
+    "openttd-jgrpp-0.73.3-linux--jammy-amd64.deb",
+    "openttd-jgrpp-0.73.3-linux--noble-amd64.deb",
+    "openttd-jgrpp-0.73.3-linux-dedicated-amd64.tar.xz",
+    "openttd-jgrpp-0.73.3-linux-generic-amd64.tar.xz",
+    "openttd-jgrpp-0.73.3-macos-universal.dmg",
+    "openttd-jgrpp-0.73.3-windows-arm64.zip",
+    "openttd-jgrpp-0.73.3-windows-win32.zip",
+    "openttd-jgrpp-0.73.3-windows-win64.zip"
+  ],
+  "picks": [
+    ["darwin", "arm64", "openttd-jgrpp-0.73.3-macos-universal.dmg"],
+    ["darwin", "x64", "openttd-jgrpp-0.73.3-macos-universal.dmg"],
+    ["win32", "x64", "openttd-jgrpp-0.73.3-windows-win64.zip"],
+    ["win32", "arm64", "openttd-jgrpp-0.73.3-windows-arm64.zip"],
+    ["win32", "ia32", "openttd-jgrpp-0.73.3-windows-win32.zip"],
+    ["linux", "x64", "openttd-jgrpp-0.73.3-linux-generic-amd64.tar.xz"],
+    ["linux", "arm64", null]
+  ]
+}

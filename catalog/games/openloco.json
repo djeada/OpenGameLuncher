@@ -1,0 +1,80 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openloco",
+  "name": "OpenLoco",
+  "mark": "OL",
+  "tagline": "Open-source reimplementation of Chris Sawyer's Locomotion.",
+  "website": "https://openloco.io",
+  "accent": "#2bb8a3",
+  "cover": "https://openloco.io/assets/img/screenshot.png",
+  "icon": "https://github.com/OpenLoco.png?size=256",
+  "screenshots": [
+    "https://openloco.io/assets/img/gallery-screenshot-0.png",
+    "https://openloco.io/assets/img/gallery-screenshot-1.png",
+    "https://openloco.io/assets/img/gallery-screenshot-2.png",
+    "https://openloco.io/assets/img/gallery-screenshot-3.png",
+    "https://openloco.io/assets/img/gallery-screenshot-4.png",
+    "https://openloco.io/assets/img/gallery-screenshot-5.png",
+    "https://openloco.io/assets/img/gallery-screenshot-6.png",
+    "https://openloco.io/assets/img/gallery-screenshot-7.png",
+    "https://openloco.io/assets/img/gallery-screenshot-8.png"
+  ],
+  "tags": ["Simulation", "Transport"],
+  "requires": {
+    "name": "Chris Sawyer's Locomotion",
+    "url": "https://www.gog.com/en/game/chris_sawyers_locomotion"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenLoco",
+        "repo": "OpenLoco",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": ["symbols", "debug", "sha256"],
+        "arch": {
+          "arm64": ["arm64", "aarch64"],
+          "x64": ["x64", "x86_64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "OpenLoco.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["symbols", "debug", "sha256", "installer"],
+        "prefer": ["portable"],
+        "arch": {
+          "x64": ["x64", "x86_64"],
+          "arm64": ["arm64", "aarch64"],
+          "ia32": ["win32", "i686"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "OpenLoco.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "exclude": ["symbols", "debug", "sha256", ".deb", ".rpm"],
+        "prefer": ["appimage"],
+        "arch": {
+          "x64": ["x64", "x86_64"],
+          "arm64": ["arm64", "aarch64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

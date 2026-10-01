@@ -1,0 +1,436 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ogl.dev/schema/game.json",
+  "title": "OGL game",
+  "description": "One open-source game in the OGL catalog. Maintainers add a game by committing a file like this under catalog/games on the catalog branch. Players do not add games. OGL reads the folder at launch, then finds versions from each channel's GitHub releases. A game either lists channels and platforms to install, or a web address to play in its own window, or both.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "tagline",
+    "accent"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Editor hint. Point game files at ../game.schema.json."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Stable id used for install folders. Never rename it after a release.",
+      "examples": [
+        "openrct2"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Name shown in the library."
+    },
+    "mark": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]{1,3}$",
+      "description": "One to three letters drawn on the library tile. Defaults to the start of the name."
+    },
+    "tagline": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "description": "One sentence under the name."
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Project site. Opened in the browser."
+    },
+    "note": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Optional requirement, such as needing the original game files."
+    },
+    "accent": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$",
+      "description": "Banner color for this game."
+    },
+    "cover": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Wide https image used as the banner and store card, ideally 16:9 and at least 1280 wide. Without it OGL uses the website's og:image, then the first screenshot."
+    },
+    "icon": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Square https image used in the sidebar and on the game page. Without it OGL uses the website's apple-touch-icon, then the GitHub owner's avatar."
+    },
+    "screenshots": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "description": "In-game screenshots shown on the game page."
+    },
+    "tags": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 24
+      },
+      "description": "Genres shown as search filters, such as Strategy or City builder."
+    },
+    "web": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Page that runs the game. OGL opens it in its own window with its own saved data."
+        }
+      },
+      "description": "Play in a window instead of installing. Use for browser games. Such games show on every system."
+    },
+    "requires": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "The original game, such as RollerCoaster Tycoon 2."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "description": "Where to get it, such as its GOG page."
+        }
+      },
+      "description": "The original game whose files this project needs. Shown as a Needs tag that links to the store, and as a filter on Home."
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Where versions come from. Each channel is a GitHub releases list. A new release appears in OGL without a new OGL build.",
+      "items": {
+        "$ref": "#/$defs/channel"
+      }
+    },
+    "platforms": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "description": "Which operating systems this game publishes, and how to recognize and launch the file. A player only sees games that list their system.",
+      "properties": {
+        "darwin": {
+          "$ref": "#/$defs/platform"
+        },
+        "win32": {
+          "$ref": "#/$defs/platform"
+        },
+        "linux": {
+          "$ref": "#/$defs/platform"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Track label, such as Release or Develop."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140,
+          "description": "One line under the track picker, such as how stable the builds are."
+        },
+        "source": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "owner",
+                "repo"
+              ],
+              "properties": {
+                "type": {
+                  "const": "github-releases",
+                  "description": "Read versions from GitHub releases at runtime."
+                },
+                "owner": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]+$"
+                },
+                "repo": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]+$"
+                },
+                "prerelease": {
+                  "enum": [
+                    "exclude",
+                    "only",
+                    "include"
+                  ],
+                  "default": "exclude",
+                  "description": "exclude hides pre-releases, only keeps them, include keeps both."
+                },
+                "cdn": {
+                  "enum": [
+                    "openttd"
+                  ],
+                  "description": "Read version numbers from GitHub releases but files from this CDN, for projects that do not attach files to releases. openttd reads cdn.openttd.org manifests."
+                }
+              },
+              "description": "GitHub releases, read at runtime."
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "page"
+              ],
+              "description": "A free itch.io game page. OGL reads the uploads listed on the page and takes the version from the file name, so there is one version at a time.",
+              "properties": {
+                "type": {
+                  "const": "itch"
+                },
+                "page": {
+                  "type": "string",
+                  "pattern": "^https://[a-z0-9-]+\\.itch\\.io/[a-z0-9_-]+/?$",
+                  "examples": [
+                    "https://stonekingdoms.itch.io/stone-kingdoms-rts"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset",
+        "archive"
+      ],
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/assetRule"
+        },
+        "archive": {
+          "enum": [
+            "zip",
+            "tar.gz",
+            "tar.xz",
+            "dmg",
+            "file"
+          ],
+          "description": "zip, tar.gz and tar.xz are extracted. dmg is a macOS disk image; OGL copies the .app bundles out of it. file is launched as the download itself, which covers AppImage and other single-file builds."
+        },
+        "launch": {
+          "$ref": "#/$defs/launch"
+        },
+        "runtime": {
+          "$ref": "#/$defs/runtime"
+        }
+      },
+      "if": {
+        "properties": {
+          "archive": {
+            "const": "file"
+          }
+        },
+        "required": [
+          "archive"
+        ]
+      },
+      "else": {
+        "required": [
+          "launch"
+        ]
+      }
+    },
+    "assetRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "include"
+      ],
+      "description": "Pick one release asset for this machine by case-insensitive filename fragments. Arch tokens prefer the longer match, so x86_64 does not count as x86.",
+      "properties": {
+        "include": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "description": "The filename must contain one of these. Use windows, macos, or linux."
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "description": "Drop symbol packages, installers, checksums, and debug files."
+        },
+        "prefer": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "description": "Break ties. portable or appimage are typical."
+        },
+        "arch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "arm64": {
+              "$ref": "#/$defs/tokens"
+            },
+            "x64": {
+              "$ref": "#/$defs/tokens"
+            },
+            "ia32": {
+              "$ref": "#/$defs/tokens"
+            }
+          },
+          "description": "Tokens for each CPU. List universal under every arch it should fit. Omit arch only when every matching file runs everywhere."
+        }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "macOS bundle name to open, such as OpenRCT2.app. A file name, not a path."
+        },
+        "binary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Executable file name inside the archive, such as openrct2.exe. A * matches any text, for names that carry a version."
+        },
+        "args": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "description": "Arguments passed to the game."
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "repo",
+        "tag",
+        "asset",
+        "archive"
+      ],
+      "description": "An engine the game file runs inside, downloaded once from a GitHub release and shared between games. OGL starts the engine with the game's launch file as its argument. LÖVE for .love games is the typical case.",
+      "properties": {
+        "owner": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+$"
+        },
+        "repo": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+$"
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$",
+          "description": "Exact release tag, such as 11.5."
+        },
+        "asset": {
+          "$ref": "#/$defs/assetRule"
+        },
+        "archive": {
+          "enum": [
+            "zip",
+            "tar.gz",
+            "tar.xz",
+            "dmg",
+            "file"
+          ],
+          "description": "zip, tar.gz and tar.xz are extracted. dmg is a macOS disk image; OGL copies the .app bundles out of it. file is launched as the download itself, which covers AppImage and other single-file builds."
+        },
+        "launch": {
+          "$ref": "#/$defs/launch"
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "channels",
+        "platforms"
+      ]
+    },
+    {
+      "required": [
+        "web"
+      ]
+    }
+  ]
+}

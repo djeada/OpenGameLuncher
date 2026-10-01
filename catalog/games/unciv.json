@@ -1,0 +1,58 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "unciv",
+  "name": "Unciv",
+  "mark": "UC",
+  "tagline": "Open-source remake of Civilization V. Found cities, research technologies and lead your civilization through the ages.",
+  "website": "https://yairm210.github.io/Unciv/",
+  "accent": "#3b6fb6",
+  "cover": "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/WorldScreen.png",
+  "icon": "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Icons/Unciv%20icon%20v6.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/WorldScreen.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/CityScreen.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/TechTree.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/PolicyScreen.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/DiplomacyScreen.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/TradeScreen.png",
+    "https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Screenshots/MapEditor.png"
+  ],
+  "tags": ["Strategy", "Turn-based", "4X"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "yairm210",
+        "repo": "Unciv",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "win32": {
+      "asset": {
+        "include": ["windows64"],
+        "exclude": [".msi", ".jar"],
+        "arch": {
+          "x64": ["windows64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Unciv.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux64"],
+        "exclude": ["linuxFilesForJar", ".jar"],
+        "arch": {
+          "x64": ["linux64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Unciv" }
+    }
+  }
+}

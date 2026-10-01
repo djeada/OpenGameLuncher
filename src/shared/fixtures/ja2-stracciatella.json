@@ -1,0 +1,24 @@
+{
+  "assets": [
+    "ja2-stracciatella_0.22.1-git+11e9430_aarch64.AppImage",
+    "ja2-stracciatella_0.22.1-git+11e9430_android.apk",
+    "ja2-stracciatella_0.22.1-git+11e9430_armhf.AppImage",
+    "ja2-stracciatella_0.22.1-git+11e9430_macos.dmg",
+    "ja2-stracciatella_0.22.1-git+11e9430_win-mingw64-cross.zip",
+    "ja2-stracciatella_0.22.1-git+11e9430_win-msvc32-142.exe",
+    "ja2-stracciatella_0.22.1-git+11e9430_win-msvc32-142.zip",
+    "ja2-stracciatella_0.22.1-git+11e9430_win-msvc64-142.exe",
+    "ja2-stracciatella_0.22.1-git+11e9430_win-msvc64-142.zip",
+    "ja2-stracciatella_0.22.1-git+11e9430_x86-64.AppImage"
+  ],
+  "picks": [
+    ["darwin", "arm64", "ja2-stracciatella_0.22.1-git+11e9430_macos.dmg"],
+    ["darwin", "x64", null],
+    ["win32", "x64", "ja2-stracciatella_0.22.1-git+11e9430_win-msvc64-142.zip"],
+    ["win32", "ia32", "ja2-stracciatella_0.22.1-git+11e9430_win-msvc32-142.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", "ja2-stracciatella_0.22.1-git+11e9430_x86-64.AppImage"],
+    ["linux", "arm64", "ja2-stracciatella_0.22.1-git+11e9430_aarch64.AppImage"],
+    ["linux", "ia32", null]
+  ]
+}

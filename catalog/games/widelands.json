@@ -1,0 +1,58 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "widelands",
+  "name": "Widelands",
+  "mark": "WL",
+  "tagline": "Slow-paced economy and strategy game in the spirit of The Settlers II. Build roads, grow a working economy and expand your realm.",
+  "website": "https://www.widelands.org",
+  "accent": "#7a6440",
+  "cover": "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.1/Five_Tribes_2.png",
+  "icon": "https://raw.githubusercontent.com/widelands/widelands/master/data/images/logos/wl-ico-128.png",
+  "screenshots": [
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.1/Five_Tribes_2.png",
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.1/High-Res_1.jpg",
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.1/High-Res_2.jpg",
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.0/Info_Panel.jpg",
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.0/Soldier_Statistics.jpg",
+    "https://www.widelands.org/wlmedia/wlscreens/screens/Widelands%201.0/Player_Colours_2.jpg"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "widelands",
+        "repo": "widelands",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": ["debug", ".md5"],
+        "prefer": ["macos12", "macos15"],
+        "arch": {
+          "arm64": ["arm64"],
+          "x64": ["x86"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "Widelands.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["debug", ".md5", "clang-10"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

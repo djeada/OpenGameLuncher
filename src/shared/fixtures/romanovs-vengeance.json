@@ -1,0 +1,19 @@
+{
+  "assets": [
+    "Romanovs.Vengeance-playtest-20241215-x64-winportable.zip",
+    "Romanovs.Vengeance-playtest-20241215-x64.exe",
+    "Romanovs.Vengeance-playtest-20241215-x86-winportable.zip",
+    "Romanovs.Vengeance-playtest-20241215-x86.exe",
+    "Romanovs.Vengeance-playtest-20241215-x86_64.AppImage",
+    "Romanovs.Vengeance-playtest-20241215.dmg"
+  ],
+  "picks": [
+    ["darwin", "arm64", "Romanovs.Vengeance-playtest-20241215.dmg"],
+    ["darwin", "x64", "Romanovs.Vengeance-playtest-20241215.dmg"],
+    ["win32", "x64", "Romanovs.Vengeance-playtest-20241215-x64-winportable.zip"],
+    ["win32", "ia32", "Romanovs.Vengeance-playtest-20241215-x86-winportable.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", "Romanovs.Vengeance-playtest-20241215-x86_64.AppImage"],
+    ["linux", "arm64", null]
+  ]
+}

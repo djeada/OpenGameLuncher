@@ -1,0 +1,9 @@
+{
+  "assets": ["Thrive_1.6.0.0_linux_x11.7z", "Thrive_1.6.0.0_mac_osx.zip", "Thrive_1.6.0.0_windows_desktop.7z"],
+  "picks": [
+    ["darwin", "arm64", "Thrive_1.6.0.0_mac_osx.zip"],
+    ["darwin", "x64", "Thrive_1.6.0.0_mac_osx.zip"],
+    ["win32", "x64", null],
+    ["linux", "x64", null]
+  ]
+}

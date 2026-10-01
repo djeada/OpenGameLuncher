@@ -1,0 +1,41 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "freeorion",
+  "name": "FreeOrion",
+  "mark": "FO",
+  "tagline": "Turn-based space empire and galactic conquest. Explore the galaxy, research, design ships and grow your empire.",
+  "website": "https://www.freeorion.org",
+  "accent": "#2a4a7a",
+  "cover": "https://upload.wikimedia.org/wikipedia/commons/d/dc/FreeOrion-production.png",
+  "icon": "https://raw.githubusercontent.com/freeorion/freeorion/master/default/data/art/icons/FO_Icon_256x256.png",
+  "screenshots": [
+    "https://upload.wikimedia.org/wikipedia/commons/d/dc/FreeOrion-production.png"
+  ],
+  "tags": ["Strategy", "4X", "Space"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "freeorion",
+        "repo": "freeorion",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"],
+        "arch": {
+          "arm64": ["arm64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "FreeOrion.app" }
+    }
+  }
+}

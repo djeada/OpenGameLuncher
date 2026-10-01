@@ -1,0 +1,43 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "lincity-ng",
+  "name": "LinCity-NG",
+  "mark": "LC",
+  "tagline": "Plan and build a city, then keep it running. Win with a sustainable economy or by evacuating everyone on spaceships.",
+  "website": "https://github.com/lincity-ng/lincity-ng",
+  "accent": "#0e9206",
+  "cover": "https://raw.githubusercontent.com/lincity-ng/lincity-ng/master/contrib/screenshots/screenshot-3.png",
+  "icon": "https://raw.githubusercontent.com/lincity-ng/lincity-ng/master/data/io.github.lincity_ng.lincity-ng.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/lincity-ng/lincity-ng/master/contrib/screenshots/screenshot-1.png",
+    "https://raw.githubusercontent.com/lincity-ng/lincity-ng/master/contrib/screenshots/screenshot-2.png",
+    "https://raw.githubusercontent.com/lincity-ng/lincity-ng/master/contrib/screenshots/screenshot-3.png"
+  ],
+  "tags": ["City builder", "Simulation"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "lincity-ng",
+        "repo": "lincity-ng",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "win32": {
+      "asset": {
+        "include": ["win64.zip"],
+        "exclude": [".sha256"],
+        "arch": {
+          "x64": ["win64"],
+          "arm64": ["win64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "lincity-ng.exe" }
+    }
+  }
+}

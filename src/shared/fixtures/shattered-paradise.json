@@ -1,0 +1,19 @@
+{
+  "assets": [
+    "ShatteredParadise-playtest-20241231-x64-winportable.zip",
+    "ShatteredParadise-playtest-20241231-x64.exe",
+    "ShatteredParadise-playtest-20241231-x86-winportable.zip",
+    "ShatteredParadise-playtest-20241231-x86.exe",
+    "ShatteredParadise-playtest-20241231-x86_64.AppImage",
+    "ShatteredParadise-playtest-20241231.dmg"
+  ],
+  "picks": [
+    ["darwin", "arm64", "ShatteredParadise-playtest-20241231.dmg"],
+    ["darwin", "x64", "ShatteredParadise-playtest-20241231.dmg"],
+    ["win32", "x64", "ShatteredParadise-playtest-20241231-x64-winportable.zip"],
+    ["win32", "ia32", "ShatteredParadise-playtest-20241231-x86-winportable.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", "ShatteredParadise-playtest-20241231-x86_64.AppImage"],
+    ["linux", "arm64", null]
+  ]
+}

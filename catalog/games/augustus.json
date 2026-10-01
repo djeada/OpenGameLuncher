@@ -1,0 +1,57 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "augustus",
+  "name": "Augustus",
+  "mark": "AU",
+  "tagline": "Enhanced Caesar III engine with new buildings, bigger maps and quality-of-life fixes. Build and run a city of ancient Rome.",
+  "website": "https://github.com/Keriew/augustus",
+  "accent": "#b5563a",
+  "cover": "https://raw.githubusercontent.com/Keriew/augustus/master/res/vita/bg.png",
+  "icon": "https://raw.githubusercontent.com/Keriew/augustus/master/res/augustus_512.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/Keriew/augustus/master/res/vita/bg.png",
+    "https://raw.githubusercontent.com/Keriew/augustus/master/doc/main-image.png"
+  ],
+  "tags": ["City builder", "Strategy"],
+  "requires": {
+    "name": "Caesar III",
+    "url": "https://www.gog.com/en/game/caesar_3"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "Keriew",
+        "repo": "augustus",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["mac.dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "augustus.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows.zip"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "augustus.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux.appimage"],
+        "arch": {
+          "x64": ["linux.appimage"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

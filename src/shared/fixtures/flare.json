@@ -1,0 +1,49 @@
+{
+  "assets": [
+    "flare-engine-android-v1.15.apk",
+    "flare-engine-v1.15.tar.gz",
+    "flare-engine-win-v1.15.zip",
+    "flare-game-v1.15.tar.gz",
+    "flare-linux64-v1.15.AppImage",
+    "flare-mac-v1.15.dmg",
+    "flare-win-v1.15.exe",
+    "flare-win-v1.15.zip"
+  ],
+  "picks": [
+    [
+      "darwin",
+      "arm64",
+      null
+    ],
+    [
+      "darwin",
+      "x64",
+      null
+    ],
+    [
+      "win32",
+      "x64",
+      "flare-win-v1.15.zip"
+    ],
+    [
+      "win32",
+      "arm64",
+      "flare-win-v1.15.zip"
+    ],
+    [
+      "win32",
+      "ia32",
+      null
+    ],
+    [
+      "linux",
+      "x64",
+      "flare-linux64-v1.15.AppImage"
+    ],
+    [
+      "linux",
+      "arm64",
+      null
+    ]
+  ]
+}

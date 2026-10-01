@@ -1,0 +1,58 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "luanti",
+  "name": "Luanti",
+  "mark": "LU",
+  "tagline": "A voxel sandbox engine, formerly Minetest. Dig, build and explore in thousands of free community games and mods.",
+  "website": "https://www.luanti.org",
+  "note": "Luanti ships without a game. Pick one in the Content tab on first start; it downloads for free.",
+  "accent": "#4c9a2a",
+  "cover": "https://www.luanti.org/media/gallery/4.jpg",
+  "icon": "https://raw.githubusercontent.com/luanti-org/luanti/master/misc/luanti-xorg-icon-128.png",
+  "screenshots": [
+    "https://www.luanti.org/media/gallery/4.jpg",
+    "https://www.luanti.org/media/gallery/1.jpg",
+    "https://www.luanti.org/media/gallery/7.jpg",
+    "https://www.luanti.org/media/gallery/3.jpg",
+    "https://www.luanti.org/media/gallery/6.jpg",
+    "https://www.luanti.org/media/gallery/2.jpg"
+  ],
+  "tags": ["Sandbox", "Simulation"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "luanti-org",
+        "repo": "luanti",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["arm64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "luanti.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["-win"],
+        "exclude": [".exe", ".apk"],
+        "arch": {
+          "x64": ["win64"],
+          "ia32": ["win32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "luanti.exe" }
+    }
+  }
+}

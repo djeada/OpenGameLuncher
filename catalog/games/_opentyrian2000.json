@@ -1,0 +1,42 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "opentyrian2000",
+  "name": "OpenTyrian2000",
+  "mark": "OT",
+  "tagline": "Open-source port of the vertical scrolling shooter Tyrian 2000, with story, arcade and two-player modes.",
+  "website": "https://github.com/KScl/opentyrian2000",
+  "note": "Needs the freeware Tyrian 2000 data files (https://www.camanis.net/tyrian/tyrian2000.zip). Put them in the game folder next to opentyrian2000.exe.",
+  "accent": "#2f7fc1",
+  "icon": "https://raw.githubusercontent.com/KScl/opentyrian2000/master/linux/icons/tyrian2000-128.png",
+  "tags": ["Shooter", "Arcade"],
+  "requires": {
+    "name": "Tyrian 2000",
+    "url": "https://www.gog.com/en/game/tyrian_2000"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "KScl",
+        "repo": "opentyrian2000",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "win32": {
+      "asset": {
+        "include": ["release"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "opentyrian2000.exe" }
+    }
+  }
+}

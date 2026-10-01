@@ -1,0 +1,70 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "warzone2100",
+  "name": "Warzone 2100",
+  "mark": "WZ",
+  "tagline": "Rebuild the world after nuclear war. A classic 3D real-time strategy game where you design your own units.",
+  "website": "https://wz2100.net",
+  "note": "The Mac download is about 1 GB because it includes the campaign videos.",
+  "accent": "#b5652b",
+  "cover": "https://raw.githubusercontent.com/Warzone2100/wz2100.net/master/themes/wz2100net/static/img/screenshots/multiplayer_massive_battle.png",
+  "icon": "https://raw.githubusercontent.com/Warzone2100/warzone2100/master/icons/warzone2100.large.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/Warzone2100/wz2100.net/master/themes/wz2100net/static/img/screenshots/multiplayer_massive_battle.png",
+    "https://raw.githubusercontent.com/Warzone2100/wz2100.net/master/themes/wz2100net/static/img/screenshots/base_build.png",
+    "https://raw.githubusercontent.com/Warzone2100/wz2100.net/master/themes/wz2100net/static/img/backdrop4.png",
+    "https://raw.githubusercontent.com/Warzone2100/wz2100.net/master/static/img/campaignselector_1.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "Warzone2100",
+        "repo": "warzone2100",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "beta",
+      "label": "Beta",
+      "description": "Betas of the next version.",
+      "source": {
+        "type": "github-releases",
+        "owner": "Warzone2100",
+        "repo": "warzone2100",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": ["novideos"],
+        "arch": {
+          "arm64": ["universal"],
+          "x64": ["universal"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "Warzone 2100.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["_win_"],
+        "exclude": [".exe", "debugsymbols", ".7z"],
+        "arch": {
+          "x64": ["x64"],
+          "arm64": ["arm64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "warzone2100.exe" }
+    }
+  }
+}

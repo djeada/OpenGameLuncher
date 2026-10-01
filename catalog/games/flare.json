@@ -1,0 +1,56 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "flare",
+  "name": "Flare: Empyrean Campaign",
+  "mark": "FL",
+  "tagline": "A dark-fantasy action RPG in the style of Diablo. Fight through dungeons, collect loot and build your hero.",
+  "website": "https://flarerpg.org",
+  "accent": "#b5442a",
+  "cover": "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_1.jpg",
+  "icon": "https://raw.githubusercontent.com/flareteam/flare-engine/master/distribution/flare_logo_icon.png",
+  "screenshots": [
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_1.jpg",
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_2.jpg",
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_3.jpg",
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_4.jpg",
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_5.jpg",
+    "https://flarerpg.org/wp-content/uploads/2026/05/empyrean_6.jpg"
+  ],
+  "tags": ["RPG"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "flareteam",
+        "repo": "flare-game",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "win32": {
+      "asset": {
+        "include": ["flare-win"],
+        "exclude": [".exe"],
+        "arch": {
+          "x64": ["win"],
+          "arm64": ["win"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "flare.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": {
+          "x64": ["linux64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

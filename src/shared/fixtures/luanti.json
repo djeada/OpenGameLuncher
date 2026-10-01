@@ -1,0 +1,21 @@
+{
+  "assets": [
+    "luanti-5.17.0-arm64-v8a.apk",
+    "luanti-5.17.0-armeabi-v7a.apk",
+    "luanti-5.17.0-win32.zip",
+    "luanti-5.17.0-win64.zip",
+    "luanti-5.17.0-x86.apk",
+    "luanti-5.17.0-x86_64.apk",
+    "luanti-5.17.0.exe",
+    "luanti_5.17.0_macos12.3_arm64.zip",
+    "luanti_5.17.0_macos12.3_x86_64.zip"
+  ],
+  "picks": [
+    ["darwin", "arm64", "luanti_5.17.0_macos12.3_arm64.zip"],
+    ["darwin", "x64", "luanti_5.17.0_macos12.3_x86_64.zip"],
+    ["win32", "x64", "luanti-5.17.0-win64.zip"],
+    ["win32", "ia32", "luanti-5.17.0-win32.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", null]
+  ]
+}

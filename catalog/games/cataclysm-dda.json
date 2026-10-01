@@ -1,0 +1,71 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "cataclysm-dda",
+  "name": "Cataclysm: Dark Days Ahead",
+  "mark": "CD",
+  "tagline": "A deep turn-based survival roguelike. Scavenge, craft and build to stay alive in a ruined, monster-filled world.",
+  "website": "https://cataclysmdda.org",
+  "accent": "#6b8e3a",
+  "cover": "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/c0eed669da247c8e9be9a5176aaf3cbd922e48a7/data/screenshots/game.png",
+  "icon": "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/master/data/xdg/org.cataclysmdda.CataclysmDDA.svg",
+  "screenshots": [
+    "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/c0eed669da247c8e9be9a5176aaf3cbd922e48a7/data/screenshots/game.png",
+    "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/c0eed669da247c8e9be9a5176aaf3cbd922e48a7/data/screenshots/menu.png"
+  ],
+  "tags": ["Roguelike", "Turn-based"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "CleverRaven",
+        "repo": "Cataclysm-DDA",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "experimental",
+      "label": "Experimental",
+      "description": "Daily builds with the newest content. Saves may not load in older versions.",
+      "source": {
+        "type": "github-releases",
+        "owner": "CleverRaven",
+        "repo": "Cataclysm-DDA",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["osx-with-graphics"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "Cataclysm.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows-with-graphics"],
+        "arch": {
+          "x64": ["x64"]
+        },
+        "prefer": ["sounds"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "cataclysm-tiles.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux-with-graphics"],
+        "arch": {
+          "x64": ["x64"]
+        },
+        "prefer": ["sounds"]
+      },
+      "archive": "tar.gz",
+      "launch": { "binary": "cataclysm-launcher" }
+    }
+  }
+}

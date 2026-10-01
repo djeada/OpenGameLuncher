@@ -1,0 +1,70 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "vcmi",
+  "name": "VCMI",
+  "mark": "H3",
+  "tagline": "Open-source engine for Heroes of Might and Magic III. Explore, build towns and fight turn-based battles, with high resolutions and mods.",
+  "website": "https://vcmi.eu/",
+  "note": "The launcher imports the game data from a GOG offline installer or an existing Heroes III folder.",
+  "accent": "#7a1f1f",
+  "cover": "https://play-lh.googleusercontent.com/-ZErg8hUyc3TScVQZYh30KzaUDWmnIGRcN3WPCQimdviOJVoMkjDdIW19WqX0KZO7mk=w2560-h1440",
+  "icon": "https://raw.githubusercontent.com/vcmi/vcmi/develop/clientapp/icons/vcmiclient.512x512.png",
+  "screenshots": [
+    "https://play-lh.googleusercontent.com/-ZErg8hUyc3TScVQZYh30KzaUDWmnIGRcN3WPCQimdviOJVoMkjDdIW19WqX0KZO7mk=w2560-h1440",
+    "https://play-lh.googleusercontent.com/993tSmsQh1qgb1_XQUxD1wmS8Zuiydf0LsQK_nU2fAiJl62n0_Vl_5JMVK-J9lvVeQ=w2560-h1440",
+    "https://play-lh.googleusercontent.com/N3fn4cqX2iN0t9jzEo0vgEMBpUYWyRgOz8AtDsMLmF-BTyxO4l2uoAderEIhXPvPsg=w2560-h1440",
+    "https://play-lh.googleusercontent.com/9wSQsPlMPSBAzekEcw1OVpzeOvYiHrYRYHgpa1aRk31pvR752gu_cUZws5x8JMCACw=w2560-h1440",
+    "https://play-lh.googleusercontent.com/nU_MSwmEhiQ14Sx9xI3QFF1FhL7BYTDMbEYQg-XglSYwIMpYZDpP92_ybTtu4cVJSxo=w2560-h1440"
+  ],
+  "tags": ["Strategy", "Turn-based"],
+  "requires": {
+    "name": "Heroes of Might and Magic III",
+    "url": "https://www.gog.com/en/game/heroes_of_might_and_magic_3_complete_edition"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "vcmi",
+        "repo": "vcmi",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["arm"],
+          "x64": ["intel"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "VCMI.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows.zip"],
+        "arch": {
+          "x64": ["windows.zip"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "VCMI_launcher.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": {
+          "x64": ["x64"],
+          "arm64": ["arm64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

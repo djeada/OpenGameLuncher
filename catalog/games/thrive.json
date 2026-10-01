@@ -1,0 +1,40 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "thrive",
+  "name": "Thrive",
+  "mark": "TH",
+  "tagline": "An evolution simulation. Guide a species from a single cell in the primordial ocean, editing it each generation.",
+  "website": "https://revolutionarygamesstudio.com",
+  "accent": "#1f8f8a",
+  "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/e3654c049c7728023c9929b06c7efab3bef87508/ss_e3654c049c7728023c9929b06c7efab3bef87508.1920x1080.jpg",
+  "screenshots": [
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/e3654c049c7728023c9929b06c7efab3bef87508/ss_e3654c049c7728023c9929b06c7efab3bef87508.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/d65cd00b68aeb3305f0e04c3f275481b33d25763/ss_d65cd00b68aeb3305f0e04c3f275481b33d25763.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/624b18db7d1d1ef8142973f854b3f167b3ab132d/ss_624b18db7d1d1ef8142973f854b3f167b3ab132d.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/370ceae39e42af31c37bf3e7f5986c1bd2ea565d/ss_370ceae39e42af31c37bf3e7f5986c1bd2ea565d.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/a1fdda0ad6db9dd27b5d77b32e7fcee7542d7f95/ss_a1fdda0ad6db9dd27b5d77b32e7fcee7542d7f95.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/18ed8529f81b1c75f85bf346e174e7a77166fd35/ss_18ed8529f81b1c75f85bf346e174e7a77166fd35.1920x1080.jpg"
+  ],
+  "tags": ["Simulation", "Sandbox"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "Revolutionary-Games",
+        "repo": "Thrive",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["mac_osx"]
+      },
+      "archive": "zip",
+      "launch": { "app": "Thrive.app" }
+    }
+  }
+}

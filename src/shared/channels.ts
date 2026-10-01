@@ -1,0 +1,23 @@
+export const ipc = {
+  getPlatform: 'platform:get',
+  getCatalog: 'catalog:get',
+  refreshCatalog: 'catalog:refresh',
+  catalogUpdated: 'catalog:updated',
+  getBuilds: 'builds:get',
+  getArt: 'art:get',
+  getInstalls: 'installs:get',
+  setAutoUpdate: 'installs:auto-update',
+  install: 'game:install',
+  launch: 'game:launch',
+  cancelInstall: 'game:cancel',
+  uninstall: 'game:uninstall',
+  playWeb: 'game:play-web',
+  showInstall: 'game:show',
+  showLog: 'game:log',
+  download: 'game:download',
+  getLauncherUpdate: 'launcher:get',
+  downloadLauncherUpdate: 'launcher:download',
+  installLauncherUpdate: 'launcher:install',
+  launcherUpdate: 'launcher:update',
+  openExternal: 'shell:open'
+} as const

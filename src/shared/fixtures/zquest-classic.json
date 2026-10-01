@@ -1,0 +1,17 @@
+{
+  "assets": [
+    "2.55.17-linux.tar.gz",
+    "2.55.17-mac.dmg",
+    "2.55.17-windows-x64.zip",
+    "2.55.17-windows-x86.zip"
+  ],
+  "picks": [
+    ["darwin", "arm64", "2.55.17-mac.dmg"],
+    ["darwin", "x64", "2.55.17-mac.dmg"],
+    ["win32", "x64", "2.55.17-windows-x64.zip"],
+    ["win32", "ia32", "2.55.17-windows-x86.zip"],
+    ["win32", "arm64", null],
+    ["linux", "x64", "2.55.17-linux.tar.gz"],
+    ["linux", "arm64", null]
+  ]
+}

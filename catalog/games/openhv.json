@@ -1,0 +1,62 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openhv",
+  "name": "OpenHV",
+  "mark": "HV",
+  "tagline": "Mine resources, build bases and battle for a distant planet in this pixel-art real-time strategy game.",
+  "website": "https://www.openhv.net",
+  "accent": "#1f55b4",
+  "cover": "https://www.openhv.net/images/appstream/arctic-base.png",
+  "icon": "https://raw.githubusercontent.com/OpenHV/OpenHV/main/packaging/artwork/icon_512x512.png",
+  "screenshots": [
+    "https://www.openhv.net/images/appstream/arctic-base.png",
+    "https://www.openhv.net/images/appstream/uneven-remuneration.png",
+    "https://www.openhv.net/images/appstream/editor-mirror-tool.png",
+    "https://www.openhv.net/images/base2-min.png",
+    "https://www.openhv.net/images/base1-min.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenHV",
+        "repo": "OpenHV",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenHV.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["winportable"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "OpenHV.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

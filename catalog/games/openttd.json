@@ -1,0 +1,86 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openttd",
+  "name": "OpenTTD",
+  "mark": "TT",
+  "tagline": "Build a transport empire by road, rail, sea and air. Based on Transport Tycoon Deluxe.",
+  "website": "https://www.openttd.org",
+  "note": "The first start offers to download the free base graphics.",
+  "accent": "#3f7f3a",
+  "cover": "https://www.openttd.org/screenshots/1.9-darkuk-1.png",
+  "icon": "https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/media/openttd.256.png",
+  "screenshots": [
+    "https://www.openttd.org/screenshots/1.9-darkuk-1.png",
+    "https://www.openttd.org/screenshots/1.9-coldice_1.png",
+    "https://www.openttd.org/screenshots/1.9-coldice_3.png",
+    "https://www.openttd.org/screenshots/1.9-alexthedacian_1.png",
+    "https://www.openttd.org/screenshots/1.9-darkuk-2.png",
+    "https://www.openttd.org/screenshots/1.9-coldice_5.png"
+  ],
+  "tags": ["Simulation", "Transport"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenTTD",
+        "repo": "OpenTTD",
+        "prerelease": "exclude",
+        "cdn": "openttd"
+      }
+    },
+    {
+      "id": "testing",
+      "label": "Beta",
+      "description": "Betas and release candidates of the next version.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenTTD",
+        "repo": "OpenTTD",
+        "prerelease": "only",
+        "cdn": "openttd"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": [".dmg", "docs"],
+        "arch": {
+          "arm64": ["universal"],
+          "x64": ["universal"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "OpenTTD.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": [".exe", "docs", "pdb"],
+        "arch": {
+          "x64": ["win64"],
+          "arm64": ["arm64"],
+          "ia32": ["win32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "openttd.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux-generic"],
+        "exclude": ["docs", "dbg"],
+        "arch": {
+          "x64": ["amd64"],
+          "arm64": ["arm64"]
+        }
+      },
+      "archive": "tar.xz",
+      "launch": { "binary": "openttd" }
+    }
+  }
+}

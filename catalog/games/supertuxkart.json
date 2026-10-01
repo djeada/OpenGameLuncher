@@ -1,0 +1,53 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "supertuxkart",
+  "name": "SuperTuxKart",
+  "mark": "STK",
+  "tagline": "A 3D kart racer with open-source mascots, a story mode, battle arenas and online or split-screen multiplayer.",
+  "website": "https://supertuxkart.net",
+  "accent": "#e07b1f",
+  "cover": "https://supertuxkart.net/assets/gallery/STK1.3_1.jpg",
+  "icon": "https://raw.githubusercontent.com/supertuxkart/stk-code/master/data/supertuxkart_512.png",
+  "screenshots": [
+    "https://supertuxkart.net/assets/gallery/STK1.3_1.jpg",
+    "https://supertuxkart.net/assets/gallery/STK1.3_2.jpg",
+    "https://supertuxkart.net/assets/gallery/STK1.3_3.jpg",
+    "https://supertuxkart.net/assets/gallery/STK1.3_4.jpg",
+    "https://supertuxkart.net/assets/gallery/STK1.3_5.jpg",
+    "https://supertuxkart.net/assets/gallery/STK1.3_6.jpg"
+  ],
+  "tags": ["Racing", "Arcade"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "supertuxkart",
+        "repo": "stk-code",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": { "include": ["mac"] },
+      "archive": "zip",
+      "launch": { "app": "SuperTuxKart.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "exclude": ["armv7", "riscv64"],
+        "arch": {
+          "x64": ["x86_64"],
+          "arm64": ["arm64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "tar.gz",
+      "launch": { "binary": "run_game.sh" }
+    }
+  }
+}

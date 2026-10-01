@@ -1,0 +1,17 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "freeciv",
+  "name": "Freeciv",
+  "mark": "FC",
+  "tagline": "Turn-based empire building inspired by Civilization. Grow from a tribe into a space-faring nation.",
+  "website": "https://www.freeciv.org",
+  "accent": "#3a6ea5",
+  "cover": "https://www.freeciv.org/images/freeciv-screenshot-2.5.0.png",
+  "icon": "https://raw.githubusercontent.com/freeciv/freeciv/main/data/icons/128x128/freeciv-client.png",
+  "screenshots": [
+    "https://files.freeciv.org/screenshots/3.1/client.gtk4-3.1.0-beta2.png",
+    "https://www.freeciv.org/images/freeciv-screenshot-2.5.0.png"
+  ],
+  "tags": ["Strategy", "Turn-based"],
+  "web": { "url": "https://play.freeciv.org/" }
+}

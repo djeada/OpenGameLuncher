@@ -1,0 +1,64 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "combined-arms",
+  "name": "Combined Arms",
+  "mark": "CA",
+  "tagline": "Red Alert and Tiberian Dawn merged into one real-time strategy game with five factions, new units and a campaign, built on OpenRA.",
+  "website": "https://ca.oraladder.net",
+  "note": "The free game content downloads on first start.",
+  "accent": "#c62828",
+  "cover": "https://cdn.dbolical.com/videos/mods/1/34/33634/CA.mp4.jpg",
+  "icon": "https://raw.githubusercontent.com/Inq8/CAmod/master/packaging/artwork/icon_512x512.png",
+  "screenshots": [
+    "https://cdn.dbolical.com/videos/mods/1/34/33634/CA.mp4.jpg",
+    "https://media.moddb.com/images/mods/1/34/33634/showcase-allies.png",
+    "https://media.moddb.com/images/mods/1/34/33634/showcase-soviet.png",
+    "https://media.moddb.com/images/mods/1/34/33634/showcase-gdi.png",
+    "https://media.moddb.com/images/mods/1/34/33634/showcase-nod.png",
+    "https://media.moddb.com/images/mods/1/34/33634/showcase-scrin.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "Inq8",
+        "repo": "CAmod",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenRA - Combined Arms.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["winportable"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "CombinedArms.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

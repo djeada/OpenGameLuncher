@@ -1,0 +1,53 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "julius",
+  "name": "Julius",
+  "mark": "JU",
+  "tagline": "Open-source re-implementation of Caesar III. Build and run a city of ancient Rome.",
+  "website": "https://github.com/bvschaik/julius",
+  "accent": "#b8862b",
+  "cover": "https://raw.githubusercontent.com/wiki/bvschaik/julius/images/julius-screenshot.png",
+  "icon": "https://raw.githubusercontent.com/bvschaik/julius/master/res/julius_256.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/wiki/bvschaik/julius/images/julius-screenshot.png"
+  ],
+  "tags": ["City builder", "Strategy"],
+  "requires": {
+    "name": "Caesar III",
+    "url": "https://www.gog.com/en/game/caesar_3"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "bvschaik",
+        "repo": "julius",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["mac.dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "julius.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows.zip"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "julius.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux.appimage"]
+      },
+      "archive": "file"
+    }
+  }
+}

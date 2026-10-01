@@ -1,0 +1,66 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "the-powder-toy",
+  "name": "The Powder Toy",
+  "mark": "PT",
+  "tagline": "A falling-sand physics sandbox. Mix elements, build machines, melt, explode and wire up electronics.",
+  "website": "https://powdertoy.co.uk",
+  "accent": "#d0632a",
+  "cover": "https://powdertoy.co.uk/Themes/Next/Design/Images/Screen2.png",
+  "icon": "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe.png",
+  "screenshots": [
+    "https://powdertoy.co.uk/Themes/Next/Design/Images/Screen2.png",
+    "https://powdertoy.co.uk/Themes/Next/Design/Images/Screen3.png",
+    "https://powdertoy.co.uk/Themes/Next/Design/Images/Screen1.png"
+  ],
+  "tags": ["Simulation", "Sandbox"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "The-Powder-Toy",
+        "repo": "The-Powder-Toy",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["darwin-macos.dmg"],
+        "exclude": ["steam"],
+        "arch": {
+          "arm64": ["aarch64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "The Powder Toy.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["steam", ".pdb", ".dbg"],
+        "arch": {
+          "x64": ["x86_64"],
+          "arm64": ["aarch64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "file"
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux-gnu"],
+        "exclude": ["steam", ".dbg"],
+        "arch": {
+          "x64": ["x86_64"],
+          "arm64": ["aarch64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "micropolis",
+  "name": "Micropolis",
+  "mark": "MP",
+  "tagline": "The original SimCity, open-sourced. Zone, build and run your own city.",
+  "website": "https://github.com/graememcc/micropolisJS",
+  "accent": "#4c9a2a",
+  "tags": ["City builder", "Simulation"],
+  "web": { "url": "https://www.graememcc.co.uk/micropolisJS/" }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openttd-jgrpp",
+  "name": "OpenTTD JGR's Patch Pack",
+  "mark": "JG",
+  "tagline": "OpenTTD with extra features for advanced players: programmable signals, routing restrictions, timetabling and more.",
+  "website": "https://github.com/JGRennison/OpenTTD-patches",
+  "note": "The first start offers to download the free base graphics. Saves do not load in standard OpenTTD.",
+  "accent": "#2f6f8f",
+  "cover": "https://www.openttd.org/screenshots/1.9-darkuk-1.png",
+  "icon": "https://raw.githubusercontent.com/JGRennison/OpenTTD-patches/jgrpp/media/openttd.256.png",
+  "screenshots": [
+    "https://www.openttd.org/screenshots/1.9-darkuk-1.png",
+    "https://www.openttd.org/screenshots/1.9-coldice_1.png",
+    "https://www.openttd.org/screenshots/1.9-coldice_3.png",
+    "https://www.openttd.org/screenshots/1.9-alexthedacian_1.png"
+  ],
+  "tags": ["Simulation", "Transport"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "JGRennison",
+        "repo": "OpenTTD-patches",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["universal"],
+          "x64": ["universal"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenTTD.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["pdb"],
+        "arch": {
+          "x64": ["win64"],
+          "arm64": ["arm64"],
+          "ia32": ["win32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "openttd.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux-generic"],
+        "exclude": [".deb", "dbg"],
+        "arch": {
+          "x64": ["amd64"]
+        }
+      },
+      "archive": "tar.xz",
+      "launch": { "binary": "openttd" }
+    }
+  }
+}

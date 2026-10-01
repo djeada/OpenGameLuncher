@@ -1,0 +1,34 @@
+{
+  "assets": [
+    "MegaGlest-3.13.0-x86_64.AppImage",
+    "MegaGlest-3.13.0-x86_64.AppImage.sha256sum",
+    "megaglest-binary-linux-i686-3.13.0.tar.xz",
+    "megaglest-binary-linux-x86_64-3.13.0.tar.xz",
+    "megaglest-binary-macos-3.13.0.tar.bz2",
+    "megaglest-binary-win32-i386-3.13.0.7z",
+    "megaglest-binary-win64-x86_64-3.13.0.7z",
+    "MegaGlest-game-macos-3.13.0.dmg",
+    "MegaGlest-game-macos-3.13.0.zip",
+    "MegaGlest-Installer-3.13.0_i686_linux.run",
+    "MegaGlest-Installer-3.13.0_windows_32bit.exe",
+    "MegaGlest-Installer-3.13.0_windows_64bit.exe",
+    "MegaGlest-Installer-3.13.0_x86_64_linux.run",
+    "megaglest-mu-3.13.0-linux.tar.gz",
+    "megaglest-mu-3.13.0-linux.tar.gz.asc",
+    "megaglest-source-3.13.0.tar.xz",
+    "megaglest-source-3.13.0.tar.xz.asc",
+    "megaglest-source-embedded-3.13.0.tar.xz",
+    "megaglest-source-embedded-3.13.0.tar.xz.asc",
+    "SHA1SUM.txt",
+    "SHA1SUM.txt.asc",
+    "SHA512SUM.txt",
+    "SHA512SUM.txt.asc"
+  ],
+  "picks": [
+    ["darwin", "arm64", "MegaGlest-game-macos-3.13.0.dmg"],
+    ["darwin", "x64", "MegaGlest-game-macos-3.13.0.dmg"],
+    ["linux", "x64", "MegaGlest-3.13.0-x86_64.AppImage"],
+    ["linux", "arm64", null],
+    ["win32", "x64", null]
+  ]
+}

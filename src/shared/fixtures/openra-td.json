@@ -1,0 +1,43 @@
+{
+  "assets": [
+    "OpenRA-Dune-2000-x86_64.AppImage",
+    "OpenRA-Dune-2000-x86_64.AppImage.zsync",
+    "OpenRA-Red-Alert-x86_64.AppImage",
+    "OpenRA-Red-Alert-x86_64.AppImage.zsync",
+    "OpenRA-release-20250330-source.tar.bz2",
+    "OpenRA-release-20250330-x64-winportable.zip",
+    "OpenRA-release-20250330-x64.exe",
+    "OpenRA-release-20250330-x86-winportable.zip",
+    "OpenRA-release-20250330-x86.exe",
+    "OpenRA-release-20250330.dmg",
+    "OpenRA-Tiberian-Dawn-x86_64.AppImage",
+    "OpenRA-Tiberian-Dawn-x86_64.AppImage.zsync"
+  ],
+  "picks": [
+    [
+      "darwin",
+      "arm64",
+      "OpenRA-release-20250330.dmg"
+    ],
+    [
+      "win32",
+      "x64",
+      "OpenRA-release-20250330-x64-winportable.zip"
+    ],
+    [
+      "win32",
+      "ia32",
+      "OpenRA-release-20250330-x86-winportable.zip"
+    ],
+    [
+      "linux",
+      "x64",
+      "OpenRA-Tiberian-Dawn-x86_64.AppImage"
+    ],
+    [
+      "linux",
+      "arm64",
+      null
+    ]
+  ]
+}

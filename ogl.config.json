@@ -1,0 +1,10 @@
+{
+  "repository": {
+    "owner": "your-github-user",
+    "name": "OpenGameLauncher"
+  },
+  "catalog": {
+    "branch": "main",
+    "directory": "catalog/games"
+  }
+}

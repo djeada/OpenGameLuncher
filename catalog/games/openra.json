@@ -1,0 +1,72 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openra",
+  "name": "OpenRA: Red Alert",
+  "mark": "RA",
+  "tagline": "Command & Conquer: Red Alert rebuilt on a modern engine. Allies against Soviets, with online play and mod support.",
+  "website": "https://www.openra.net",
+  "note": "The free game content downloads on first start.",
+  "accent": "#b3261e",
+  "cover": "https://www.openra.net/images/appdata/ingame-ra.png",
+  "icon": "https://raw.githubusercontent.com/OpenRA/OpenRA/bleed/packaging/artwork/ra_256x256.png",
+  "screenshots": [
+    "https://www.openra.net/images/appdata/ingame-ra.png",
+    "https://www.openra.net/images/appdata/multiplayer.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRA",
+        "repo": "OpenRA",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "playtest",
+      "label": "Playtest",
+      "description": "Test builds of the next release. Expect balance changes.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRA",
+        "repo": "OpenRA",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"],
+        "exclude": ["source"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenRA - Red Alert.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["winportable"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "RedAlert.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["red-alert"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

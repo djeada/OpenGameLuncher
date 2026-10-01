@@ -1,0 +1,61 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "fheroes2",
+  "name": "fheroes2",
+  "mark": "H2",
+  "tagline": "Open-source engine for Heroes of Might and Magic II. Explore the map, build towns and lead armies in turn-based battles.",
+  "website": "https://ihhub.github.io/fheroes2/",
+  "note": "Copy ANIM, DATA, MAPS and MUSIC from Heroes II into the game folder, or run download_demo_version there for the free demo. Linux needs SDL2 installed.",
+  "accent": "#8b5a2b",
+  "cover": "https://ihhub.github.io/fheroes2/images/screenshots/screenshot_world_map.webp",
+  "icon": "https://raw.githubusercontent.com/ihhub/fheroes2/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+  "screenshots": [
+    "https://ihhub.github.io/fheroes2/images/screenshots/screenshot_world_map.webp",
+    "https://ihhub.github.io/fheroes2/images/screenshots/screenshot_castle.webp",
+    "https://ihhub.github.io/fheroes2/images/screenshots/screenshot_battle.webp"
+  ],
+  "tags": ["Strategy", "Turn-based"],
+  "requires": {
+    "name": "Heroes of Might and Magic II",
+    "url": "https://www.gog.com/en/game/heroes_of_might_and_magic_2_gold_edition"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "ihhub",
+        "repo": "fheroes2",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["installer", "tools", "SDL1"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "fheroes2.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["ubuntu"],
+        "exclude": ["tools", "SDL1"],
+        "arch": {
+          "x64": ["x86-64"],
+          "arm64": ["arm64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "fheroes2" }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "pioneer",
+  "name": "Pioneer Space Sim",
+  "mark": "PS",
+  "tagline": "Trade, fight and explore a full-scale 3D galaxy with Newtonian flight. Inspired by Frontier: Elite 2.",
+  "website": "https://pioneerspacesim.net",
+  "accent": "#d9891f",
+  "cover": "https://pioneerspacesim.net/carousel/in-flight.jpg",
+  "icon": "https://raw.githubusercontent.com/pioneerspacesim/pioneer/master/application-icon/pngs/pioneer-256x256.png",
+  "screenshots": [
+    "https://pioneerspacesim.net/carousel/in-flight.jpg",
+    "https://pioneerspacesim.net/carousel/gas-giant.jpg",
+    "https://pioneerspacesim.net/carousel/new-hope.jpg",
+    "https://pioneerspacesim.net/carousel/dark.jpg",
+    "https://pioneerspacesim.net/carousel/station-landing.jpg"
+  ],
+  "tags": ["Space", "Simulation"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "pioneerspacesim",
+        "repo": "pioneer",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

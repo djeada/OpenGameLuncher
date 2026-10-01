@@ -1,0 +1,56 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "naev",
+  "name": "Naev",
+  "mark": "NV",
+  "tagline": "Fly, trade and fight across a living galaxy in a 2D space game with a large story-driven campaign.",
+  "website": "https://naev.org",
+  "accent": "#8a3fa0",
+  "cover": "https://naev.org/imgs/screenshots_0.12.0/png/gawain_gang.png",
+  "icon": "https://raw.githubusercontent.com/naev/naev/main/extras/logos/naev.png",
+  "screenshots": [
+    "https://naev.org/imgs/screenshots_0.12.0/png/gawain_gang.png",
+    "https://naev.org/imgs/screenshots_0.12.0/png/wunomi.png",
+    "https://naev.org/imgs/screenshots_0.12.0/png/lockon.png",
+    "https://naev.org/imgs/screenshots_0.12.0/png/rocket_party.png",
+    "https://naev.org/imgs/screenshots_0.12.0/png/stealth.png",
+    "https://naev.org/imgs/screenshots_0.12.0/png/lucky_find.png"
+  ],
+  "tags": ["Space", "RPG"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "naev",
+        "repo": "naev",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"],
+        "arch": {
+          "arm64": ["universal"],
+          "x64": ["universal"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "Naev.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86-64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

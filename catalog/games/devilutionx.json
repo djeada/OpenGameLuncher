@@ -1,0 +1,66 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "devilutionx",
+  "name": "DevilutionX",
+  "mark": "DX",
+  "tagline": "Diablo and Hellfire for modern systems, with widescreen, controller support and quality-of-life fixes.",
+  "website": "https://github.com/diasurgical/DevilutionX",
+  "note": "Copy DIABDAT.MPQ from Diablo into the game folder or DevilutionX's data folder. The free shareware spawn.mpq works in its place for the demo part of the game.",
+  "accent": "#8b1a1a",
+  "cover": "https://raw.githubusercontent.com/flathub/org.diasurgical.DevilutionX/master/screens/screen1.png",
+  "icon": "https://raw.githubusercontent.com/diasurgical/DevilutionX/master/Packaging/resources/icon.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/flathub/org.diasurgical.DevilutionX/master/screens/screen1.png",
+    "https://raw.githubusercontent.com/flathub/org.diasurgical.DevilutionX/master/screens/screen2.png",
+    "https://raw.githubusercontent.com/flathub/org.diasurgical.DevilutionX/master/screens/screen3.png"
+  ],
+  "tags": ["RPG"],
+  "requires": {
+    "name": "Diablo",
+    "url": "https://www.gog.com/en/game/diablo"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "diasurgical",
+        "repo": "DevilutionX",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos-universal"],
+        "exclude": ["tiger", "ppc"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "devilutionX.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["xp"],
+        "arch": {
+          "x64": ["x86_64"],
+          "ia32": ["i386"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "devilutionx.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

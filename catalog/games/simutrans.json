@@ -1,0 +1,68 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "simutrans",
+  "name": "Simutrans",
+  "mark": "ST",
+  "tagline": "Build a transport network of trains, trucks, ships and planes that moves passengers, mail and goods between growing towns.",
+  "website": "https://www.simutrans.com",
+  "note": "The first start asks you to download a pakset, the graphics set the game runs on.",
+  "accent": "#2f6fa8",
+  "cover": "https://simutrans-germany.com/wiki/wiki/display837",
+  "icon": "https://raw.githubusercontent.com/simutrans/simutrans/master/src/android/icon.png",
+  "screenshots": [
+    "https://simutrans-germany.com/wiki/wiki/display837",
+    "https://simutrans-germany.com/wiki/wiki/display858",
+    "https://simutrans-germany.com/wiki/wiki/display864",
+    "https://simutrans-germany.com/wiki/wiki/display1687"
+  ],
+  "tags": ["Simulation", "Transport"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "simutrans",
+        "repo": "simutrans",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["simumac"],
+        "exclude": ["nightly", "signed", "intel", ".txt"],
+        "arch": {
+          "arm64": ["arm"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "simutrans.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["simuwin"],
+        "exclude": ["nightly"],
+        "arch": {
+          "x64": ["win64"],
+          "arm64": ["win64"],
+          "ia32": ["gdi32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "simutrans.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["simulinux"],
+        "exclude": ["nightly"],
+        "arch": {
+          "x64": ["x64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "simutrans" }
+    }
+  }
+}

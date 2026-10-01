@@ -1,0 +1,67 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "romanovs-vengeance",
+  "name": "Romanov's Vengeance",
+  "mark": "RV",
+  "tagline": "Red Alert 2 rebuilt on OpenRA with rebalanced multiplayer, new subfactions and ideas from later Command & Conquer games.",
+  "website": "https://github.com/MustaphaTR/Romanovs-Vengeance",
+  "note": "Needs the files of Red Alert 2 and Yuri's Revenge. The game asks for them on first start and can read a Steam, EA app or disc install.",
+  "accent": "#b71c1c",
+  "cover": "https://media.moddb.com/images/mods/1/44/43239/RV_Naval_Playtest_Image.png",
+  "icon": "https://raw.githubusercontent.com/MustaphaTR/Romanovs-Vengeance/master/packaging/artwork/icon_512x512.png",
+  "screenshots": [
+    "https://media.moddb.com/images/mods/1/44/43239/RV_Naval_Playtest_Image.png",
+    "https://media.moddb.com/images/mods/1/44/43239/Unholy_Alliance.png",
+    "https://media.moddb.com/images/mods/1/44/43239/Drones.png",
+    "https://media.moddb.com/images/mods/1/44/43239/Dune_1972.png",
+    "https://cdn.dbolical.com/videos/mods/1/44/43239/openra-romanovs-vengeance-gameplay.mp4.jpg"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "requires": {
+    "name": "Red Alert 2 and Yuri's Revenge",
+    "url": "https://store.steampowered.com/app/2229850/"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "MustaphaTR",
+        "repo": "Romanovs-Vengeance",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenRA - Romanovs Vengeance.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["winportable"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Romanovs Vengeance.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "assets": ["game-1.0-macos-universal.zip", "game-1.0-windows-win64.zip"],
+  "picks": [
+    ["darwin", "arm64", "game-1.0-macos-universal.zip"],
+    ["win32", "x64", "game-1.0-windows-win64.zip"],
+    ["linux", "x64", null]
+  ]
+}

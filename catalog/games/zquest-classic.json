@@ -1,0 +1,70 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "zquest-classic",
+  "name": "ZQuest Classic",
+  "mark": "ZC",
+  "tagline": "A top-down action-adventure engine in the style of the first Zelda, with a built-in classic quest, hundreds of player-made quests and an editor.",
+  "website": "https://zquestclassic.com",
+  "accent": "#2f8f4e",
+  "cover": "https://data.zquestclassic.com/quests/purezc/667/image1.png",
+  "icon": "https://raw.githubusercontent.com/ZQuestClassic/ZQuestClassic/main/resources/zc.png",
+  "screenshots": [
+    "https://data.zquestclassic.com/quests/purezc/667/image1.png",
+    "https://data.zquestclassic.com/quests/purezc/751/image1.png",
+    "https://data.zquestclassic.com/quests/purezc/731/image2.png",
+    "https://data.zquestclassic.com/quests/purezc/568/image1.png",
+    "https://data.zquestclassic.com/quests/purezc/667/image2.png",
+    "https://data.zquestclassic.com/quests/purezc/623/image1.png"
+  ],
+  "tags": ["RPG", "Arcade"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "ZQuestClassic",
+        "repo": "ZQuestClassic",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "prerelease",
+      "label": "3.0 Preview",
+      "description": "Weekly pre-releases of version 3.0. New features, may be unstable.",
+      "source": {
+        "type": "github-releases",
+        "owner": "ZQuestClassic",
+        "repo": "ZQuestClassic",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": { "include": ["mac"] },
+      "archive": "dmg",
+      "launch": { "app": "ZQuest Classic.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "zlauncher.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "arch": { "x64": ["linux"] }
+      },
+      "archive": "tar.gz",
+      "launch": { "binary": "zlauncher" }
+    }
+  }
+}

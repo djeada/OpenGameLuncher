@@ -1,0 +1,72 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openra-d2k",
+  "name": "OpenRA: Dune 2000",
+  "mark": "D2K",
+  "tagline": "Dune 2000 rebuilt on a modern engine. Fight for the spice of Arrakis as Atreides, Harkonnen or Ordos.",
+  "website": "https://www.openra.net",
+  "note": "The free game content downloads on first start.",
+  "accent": "#c2703a",
+  "cover": "https://www.openra.net/images/appdata/ingame-d2k.png",
+  "icon": "https://raw.githubusercontent.com/OpenRA/OpenRA/bleed/packaging/artwork/d2k_256x256.png",
+  "screenshots": [
+    "https://www.openra.net/images/appdata/ingame-d2k.png",
+    "https://www.openra.net/images/appdata/multiplayer.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRA",
+        "repo": "OpenRA",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "playtest",
+      "label": "Playtest",
+      "description": "Test builds of the next release. Expect balance changes.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRA",
+        "repo": "OpenRA",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"],
+        "exclude": ["source"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenRA - Dune 2000.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["winportable"],
+        "arch": {
+          "x64": ["x64"],
+          "ia32": ["x86"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Dune2000.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["dune-2000"],
+        "exclude": ["zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

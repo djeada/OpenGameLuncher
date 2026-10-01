@@ -1,0 +1,30 @@
+{
+  "assets": [
+    "pdb-arm64.zip",
+    "pdb-x64.zip",
+    "pdb-x86.zip",
+    "VCMI-Android-arm64-v8a.apk",
+    "VCMI-Android-armeabi-v7a.apk",
+    "VCMI-Android-x86_64.apk",
+    "VCMI-iOS.ipa",
+    "VCMI-Linux-arm64.AppImage",
+    "VCMI-Linux-x64.AppImage",
+    "VCMI-macOS-arm.dmg",
+    "VCMI-macOS-intel.dmg",
+    "VCMI-Sources.tar.gz",
+    "VCMI-Windows-arm64.exe",
+    "VCMI-Windows-x64.exe",
+    "VCMI-Windows-x86.exe",
+    "VCMI-Windows.zip"
+  ],
+  "picks": [
+    ["darwin", "arm64", "VCMI-macOS-arm.dmg"],
+    ["darwin", "x64", "VCMI-macOS-intel.dmg"],
+    ["win32", "x64", "VCMI-Windows.zip"],
+    ["win32", "arm64", null],
+    ["win32", "ia32", null],
+    ["linux", "x64", "VCMI-Linux-x64.AppImage"],
+    ["linux", "arm64", "VCMI-Linux-arm64.AppImage"],
+    ["linux", "ia32", null]
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "corsixth",
+  "name": "CorsixTH",
+  "mark": "TH",
+  "tagline": "Open-source re-implementation of Theme Hospital. Cure patients, build wards, keep the staff happy.",
+  "website": "https://corsixth.com",
+  "note": "The free Theme Hospital demo works too.",
+  "accent": "#2e9d8f",
+  "cover": "https://corsixth.com/media/screenshots/1-medium.jpg",
+  "icon": "https://raw.githubusercontent.com/CorsixTH/CorsixTH/master/CorsixTH/Original_Logo.svg",
+  "screenshots": [
+    "https://corsixth.com/media/screenshots/1-medium.jpg",
+    "https://corsixth.com/media/screenshots/2-medium.jpg"
+  ],
+  "tags": ["Simulation", "Management"],
+  "requires": {
+    "name": "Theme Hospital",
+    "url": "https://www.gog.com/en/game/theme_hospital"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "CorsixTH",
+        "repo": "CorsixTH",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "beta",
+      "label": "Beta",
+      "description": "Betas and release candidates of the next version.",
+      "source": {
+        "type": "github-releases",
+        "owner": "CorsixTH",
+        "repo": "CorsixTH",
+        "prerelease": "only"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "CorsixTH.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["installer"],
+        "arch": {
+          "x64": ["x64"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "CorsixTH.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

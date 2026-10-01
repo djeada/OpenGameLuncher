@@ -1,0 +1,66 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "supertux",
+  "name": "SuperTux",
+  "mark": "ST",
+  "tagline": "Run and jump through side-scrolling worlds as Tux the penguin in a classic 2D platformer with a level editor.",
+  "website": "https://www.supertux.org",
+  "accent": "#3d8fd1",
+  "cover": "https://www.supertux.org/images/0_7_0/07-1.png",
+  "icon": "https://raw.githubusercontent.com/SuperTux/supertux/master/data/images/engine/icons/supertux-256x256.png",
+  "screenshots": [
+    "https://www.supertux.org/images/0_7_0/07-1.png",
+    "https://www.supertux.org/images/0_7_0/07-2.png",
+    "https://www.supertux.org/images/0_7_0/07-3.png",
+    "https://www.supertux.org/images/0_7_0/07-4.png",
+    "https://www.supertux.org/images/0_7_0/07-5.png",
+    "https://www.supertux.org/images/0_7_0/07-6.png",
+    "https://www.supertux.org/images/0_7_0/07-7.png",
+    "https://www.supertux.org/images/0_7_0/07-8.png"
+  ],
+  "tags": ["Platformer", "Arcade"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "SuperTux",
+        "repo": "supertux",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["darwin"],
+        "arch": {
+          "arm64": ["arm64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "SuperTux.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["portable"],
+        "arch": {
+          "x64": ["win64"],
+          "ia32": ["win32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "supertux2.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": { "x64": ["x86_64"] }
+      },
+      "archive": "file"
+    }
+  }
+}

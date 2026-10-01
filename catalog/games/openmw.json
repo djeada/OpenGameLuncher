@@ -1,0 +1,59 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openmw",
+  "name": "OpenMW",
+  "mark": "MW",
+  "tagline": "Open-source engine for The Elder Scrolls III: Morrowind. Explore the island of Vvardenfell with modern rendering and mod support.",
+  "website": "https://openmw.org",
+  "note": "On first start the launcher's wizard finds or installs your Morrowind data. Windows is not offered because the project only publishes an installer.",
+  "accent": "#8a6a3b",
+  "cover": "https://wiki.openmw.org/images/Screenshot_Vivec_seen_from_Ebonheart_0.35.png",
+  "icon": "https://openmw.org/wp-content/uploads/2021/06/cropped-openmw-192x192.png",
+  "screenshots": [
+    "https://wiki.openmw.org/images/Screenshot_Vivec_seen_from_Ebonheart_0.35.png",
+    "https://wiki.openmw.org/images/0.40_Screenshot-Balmora_3.png",
+    "https://wiki.openmw.org/images/Screenshot_mournhold_plaza_0.35.png"
+  ],
+  "tags": ["RPG"],
+  "requires": {
+    "name": "The Elder Scrolls III: Morrowind",
+    "url": "https://www.gog.com/en/game/the_elder_scrolls_iii_morrowind_goty_edition"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenMW",
+        "repo": "openmw",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["arm64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "OpenMW.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "exclude": ["debug"],
+        "arch": {
+          "x64": ["64bit"]
+        }
+      },
+      "archive": "tar.gz",
+      "launch": { "binary": "openmw-launcher" }
+    }
+  }
+}

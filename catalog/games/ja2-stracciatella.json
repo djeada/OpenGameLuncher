@@ -1,0 +1,70 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "ja2-stracciatella",
+  "name": "JA2 Stracciatella",
+  "mark": "JA",
+  "tagline": "Open-source engine for Jagged Alliance 2. Hire mercenaries and free Arulco in turn-based tactical combat, with high resolutions and mods.",
+  "website": "https://ja2-stracciatella.github.io/",
+  "note": "Point the launcher at your Jagged Alliance 2 folder on first start. The Mac build is for Apple silicon only.",
+  "accent": "#6b7a3a",
+  "cover": "https://ja2-stracciatella.github.io/img/features/high-res.jpg",
+  "icon": "https://raw.githubusercontent.com/ja2-stracciatella/ja2-stracciatella/master/assets/icons/logo.svg",
+  "screenshots": [
+    "https://ja2-stracciatella.github.io/img/features/high-res.jpg",
+    "https://ja2-stracciatella.github.io/img/features/integrated-editor.jpg",
+    "https://ja2-stracciatella.github.io/img/start-screen.png"
+  ],
+  "tags": ["Strategy", "Turn-based"],
+  "requires": {
+    "name": "Jagged Alliance 2",
+    "url": "https://www.gog.com/en/game/jagged_alliance_2"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "ja2-stracciatella",
+        "repo": "ja2-stracciatella",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["macos"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "JA2 Stracciatella.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["win-msvc"],
+        "exclude": [".exe"],
+        "arch": {
+          "x64": ["msvc64"],
+          "ia32": ["msvc32"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "ja2-launcher.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["armhf"],
+        "arch": {
+          "x64": ["x86-64"],
+          "arm64": ["aarch64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

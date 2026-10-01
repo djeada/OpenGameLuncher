@@ -1,0 +1,25 @@
+{
+  "assets": [
+    "SuperTuxKart-1.5-installer-aarch64.exe",
+    "SuperTuxKart-1.5-installer-i686.exe",
+    "SuperTuxKart-1.5-installer-x86_64.exe",
+    "SuperTuxKart-1.5-linux-arm64.tar.gz",
+    "SuperTuxKart-1.5-linux-armv7.tar.gz",
+    "SuperTuxKart-1.5-linux-riscv64.tar.gz",
+    "SuperTuxKart-1.5-linux-x86.tar.gz",
+    "SuperTuxKart-1.5-linux-x86_64.tar.gz",
+    "SuperTuxKart-1.5-mac-signed.zip",
+    "SuperTuxKart-1.5-src.tar.gz",
+    "SuperTuxKart-1.5-switch.zip",
+    "SuperTuxKart-1.5-win.zip",
+    "SuperTuxKart-1.5.apk"
+  ],
+  "picks": [
+    ["darwin", "arm64", "SuperTuxKart-1.5-mac-signed.zip"],
+    ["darwin", "x64", "SuperTuxKart-1.5-mac-signed.zip"],
+    ["linux", "x64", "SuperTuxKart-1.5-linux-x86_64.tar.gz"],
+    ["linux", "arm64", "SuperTuxKart-1.5-linux-arm64.tar.gz"],
+    ["linux", "ia32", "SuperTuxKart-1.5-linux-x86.tar.gz"],
+    ["win32", "x64", null]
+  ]
+}

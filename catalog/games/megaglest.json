@@ -1,0 +1,52 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "megaglest",
+  "name": "MegaGlest",
+  "mark": "MG",
+  "tagline": "Free 3D real-time strategy in a fantasy world with seven factions, from Magic and Tech to Egyptians and Norsemen.",
+  "website": "https://megaglest.org",
+  "accent": "#8a5a1c",
+  "cover": "https://megaglest.org/media/pics/s05.jpg",
+  "icon": "https://raw.githubusercontent.com/MegaGlest/megaglest-data/develop/others/icons/megaglest.png",
+  "screenshots": [
+    "https://megaglest.org/media/pics/s05.jpg",
+    "https://megaglest.org/media/pics/s02.jpg",
+    "https://megaglest.org/media/pics/s04.jpg",
+    "https://megaglest.org/media/pics/s06.jpg",
+    "https://megaglest.org/media/pics/s03.jpg",
+    "https://megaglest.org/media/pics/s08.jpg"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "MegaGlest",
+        "repo": "megaglest-source",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [".dmg"]
+      },
+      "archive": "dmg",
+      "launch": { "app": "MegaGlest.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "exclude": ["sha256sum", "zsync"],
+        "arch": {
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

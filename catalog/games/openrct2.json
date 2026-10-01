@@ -1,0 +1,81 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openrct2",
+  "name": "OpenRCT2",
+  "mark": "RC",
+  "tagline": "Open-source reimplementation of RollerCoaster Tycoon 2.",
+  "website": "https://openrct2.io",
+  "accent": "#e4572e",
+  "cover": "https://openrct2.io/uploads/images/background.jpg?r=2",
+  "icon": "https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/resources/logo/icon_x256.png",
+  "screenshots": ["https://openrct2.io/uploads/images/background.jpg?r=2"],
+  "tags": ["Simulation", "Management"],
+  "requires": {
+    "name": "RollerCoaster Tycoon 2",
+    "url": "https://www.gog.com/en/game/rollercoaster_tycoon_2"
+  },
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases. Recommended for most players.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRCT2",
+        "repo": "OpenRCT2",
+        "prerelease": "exclude"
+      }
+    },
+    {
+      "id": "develop",
+      "label": "Develop",
+      "description": "Nightly builds from the develop branch. Newest features, may be unstable.",
+      "source": {
+        "type": "github-releases",
+        "owner": "OpenRCT2",
+        "repo": "OpenRCT2-binaries",
+        "prerelease": "include"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": ["symbols", "debug", "sha256", "android", "apk"],
+        "arch": {
+          "arm64": ["arm64", "aarch64", "universal"],
+          "x64": ["x64", "x86_64", "universal"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "app": "OpenRCT2.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["symbols", "debug", "sha256", "installer", "android", "apk"],
+        "prefer": ["portable"],
+        "arch": {
+          "x64": ["x64", "x86_64"],
+          "arm64": ["arm64", "aarch64"],
+          "ia32": ["win32", "i686"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "openrct2.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "exclude": ["symbols", "debug", "sha256", "android", "apk", ".deb", ".rpm"],
+        "prefer": ["appimage"],
+        "arch": {
+          "x64": ["x86_64", "x64"],
+          "arm64": ["arm64", "aarch64"]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}

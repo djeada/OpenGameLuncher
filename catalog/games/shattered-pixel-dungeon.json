@@ -1,0 +1,61 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "shattered-pixel-dungeon",
+  "name": "Shattered Pixel Dungeon",
+  "mark": "SPD",
+  "tagline": "Descend a randomly generated dungeon, find loot and fight monsters in a traditional roguelike based on Pixel Dungeon.",
+  "website": "https://shatteredpixel.com/shatteredpd/",
+  "accent": "#c7862b",
+  "cover": "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/metadata/en-US/images/phoneScreenshots/4.png",
+  "icon": "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/ios/assets/Assets.xcassets/AppIcon.appiconset/Icon-1024.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/metadata/en-US/images/phoneScreenshots/4.png",
+    "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/metadata/en-US/images/phoneScreenshots/1.png",
+    "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/metadata/en-US/images/phoneScreenshots/2.png",
+    "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/metadata/en-US/images/phoneScreenshots/3.png"
+  ],
+  "tags": ["Roguelike", "RPG"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "github-releases",
+        "owner": "00-Evan",
+        "repo": "shattered-pixel-dungeon",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"]
+      },
+      "archive": "zip",
+      "launch": { "app": "Shattered Pixel Dungeon.app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "arch": {
+          "x64": ["windows"],
+          "arm64": ["windows"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Shattered Pixel Dungeon.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "arch": {
+          "x64": ["linux"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "Shattered Pixel Dungeon" }
+    }
+  }
+}

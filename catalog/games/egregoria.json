@@ -1,0 +1,59 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "egregoria",
+  "name": "Egregoria",
+  "mark": "EG",
+  "tagline": "A 3D city builder inspired by Cities: Skylines where every citizen, company and delivery is simulated.",
+  "website": "https://github.com/Uriopass/Egregoria",
+  "note": "An early alpha; expect rough edges. Linux needs Vulkan drivers and ALSA.",
+  "accent": "#4a8f3c",
+  "cover": "https://media.githubusercontent.com/media/Uriopass/Egregoria/master/assets/screen2.jpg",
+  "screenshots": [
+    "https://media.githubusercontent.com/media/Uriopass/Egregoria/master/assets/screen2.jpg",
+    "https://media.githubusercontent.com/media/Uriopass/Egregoria/master/assets/screen1.jpg",
+    "https://media.githubusercontent.com/media/Uriopass/Egregoria/master/assets/screen3.jpg",
+    "https://media.githubusercontent.com/media/Uriopass/Egregoria/master/assets/screen5.jpg"
+  ],
+  "tags": ["City builder", "Simulation"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "source": {
+        "type": "github-releases",
+        "owner": "Uriopass",
+        "repo": "Egregoria",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "exclude": ["headless"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "native_app" }
+    },
+    "win32": {
+      "asset": {
+        "include": ["windows"],
+        "exclude": ["headless"]
+      },
+      "archive": "zip",
+      "launch": { "binary": "native_app.exe" }
+    },
+    "linux": {
+      "asset": {
+        "include": ["linux"],
+        "exclude": ["headless"],
+        "arch": {
+          "x64": ["linux"]
+        }
+      },
+      "archive": "zip",
+      "launch": { "binary": "native_app" }
+    }
+  }
+}

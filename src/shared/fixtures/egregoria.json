@@ -1,0 +1,17 @@
+{
+  "assets": [
+    "linux-headless.zip",
+    "linux.zip",
+    "macos-headless.zip",
+    "macos.zip",
+    "windows-headless.zip",
+    "windows.zip"
+  ],
+  "picks": [
+    ["darwin", "arm64", "macos.zip"],
+    ["darwin", "x64", "macos.zip"],
+    ["win32", "x64", "windows.zip"],
+    ["linux", "x64", "linux.zip"],
+    ["linux", "arm64", null]
+  ]
+}
