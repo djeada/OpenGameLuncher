@@ -4,6 +4,12 @@ const path = require('node:path')
 const ogl = JSON.parse(readFileSync(path.join(__dirname, 'ogl.config.json'), 'utf8'))
 const placeholder = ogl.repository.owner === 'your-github-user'
 
+// CI passes unset secrets as empty strings, which electron-builder reads as a certificate path.
+for (const name of ['CSC_LINK', 'CSC_KEY_PASSWORD', 'APPLE_ID', 'APPLE_APP_SPECIFIC_PASSWORD', 'APPLE_TEAM_ID']) {
+  if (!process.env[name]) delete process.env[name]
+}
+const signed = Boolean(process.env.CSC_LINK)
+
 /** @type {import('electron-builder').Configuration} */
 module.exports = {
   appId: 'dev.ogl.launcher',
@@ -33,8 +39,11 @@ module.exports = {
       { target: 'zip', arch: ['arm64', 'x64'] }
     ],
     icon: 'build/icon.png',
-    identity: process.env.CSC_LINK ? undefined : null,
-    notarize: Boolean(process.env.CSC_LINK && process.env.APPLE_ID)
+    // Without a Developer ID the app is ad-hoc signed. Leaving it unsigned makes
+    // macOS report a downloaded copy as damaged on Apple silicon.
+    identity: signed ? undefined : '-',
+    hardenedRuntime: signed,
+    notarize: Boolean(signed && process.env.APPLE_ID)
   },
   win: {
     target: ['nsis'],
