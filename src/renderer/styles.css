@@ -88,6 +88,16 @@ img { user-select: none; }
 
 .mac .brand { padding-left: 84px; }
 
+/* The OGL wordmark */
+.brand strong, .splash-center strong {
+  font-family: Outfit, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.brand strong { font-size: 20px; }
+
 .logo {
   --logo-size: 22px;
   position: relative;
@@ -1135,7 +1145,7 @@ button.requires:hover { background: rgba(251, 191, 36, 0.22); }
 
 .splash-logo { display: grid; animation: splash-pulse 2.4s ease-in-out infinite; }
 
-.splash-center strong { margin-top: 18px; font-size: 24px; letter-spacing: -0.03em; }
+.splash-center strong { margin-top: 18px; font-size: 34px; }
 .splash-center p { margin: 2px 0 20px; color: rgba(238, 241, 246, 0.6); }
 
 .splash-bar {
