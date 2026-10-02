@@ -1,7 +1,7 @@
 {
   "repository": {
-    "owner": "your-github-user",
-    "name": "OpenGameLauncher"
+    "owner": "fabianfreund",
+    "name": "OGL"
   },
   "catalog": {
     "branch": "main",

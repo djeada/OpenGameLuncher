@@ -67,7 +67,7 @@ Art is optional but makes the store look alive. `cover` is the wide banner and c
 
 Each channel is a track the player can pick on the game page. Give it a one-line `description` such as "Nightly builds, may be unstable." Channels that include pre-releases get a Beta badge.
 
-Push the file to the branch named in `ogl.config.json` (`main` by default, folder `catalog/games`). On the next launch, OGL lists that folder through the GitHub API and replaces the cached catalog. Until the repository owner below is filled in, OGL uses the JSON shipped inside the app.
+Push the file to the branch named in `ogl.config.json` (`main` by default, folder `catalog/games`). On the next launch, OGL lists that folder through the GitHub API and replaces the cached catalog. `npm run dev` always reads the files in this checkout; set `OGL_REMOTE_CATALOG=1` to test against the branch.
 
 Files starting with `_` are ignored, so a draft can sit beside the real games.
 
@@ -81,13 +81,19 @@ If **Update automatically** is on (the default once a game is installed), OGL do
 
 ## Launcher updates
 
-1. Set `repository.owner` and `repository.name` in `ogl.config.json` to this GitHub repo.
-2. Bump `version` in `package.json`.
-3. Tag a matching `vX.Y.Z` and push it.
+OGL updates itself from the GitHub releases of the repository named in `ogl.config.json`. Releases are built by [`.github/workflows/release.yml`](.github/workflows/release.yml); the version comes from the branch name, so there is nothing to bump by hand.
 
-GitHub Actions builds a macOS dmg/zip and a Windows installer and attaches them to the release, including the `latest*.yml` files electron-updater needs. Packaged OGL checks that release on startup and offers the download. Unsigned Mac builds need `CSC_IDENTITY_AUTO_DISCOVERY=false` unless you have a Developer ID certificate. Gatekeeper will warn on unsigned apps until you sign and notarize.
+1. Create a branch named after the version: `git switch -c release/0.2.0`.
+2. Push to it. Every push builds macOS (Apple silicon and Intel), Windows, and Linux and uploads them to a **draft** release `v0.2.0`. Download from the draft to test. Installed launchers do not see drafts.
+3. Open a pull request into `main` and merge it. The merge rebuilds from `main`, tags `v0.2.0`, and publishes the release with generated notes. Notes you wrote on the draft are kept.
 
-`npm run dist:mac` and `npm run dist:win` build locally without publishing.
+Packaged OGL checks the newest published release on startup and offers the download. A name with a suffix, such as `release/0.3.0-beta.1`, is published as a pre-release, which only launchers already on a pre-release pick up.
+
+Pushing a `vX.Y.Z` tag publishes that commit directly, and the workflow can be run by hand from the Actions tab for any ref. A published version cannot be rebuilt; start the next one.
+
+**macOS signing.** macOS only installs an update into a signed app, so an unsigned Mac build can show that an update exists but cannot install it, and Gatekeeper warns when it is first opened. To sign and notarize, add these repository secrets: `CSC_LINK` (base64 of the Developer ID Application `.p12`), `CSC_KEY_PASSWORD`, `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID`. Windows and Linux update without signing; Windows shows a SmartScreen warning on unsigned installers.
+
+`npm run dist:mac`, `npm run dist:win`, and `npm run dist:linux` build locally without publishing.
 
 ## Caching and GitHub's limit
 

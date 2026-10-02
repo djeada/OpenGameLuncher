@@ -46,6 +46,12 @@ async function writeCache(games: Game[]): Promise<void> {
   await writeFile(file, JSON.stringify(games))
 }
 
+// In development the catalog folder in this checkout is the source of truth,
+// so edits to a game file show up without pushing them first.
+function usesLocalCatalog(): boolean {
+  return !app.isPackaged && process.env.OGL_REMOTE_CATALOG !== '1'
+}
+
 class CatalogService {
   private snapshot: CatalogSnapshot = { games: [], source: 'bundled' }
   private listeners = new Set<(snapshot: CatalogSnapshot) => void>()
@@ -70,7 +76,7 @@ class CatalogService {
 
   async init(): Promise<void> {
     const bundled = await readGameDir(bundledGamesDir())
-    const cache = await readCache()
+    const cache = usesLocalCatalog() ? null : await readCache()
     this.publish(resolveCatalog({ bundled, cache, remote: null }))
     void this.refresh()
   }
@@ -84,7 +90,7 @@ class CatalogService {
       this.publish({ ...this.snapshot, error: message })
       return this.snapshot
     }
-    if (!isConfiguredRepository(config.repository)) return this.snapshot
+    if (usesLocalCatalog() || !isConfiguredRepository(config.repository)) return this.snapshot
 
     try {
       const documents = await fetchCatalogDocuments(config)

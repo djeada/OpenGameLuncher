@@ -23,13 +23,18 @@ module.exports = {
     : {
         provider: 'github',
         owner: ogl.repository.owner,
-        repo: ogl.repository.name
+        repo: ogl.repository.name,
+        releaseType: 'draft'
       },
   mac: {
     category: 'public.app-category.games',
-    target: ['dmg', 'zip'],
+    target: [
+      { target: 'dmg', arch: ['arm64', 'x64'] },
+      { target: 'zip', arch: ['arm64', 'x64'] }
+    ],
     icon: 'build/icon.png',
-    identity: process.env.CSC_LINK ? undefined : null
+    identity: process.env.CSC_LINK ? undefined : null,
+    notarize: Boolean(process.env.CSC_LINK && process.env.APPLE_ID)
   },
   win: {
     target: ['nsis'],

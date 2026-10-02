@@ -1,31 +1,162 @@
 name: Release
 
+# release/X.Y.Z branch push  -> builds every platform into a draft release vX.Y.Z
+# release/X.Y.Z merged to main -> rebuilds from main and publishes vX.Y.Z
+# vX.Y.Z tag push             -> builds and publishes vX.Y.Z
+# manual run                  -> builds the chosen ref as the given version
+#
+# Installed launchers only see published releases, so drafts are safe to test.
+
 on:
   push:
+    branches:
+      - 'release/**'
     tags:
       - 'v*'
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to build, such as 0.2.0
+        required: true
+      publish:
+        description: Publish the release (off keeps it a draft)
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' && github.ref_type == 'branch' }}
+
 jobs:
+  prepare:
+    if: >-
+      github.event_name != 'pull_request' ||
+      (github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'release/') &&
+      github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.plan.outputs.version }}
+      tag: ${{ steps.plan.outputs.tag }}
+      sha: ${{ steps.plan.outputs.sha }}
+      publish: ${{ steps.plan.outputs.publish }}
+    steps:
+      - name: Work out version and mode
+        id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_PUBLISH: ${{ inputs.publish }}
+        run: |
+          sha="$GITHUB_SHA"
+          publish=false
+          case "$EVENT" in
+            pull_request)
+              version="${PR_BRANCH#release/}"
+              sha="$PR_MERGE_SHA"
+              publish=true
+              ;;
+            workflow_dispatch)
+              version="$INPUT_VERSION"
+              publish="$INPUT_PUBLISH"
+              ;;
+            push)
+              if [ "$REF_TYPE" = tag ]; then
+                version="$REF_NAME"
+                publish=true
+              else
+                version="${REF_NAME#release/}"
+              fi
+              ;;
+          esac
+          version="${version#v}"
+          if ! printf '%s' "$version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$'; then
+            echo "::error::'$version' is not a version. Use release/1.2.3, release/1.2.3-beta.1, or a v1.2.3 tag."
+            exit 1
+          fi
+          {
+            echo "version=$version"
+            echo "tag=v$version"
+            echo "sha=$sha"
+            echo "publish=$publish"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Make sure the draft release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ steps.plan.outputs.tag }}
+          SHA: ${{ steps.plan.outputs.sha }}
+        run: |
+          if draft=$(gh release view "$TAG" --json isDraft --jq .isDraft 2>/dev/null); then
+            if [ "$draft" != true ]; then
+              echo "::error::$TAG is already published. Start a new version instead."
+              exit 1
+            fi
+          else
+            gh release create "$TAG" --draft --title "$TAG" --target "$SHA" --notes ""
+          fi
+
   build:
+    needs: prepare
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest, windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Stamp version
+        run: npm version "${{ needs.prepare.outputs.version }}" --no-git-tag-version --allow-same-version
       - run: npm test
       - run: npm run build
-      - name: Publish to GitHub releases
+      - name: Build installers and upload to the draft release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npx electron-builder --publish always
+          # Optional. Without these the Mac build is unsigned and cannot update itself.
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: npx electron-builder --config electron-builder.config.cjs --publish always
+
+  publish:
+    needs: [prepare, build]
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          SHA: ${{ needs.prepare.outputs.sha }}
+        run: |
+          args=(--draft=false --target "$SHA")
+          case "$TAG" in
+            *-*) args+=(--prerelease) ;;
+            *) args+=(--latest) ;;
+          esac
+          if [ -z "$(gh release view "$TAG" --json body --jq .body)" ]; then
+            notes=$(gh api "repos/$GH_REPO/releases/generate-notes" -f tag_name="$TAG" -f target_commitish="$SHA" --jq .body)
+            args+=(--notes "$notes")
+          fi
+          gh release edit "$TAG" "${args[@]}"
