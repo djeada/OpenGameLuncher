@@ -148,7 +148,11 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$keychain_password" "$keychain" > /dev/null
           security list-keychains -d user -s "$keychain" login.keychain-db
           rm "$RUNNER_TEMP/certificate.p12"
-          security find-identity -v -p codesigning "$keychain" | grep -c "Developer ID Application"
+          if ! security find-identity -v -p codesigning "$keychain" | grep -q "Developer ID Application"; then
+            echo "::error::CSC_LINK holds no usable 'Developer ID Application' identity. Export that certificate together with its private key from Keychain Access (My Certificates) as a .p12."
+            security find-identity -p codesigning "$keychain" | sed -E 's/[0-9A-F]{40}/<hash>/'
+            exit 1
+          fi
           echo "OGL_MAC_SIGNED=1" >> "$GITHUB_ENV"
 
       - name: Build installers and upload to the draft release
