@@ -182,6 +182,23 @@ export type ModProgress = {
   message?: string
 }
 
+// What OGL knows about the original game's files for one game.
+export type OriginalState = {
+  installed: boolean
+  // The Steam account name used last time, to fill the form in.
+  username: string
+}
+
+// code: SteamCMD waits for a Steam Guard code. confirm: it waits for a tap in the Steam app.
+export type OriginalPhase = 'preparing' | 'signing-in' | 'code' | 'confirm' | 'checking' | 'downloading'
+
+export type OriginalProgress = {
+  gameId: string
+  phase: OriginalPhase
+  received: number
+  total: number
+}
+
 export type LauncherUpdate =
   | { state: 'dev' }
   | { state: 'unconfigured' }

@@ -18,6 +18,15 @@ import {
   uninstallGame
 } from './library'
 import { installedMods, installMod, listMods, modsFolder, onModProgress, uninstallMod } from './mods'
+import {
+  cancelOriginal,
+  fetchOriginal,
+  onOriginalProgress,
+  originalFolder,
+  originalState,
+  sendOriginalCode,
+  signInViaTerminal
+} from './originals'
 import { checkLauncherUpdate, downloadLauncherUpdate, installLauncherUpdate, launcherUpdateState, onLauncherUpdate } from './updater'
 
 function asString(value: unknown, label: string): string {
@@ -37,6 +46,8 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
   onDownload((event) => send(ipc.download, event))
   onModProgress((event) => send(ipc.modProgress, event))
   onLauncherUpdate((update) => send(ipc.launcherUpdate, update))
+  onOriginalProgress((event) => send(ipc.originalProgress, event))
+  app.on('before-quit', () => cancelOriginal())
 
   ipcMain.handle(ipc.getPlatform, () => ({
     platform: process.platform,
@@ -117,6 +128,22 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
   ipcMain.handle(ipc.showMods, async (_event, gameId: unknown) => {
     const problem = await shell.openPath(await modsFolder(asString(gameId, 'Game')))
     if (problem) throw new Error(problem)
+  })
+
+  ipcMain.handle(ipc.getOriginal, (_event, gameId: unknown) => originalState(asString(gameId, 'Game')))
+
+  ipcMain.handle(ipc.fetchOriginal, (_event, gameId: unknown, username: unknown, password: unknown) => {
+    if (typeof password !== 'string' || password.length > 200) throw new Error('Password is not usable')
+    return fetchOriginal(asString(gameId, 'Game'), asString(username, 'Steam account name'), password)
+  })
+
+  ipcMain.handle(ipc.sendOriginalCode, (_event, code: unknown) => sendOriginalCode(asString(code, 'Code')))
+  ipcMain.handle(ipc.cancelOriginal, () => cancelOriginal())
+  ipcMain.handle(ipc.signInOriginal, (_event, username: unknown) => signInViaTerminal(asString(username, 'Steam account name')))
+
+  ipcMain.handle(ipc.showOriginal, async (_event, gameId: unknown) => {
+    const problem = await shell.openPath(originalFolder(asString(gameId, 'Game')))
+    if (problem) throw new Error('The files are not there yet')
   })
 
   ipcMain.handle(ipc.downloadLauncherUpdate, () => downloadLauncherUpdate())

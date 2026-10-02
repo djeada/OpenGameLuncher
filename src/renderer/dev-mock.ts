@@ -4,7 +4,15 @@ import { resolveArt } from '../shared/art'
 import openrct2 from '../../catalog/mods/openrct2.json'
 import { validateGames } from '../shared/games'
 import { readOpenrct2Plugins } from '../shared/plugin-lists'
-import type { GameBuild, InstallView, LauncherUpdate, Mod, ModProgress, ProgressEvent } from '../shared/types'
+import type {
+  GameBuild,
+  InstallView,
+  LauncherUpdate,
+  Mod,
+  ModProgress,
+  OriginalProgress,
+  ProgressEvent
+} from '../shared/types'
 
 const files = import.meta.glob('../../catalog/games/[!_]*.json', { eager: true, import: 'default' })
 const { games } = validateGames(Object.values(files))
@@ -54,6 +62,10 @@ const mods: Mod[] = Array.from({ length: 180 }, (_, index) => ({
 }))
 const installedMods = new Map<string, boolean>([[mods[0].id, false], [mods[3].id, true]])
 const modListeners = new Set<(event: ModProgress) => void>()
+
+const originalListeners = new Set<(event: OriginalProgress) => void>()
+const originals = new Set<string>(new URLSearchParams(location.search).has('original-done') ? ['openloco'] : [])
+let originalCode: (() => void) | null = null
 
 const downloadListeners = new Set<(event: ProgressEvent) => void>()
 const updateListeners = new Set<(update: LauncherUpdate) => void>()
@@ -114,6 +126,38 @@ export const mockApi: OglApi = {
   onModProgress: (listener) => {
     modListeners.add(listener)
     return () => modListeners.delete(listener)
+  },
+  getOriginal: async (gameId) => ({ installed: originals.has(gameId), username: '' }),
+  // The password "code" walks through the Steam Guard step, "wrong" through a refused sign-in.
+  fetchOriginal: async (gameId, _username, password) => {
+    const emit = (event: Omit<OriginalProgress, 'gameId'>) => {
+      for (const listener of originalListeners) listener({ gameId, ...event })
+    }
+    const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    emit({ phase: 'preparing', received: 0, total: 0 })
+    await pause(600)
+    emit({ phase: 'signing-in', received: 0, total: 0 })
+    await pause(900)
+    if (password === 'wrong') throw new Error('Steam did not accept that name and password.')
+    if (password === 'code') {
+      emit({ phase: 'code', received: 0, total: 0 })
+      await new Promise<void>((resolve) => (originalCode = resolve))
+    }
+    for (let step = 1; step <= 10; step += 1) {
+      await pause(350)
+      emit({ phase: 'downloading', received: step * 52_000_000, total: 520_000_000 })
+    }
+    emit({ phase: 'checking', received: 0, total: 0 })
+    await pause(500)
+    originals.add(gameId)
+  },
+  sendOriginalCode: async () => originalCode?.(),
+  cancelOriginal: async () => undefined,
+  signInOriginal: async () => undefined,
+  showOriginal: async () => undefined,
+  onOriginalProgress: (listener) => {
+    originalListeners.add(listener)
+    return () => originalListeners.delete(listener)
   },
   getLauncherUpdate: async () =>
     new URLSearchParams(location.search).has('update-error')

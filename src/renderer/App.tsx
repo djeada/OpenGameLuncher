@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supportsPlatform } from '../shared/labels'
 import { modSupport } from '../shared/mods'
+import { originalSource } from '../shared/originals'
 import type {
   CatalogSnapshot,
   GameArt,
@@ -14,6 +15,7 @@ import { GameStage } from './components/GameStage'
 import { Splash } from './components/Splash'
 import { Home } from './components/Home'
 import { ModBrowser } from './components/ModBrowser'
+import { OriginalFiles } from './components/OriginalFiles'
 import { Sidebar } from './components/Sidebar'
 
 type BuildState = {
@@ -45,6 +47,7 @@ export function App() {
   const [checkNote, setCheckNote] = useState<string | null>(null)
   const [art, setArt] = useState<Record<string, GameArt>>({})
   const [modsOpen, setModsOpen] = useState(false)
+  const [originalsOpen, setOriginalsOpen] = useState(false)
 
   useEffect(() => {
     if (!checkNote) return
@@ -110,6 +113,7 @@ export function App() {
   // Browser games sit in the library under the 'web' channel once played.
   const libraryChannel = channelId ?? (selected?.web ? 'web' : undefined)
   const mods = selected ? modSupport(selected.id) : undefined
+  const originals = Boolean(selected && platform && originalSource(selected.id, platform.platform))
   const currentInstall = installs.find((item) => item.gameId === selected?.id && item.channelId === libraryChannel)
 
   useEffect(() => {
@@ -153,6 +157,7 @@ export function App() {
   function chooseGame(id: string) {
     setSelectedId(id)
     setModsOpen(false)
+    setOriginalsOpen(false)
     setActionError(null)
     localStorage.setItem(selectedKey, id)
   }
@@ -269,6 +274,8 @@ export function App() {
             autoUpdate={autoUpdate[buildKey] ?? currentInstall?.autoUpdate ?? true}
             mods={mods}
             onOpenMods={() => setModsOpen(true)}
+            originals={originals}
+            onOpenOriginals={() => setOriginalsOpen(true)}
             onChannel={(id) => {
               setActionError(null)
               setChannelByGame((current) => ({ ...current, [selected.id]: id }))
@@ -314,6 +321,7 @@ export function App() {
         )}
       </main>
       {selected && mods && modsOpen ? <ModBrowser game={selected} support={mods} onClose={() => setModsOpen(false)} /> : null}
+      {selected && originals && originalsOpen ? <OriginalFiles game={selected} onClose={() => setOriginalsOpen(false)} /> : null}
     </div>
   )
 }
