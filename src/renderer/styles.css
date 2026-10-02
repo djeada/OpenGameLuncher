@@ -1387,3 +1387,96 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 
 .panel-link:hover { border-color: rgba(255, 255, 255, 0.14); }
 .panel-link svg { width: 10px; height: 10px; color: var(--muted); }
+
+/* Original files from Steam */
+.original {
+  display: flex;
+  flex-direction: column;
+  width: min(520px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.original-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 18px 18px;
+}
+
+.original-done { margin: 0; font-size: 12.5px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--green); }
+
+.original-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+  gap: 8px;
+}
+
+.original-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.field {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  outline: 0;
+  background: var(--surface);
+  font-size: 12.5px;
+}
+
+.field:focus { border-color: rgba(61, 123, 255, 0.7); }
+.field::placeholder { color: var(--faint); }
+.original .primary-button:disabled, .original .ghost-button:disabled { opacity: 0.4; cursor: default; }
+
+.original-terminal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 6px 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.original-terminal code { color: var(--muted); font-size: 11.5px; overflow-wrap: anywhere; }
+.original-terminal .ghost-button { flex: none; height: 30px; padding: 0 12px; font-size: 12px; }
+
+.original-run { display: flex; flex-direction: column; gap: 8px; padding-top: 6px; }
+.original-run strong { font-size: 13px; }
+.original-run .bar { margin: 0; height: 4px; }
+.original-run .ghost-button { align-self: flex-start; margin-top: 6px; height: 30px; font-size: 12px; }
+.original-code { display: flex; gap: 8px; }
+.bar-waiting span { width: 35%; animation: slide 1.2s ease-in-out infinite alternate; }
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(186%); }
+}
+
+.original-help-button { border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 99px; font-size: 12px; font-weight: 600; }
+.original-help-button[aria-expanded='true'] { background: var(--hover); color: var(--text); }
+
+.original-help {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 10px 12px 10px 26px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11.5px;
+}

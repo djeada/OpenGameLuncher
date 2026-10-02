@@ -184,6 +184,63 @@ async function repairSignatures(directory: string): Promise<void> {
   }
 }
 
+// SDL 3 from the SDL project's own release, for apps that left it out.
+const SDL3 = { owner: 'libsdl-org', repo: 'SDL', tag: 'release-3.4.16', inside: 'SDL3.xcframework/macos-arm64_x86_64/SDL3.framework' }
+let sdl3Job: Promise<string> | null = null
+
+function sdl3Framework(): Promise<string> {
+  sdl3Job ??= (async () => {
+    const directory = path.join(app.getPath('userData'), 'runtimes', 'sdl3', safeTag(SDL3.tag))
+    const framework = path.join(directory, 'SDL3.framework')
+    if (existsSync(framework)) return framework
+    const release = await fetchRelease(SDL3.owner, SDL3.repo, SDL3.tag)
+    const image = release.assets.find((asset) => /^SDL3-[\d.]+\.dmg$/.test(asset.name))
+    if (!image) throw new Error('The SDL 3 release has no Mac download')
+    const incoming = `${directory}.incoming`
+    const mount = path.join(incoming, 'mount')
+    await rm(incoming, { recursive: true, force: true })
+    await mkdir(mount, { recursive: true })
+    try {
+      const file = path.join(incoming, 'SDL3.dmg')
+      await downloadFile(image.url, file, () => undefined, AbortSignal.timeout(10 * 60 * 1000))
+      await attachDmg(file, mount)
+      try {
+        await mkdir(directory, { recursive: true })
+        await execFileAsync('ditto', [path.join(mount, SDL3.inside), framework])
+      } finally {
+        await execFileAsync('hdiutil', ['detach', mount, '-force']).catch(() => undefined)
+      }
+    } catch (error) {
+      await rm(directory, { recursive: true, force: true })
+      throw error
+    } finally {
+      await rm(incoming, { recursive: true, force: true })
+    }
+    return framework
+  })()
+  sdl3Job.catch(() => (sdl3Job = null))
+  return sdl3Job
+}
+
+// Some Mac builds ship SDL 2 as a thin layer over SDL 3 (sdl2-compat) but leave SDL 3 out, and then stop
+// at start with "Failed loading SDL3 library". OGL adds SDL 3 where that layer looks for it. The app's
+// signature no longer matches after that, so it gets a local one.
+async function addMissingSdl3(directory: string): Promise<void> {
+  if (process.platform !== 'darwin') return
+  for (const bundle of await findApps(directory)) {
+    const frameworks = path.join(bundle, 'Contents', 'Frameworks')
+    const names = await readdir(frameworks).catch(() => [] as string[])
+    if (names.some((name) => /^(lib)?SDL3\b/.test(name))) continue
+    let needed = false
+    for (const name of names.filter((item) => /^libSDL2.*\.dylib$/.test(item))) {
+      needed ||= (await readFile(path.join(frameworks, name))).includes('Failed loading SDL3 library')
+    }
+    if (!needed) continue
+    await execFileAsync('ditto', [await sdl3Framework(), path.join(frameworks, 'SDL3.framework')])
+    await execFileAsync('codesign', ['--force', '--deep', '--sign', '-', bundle])
+  }
+}
+
 // Some images show a license agreement on attach. hdiutil reads the answer from stdin, so it gets a Y.
 function attachDmg(file: string, mount: string): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -278,6 +335,7 @@ function ensureRuntime(spec: RuntimeSpec): Promise<{ executable: string; kind: I
     const found = await locate(spec.archive, spec.launch, archivePath, incoming)
     if (found.kind === 'binary' && process.platform !== 'win32') await chmod(found.executable, 0o755)
     await clearQuarantine(incoming)
+    await addMissingSdl3(incoming)
     await repairSignatures(incoming)
     const relative = path.relative(incoming, found.executable)
     await writeFile(path.join(incoming, '.ogl-runtime.json'), JSON.stringify({ executable: relative, kind: found.kind }))
@@ -345,6 +403,7 @@ export async function installGame(gameId: string, channelId: string, tag: string
     // Files a runtime opens, such as .love, are data rather than programs.
     if (kind === 'binary' && !runtime && process.platform !== 'win32') await chmod(executable, 0o755)
     await clearQuarantine(incoming)
+    await addMissingSdl3(incoming)
     await repairSignatures(incoming)
     const relative = path.relative(incoming, executable)
     await rm(directory, { recursive: true, force: true })

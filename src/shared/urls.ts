@@ -5,7 +5,11 @@ const ASSET_HOSTS = new Set([
   'release-assets.githubusercontent.com',
   'github-releases.githubusercontent.com',
   'cdn.openttd.org',
-  'bananas-cdn.openttd.org'
+  'bananas-cdn.openttd.org',
+  // Simutrans paksets
+  'downloads.sourceforge.net',
+  'simutrans-germany.com',
+  'codeberg.org'
 ])
 
 const CATALOG_HOSTS = new Set([
@@ -20,6 +24,9 @@ const GITHUB_NAME = /^[A-Za-z0-9_.-]+$/
 // itch.io hands out short-lived signed links on its own storage mirrors.
 const ITCH_ASSET_HOST = /^(?:itchio-mirror\.[a-f0-9]+\.r2\.cloudflarestorage\.com|[a-z0-9-]+\.itch\.zone)$/
 
+// SourceForge sends a download on to one of its mirrors.
+const SOURCEFORGE_MIRROR = /^[a-z0-9-]+\.dl\.sourceforge\.net$/
+
 function hostname(url: string, hosts: Set<string>): boolean {
   try {
     const parsed = new URL(url)
@@ -33,7 +40,7 @@ export function isAllowedAssetUrl(url: string): boolean {
   if (hostname(url, ASSET_HOSTS)) return true
   try {
     const parsed = new URL(url)
-    return parsed.protocol === 'https:' && ITCH_ASSET_HOST.test(parsed.hostname)
+    return parsed.protocol === 'https:' && (ITCH_ASSET_HOST.test(parsed.hostname) || SOURCEFORGE_MIRROR.test(parsed.hostname))
   } catch {
     return false
   }
@@ -41,7 +48,7 @@ export function isAllowedAssetUrl(url: string): boolean {
 
 export function assertAssetUrl(url: string): void {
   if (!isAllowedAssetUrl(url)) {
-    throw new Error('Refusing a download that is not a GitHub release asset')
+    throw new Error('Refusing a download from a place OGL does not know')
   }
 }
 

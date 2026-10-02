@@ -21,7 +21,8 @@ const option = (name, fallback) => {
 }
 const query = option('query', '')
 const wait = Number(option('wait', 3500))
-const click = option('click', null)
+// --click can be given several times; the clicks happen in order.
+const clicks = rest.flatMap((value, index) => (value === '--click' ? [rest[index + 1]] : []))
 const after = Number(option('after', 1000))
 const clip = option('clip', null)
 
@@ -69,7 +70,7 @@ try {
   await send('Emulation.setDeviceMetricsOverride', { width: 1040, height: 680, deviceScaleFactor: 2, mobile: false })
   await send('Page.navigate', { url: `http://localhost:${vitePort}/${query}` })
   await sleep(wait)
-  if (click) {
+  for (const click of clicks) {
     await send('Runtime.evaluate', { expression: `document.querySelector(${JSON.stringify(click)}).click()` })
     await sleep(after)
   }

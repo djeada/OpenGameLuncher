@@ -3,6 +3,7 @@ import type { InstalledMod, Mod, ModProgress, ModSource } from '../shared/types'
 import { endlessSkyPlugins } from './endless-sky-plugins'
 import { openrct2Plugins } from './openrct2-plugins'
 import { openttdContent } from './openttd-content'
+import { simutransPaksets } from './simutrans-paksets'
 
 // What a mod source has to be able to do. Installed mods are read from the game's own folders,
 // so mods the player added inside the game show up as well.
@@ -17,7 +18,8 @@ export type ModProvider = {
 const providers: { [Type in ModSource['type']]: (source: Extract<ModSource, { type: Type }>) => ModProvider } = {
   'openttd-content': openttdContent,
   'endless-sky-plugins': endlessSkyPlugins,
-  'openrct2-plugins': openrct2Plugins
+  'openrct2-plugins': openrct2Plugins,
+  'simutrans-paksets': simutransPaksets
 }
 
 const listeners = new Set<(event: ModProgress) => void>()

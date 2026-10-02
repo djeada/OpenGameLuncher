@@ -7,6 +7,8 @@ import type {
   LauncherUpdate,
   Mod,
   ModProgress,
+  OriginalProgress,
+  OriginalState,
   PlatformInfo,
   ProgressEvent
 } from './types'
@@ -34,6 +36,13 @@ export type OglApi = {
   uninstallMod(gameId: string, modId: string): Promise<void>
   showMods(gameId: string): Promise<void>
   onModProgress(listener: (event: ModProgress) => void): () => void
+  getOriginal(gameId: string): Promise<OriginalState>
+  fetchOriginal(gameId: string, username: string, password: string): Promise<void>
+  sendOriginalCode(code: string): Promise<void>
+  cancelOriginal(): Promise<void>
+  signInOriginal(username: string): Promise<void>
+  showOriginal(gameId: string): Promise<void>
+  onOriginalProgress(listener: (event: OriginalProgress) => void): () => void
   getLauncherUpdate(): Promise<LauncherUpdate>
   checkLauncherUpdate(): Promise<LauncherUpdate>
   downloadLauncherUpdate(): Promise<void>

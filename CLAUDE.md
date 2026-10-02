@@ -35,6 +35,7 @@ Read [docs/workflow.md](docs/workflow.md) at the start of a session and [docs/re
 - `src/renderer`: the interface; `components/Logo.tsx` is the one logo, `components/Splash.tsx` the loading screen
 - `docs/catalog.md`: how to add a game
 - `AI-POLICY.md`: what is expected of AI-assisted contributions; disclose substantial AI use in pull requests
+- `docs/originals.md`: fetching the original game's files from Steam with SteamCMD; games are listed in `src/shared/originals.ts`, the work is in `src/main/originals.ts`
 - `docs/mods.md`: mod browser; games with mods are listed in `src/shared/mods.ts`, sources are providers in `src/main/mods.ts`
 
 A new call between the window and the main process touches four files: `src/shared/channels.ts`, `src/shared/api.ts`, `src/preload/index.ts`, `src/main/ipc.ts`, plus the mock in `src/renderer/dev-mock.ts`.

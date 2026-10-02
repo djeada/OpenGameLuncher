@@ -34,6 +34,8 @@ type GameStageProps = {
   autoUpdate: boolean
   mods?: ModSupport
   onOpenMods: () => void
+  originals: boolean
+  onOpenOriginals: () => void
   onChannel: (channelId: string) => void
   onSelectTag: (tag: string) => void
   onInstall: () => void
@@ -64,6 +66,8 @@ export function GameStage({
   autoUpdate,
   mods,
   onOpenMods,
+  originals,
+  onOpenOriginals,
   onChannel,
   onSelectTag,
   onInstall,
@@ -140,6 +144,7 @@ export function GameStage({
                 busy={Boolean(download && download.phase !== 'done' && download.phase !== 'error')}
                 website={game.website}
                 onWebsite={onOpenWebsite}
+                onOriginals={originals ? onOpenOriginals : undefined}
                 onShow={onShowInstall}
                 onShowLog={onShowLog}
                 onUninstall={onUninstall}
@@ -262,6 +267,7 @@ function GameMenu({
   busy,
   website,
   onWebsite,
+  onOriginals,
   onShow,
   onShowLog,
   onUninstall
@@ -272,6 +278,7 @@ function GameMenu({
   busy: boolean
   website?: string
   onWebsite: () => void
+  onOriginals?: () => void
   onShow: () => void
   onShowLog: () => void
   onUninstall: () => void
@@ -295,7 +302,7 @@ function GameMenu({
     }
   }, [open])
 
-  if (!installed && !website) return null
+  if (!installed && !website && !onOriginals) return null
   return (
     <div className="menu-wrap" onClick={(event) => event.stopPropagation()}>
       <button
@@ -319,6 +326,11 @@ function GameMenu({
           {website ? (
             <button type="button" role="menuitem" onClick={() => (onWebsite(), setOpen(false))}>
               Website
+            </button>
+          ) : null}
+          {onOriginals ? (
+            <button type="button" role="menuitem" onClick={() => (onOriginals(), setOpen(false))}>
+              Get files from Steam…
             </button>
           ) : null}
           {installed ? (

@@ -1,6 +1,6 @@
 # Mods
 
-Some games get a mods button on their page (OpenTTD: **NewGRFs**; OpenRCT2 and Endless Sky: **Plugins**). It opens a browser where the player searches, filters by category, installs and uninstalls.
+Some games get a mods button on their page (OpenTTD: **NewGRFs**; OpenRCT2 and Endless Sky: **Plugins**; Simutrans: **Paksets**). It opens a browser where the player searches, filters by category, installs and uninstalls.
 
 ## Which games have mods
 
@@ -50,9 +50,17 @@ Installing reads the repository's releases and puts the `.js` files of the newes
 
 Installing unpacks the zip into `plugins/<name>/` in the game's settings folder (`~/Library/Application Support/endless-sky`, `%APPDATA%\endless-sky`, `~/.local/share/endless-sky`).
 
+## Simutrans
+
+`src/main/simutrans-paksets.ts` and `src/shared/simutrans-paksets.ts`. A pakset is the graphics and rule set the game runs on, so it is closer to a base game than a mod, but it installs the same way.
+
+- **List:** `src/paksetinfo.h` in `simutrans/simutrans`, the list the game's own first-start installer uses, read live and kept for six hours. The sets the file marks as obsolete, and the one that is not a zip, are left out. The file has no descriptions, so those are written in `src/shared/simutrans-paksets.ts`. The size it gives is the size on disk, not the download.
+- **Download:** most sets are on SourceForge, which sends the download on to a mirror (`*.dl.sourceforge.net`); the rest are on GitHub, simutrans-germany.com and Codeberg.
+- **Install:** into `paksets/<folder>/` in Simutrans's personal folder (`~/Library/Simutrans`, `Documents\Simutrans`, `~/simutrans`), where the game's own installer puts them. Most zips wrap the set in `simutrans/<folder>/`; the set is lifted out, and a download without `ground.Outside.pak` is refused.
+
 ## Folder-per-mod helper
 
-`src/main/mod-folders.ts` does the work for both: fill a fresh folder, swap it in, and note the installed version in `.ogl-version` so a newer listed version shows as an update. A folder without that file was put there by the player and counts as installed.
+`src/main/mod-folders.ts` does the work for these three: fill a fresh folder, swap it in, and note the installed version in `.ogl-version` so a newer listed version shows as an update. A folder without that file was put there by the player and counts as installed.
 
 ## Games left out
 

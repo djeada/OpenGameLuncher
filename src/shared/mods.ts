@@ -22,6 +22,11 @@ const SUPPORT: Record<string, ModSupport> = {
     popular: openrct2.plugins.slice(0, 20).map((plugin) => plugin.id),
     source: { type: 'openrct2-plugins' }
   },
+  simutrans: {
+    label: 'Paksets',
+    hint: 'Simutrans asks which pakset to play when it starts.',
+    source: { type: 'simutrans-paksets' }
+  },
   'endless-sky': {
     label: 'Plugins',
     hint: 'Plugins load the next time Endless Sky starts. Switch them off under Preferences, Plugins.',

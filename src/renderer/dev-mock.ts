@@ -4,7 +4,16 @@ import { resolveArt } from '../shared/art'
 import openrct2 from '../../catalog/mods/openrct2.json'
 import { validateGames } from '../shared/games'
 import { readOpenrct2Plugins } from '../shared/plugin-lists'
-import type { GameBuild, InstallView, LauncherUpdate, Mod, ModProgress, ProgressEvent } from '../shared/types'
+import { readPaksetInfo } from '../shared/simutrans-paksets'
+import type {
+  GameBuild,
+  InstallView,
+  LauncherUpdate,
+  Mod,
+  ModProgress,
+  OriginalProgress,
+  ProgressEvent
+} from '../shared/types'
 
 const files = import.meta.glob('../../catalog/games/[!_]*.json', { eager: true, import: 'default' })
 const { games } = validateGames(Object.values(files))
@@ -30,6 +39,14 @@ function builds(prefix: string, prerelease: boolean): GameBuild[] {
   }))
 }
 
+const paksetInfo = `
+	{ "https://downloads.sourceforge.net/project/simutrans/pak64/125-0/simupak64-125-0.zip", "pak", "pak64 125.0 r2234M", 16552 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak128/simupak128-2-1023-for-125-0up.zip", "pak128", "pak128 2.10.3 for 125.0 up", 418031 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak192.comic/pak192-comic.zip", "pak192.comic", "Pak192.Comic V0.7.2 Rev 1296", 909748 },
+	{ "https://simutrans-germany.com/pak.german/pak64.german_0-124-5-1-1_full.zip", "pak64.german", "pak64.german 0.124.5.1.1", 29476 },
+	{ "https://github.com/wa-st/pak-nippon/releases/download/v0.6.2/pak.nippon-v0.6.2.zip", "pak.nippon", "pak.nippon v0.6.2", 50198 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak128.britain/pak128.Britain.1.18-120-3.zip", "pak128.Britain", "pak128.Britain 1.18 120.3 r1991", 241715 },
+`
 const modKinds = ['Trains', 'Town names', 'Objects', 'Road vehicles', 'Stations', 'Industries', 'Landscape']
 const modPictures: Record<number, string> = {
   0: 'grf/301/grfcrawler-large.png',
@@ -54,6 +71,10 @@ const mods: Mod[] = Array.from({ length: 180 }, (_, index) => ({
 }))
 const installedMods = new Map<string, boolean>([[mods[0].id, false], [mods[3].id, true]])
 const modListeners = new Set<(event: ModProgress) => void>()
+
+const originalListeners = new Set<(event: OriginalProgress) => void>()
+const originals = new Set<string>(new URLSearchParams(location.search).has('original-done') ? ['openloco'] : [])
+let originalCode: (() => void) | null = null
 
 const downloadListeners = new Set<(event: ProgressEvent) => void>()
 const updateListeners = new Set<(update: LauncherUpdate) => void>()
@@ -98,6 +119,7 @@ export const mockApi: OglApi = {
   getMods: async (gameId) => {
     await new Promise((resolve) => setTimeout(resolve, 500))
     if (gameId === 'openrct2') return readOpenrct2Plugins(openrct2)
+    if (gameId === 'simutrans') return readPaksetInfo(paksetInfo).mods
     return mods
   },
   getInstalledMods: async () => [...installedMods].map(([id, outdated]) => ({ id, outdated })),
@@ -114,6 +136,38 @@ export const mockApi: OglApi = {
   onModProgress: (listener) => {
     modListeners.add(listener)
     return () => modListeners.delete(listener)
+  },
+  getOriginal: async (gameId) => ({ installed: originals.has(gameId), username: '' }),
+  // The password "code" walks through the Steam Guard step, "wrong" through a refused sign-in.
+  fetchOriginal: async (gameId, _username, password) => {
+    const emit = (event: Omit<OriginalProgress, 'gameId'>) => {
+      for (const listener of originalListeners) listener({ gameId, ...event })
+    }
+    const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    emit({ phase: 'preparing', received: 0, total: 0 })
+    await pause(600)
+    emit({ phase: 'signing-in', received: 0, total: 0 })
+    await pause(900)
+    if (password === 'wrong') throw new Error('Steam did not accept that name and password.')
+    if (password === 'code') {
+      emit({ phase: 'code', received: 0, total: 0 })
+      await new Promise<void>((resolve) => (originalCode = resolve))
+    }
+    for (let step = 1; step <= 10; step += 1) {
+      await pause(350)
+      emit({ phase: 'downloading', received: step * 52_000_000, total: 520_000_000 })
+    }
+    emit({ phase: 'checking', received: 0, total: 0 })
+    await pause(500)
+    originals.add(gameId)
+  },
+  sendOriginalCode: async () => originalCode?.(),
+  cancelOriginal: async () => undefined,
+  signInOriginal: async () => undefined,
+  showOriginal: async () => undefined,
+  onOriginalProgress: (listener) => {
+    originalListeners.add(listener)
+    return () => originalListeners.delete(listener)
   },
   getLauncherUpdate: async () =>
     new URLSearchParams(location.search).has('update-error')

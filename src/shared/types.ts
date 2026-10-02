@@ -140,6 +140,7 @@ export type ModSource =
   | { type: 'openttd-content'; kind: 'newgrf' }
   | { type: 'endless-sky-plugins' }
   | { type: 'openrct2-plugins' }
+  | { type: 'simutrans-paksets' }
 
 // What a game calls its mods, and where the player switches them on afterwards.
 export type ModSupport = {
@@ -180,6 +181,23 @@ export type ModProgress = {
   received: number
   total: number
   message?: string
+}
+
+// What OGL knows about the original game's files for one game.
+export type OriginalState = {
+  installed: boolean
+  // The Steam account name used last time, to fill the form in.
+  username: string
+}
+
+// code: SteamCMD waits for a Steam Guard code. confirm: it waits for a tap in the Steam app.
+export type OriginalPhase = 'preparing' | 'signing-in' | 'code' | 'confirm' | 'checking' | 'downloading'
+
+export type OriginalProgress = {
+  gameId: string
+  phase: OriginalPhase
+  received: number
+  total: number
 }
 
 export type LauncherUpdate =
