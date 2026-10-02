@@ -1,0 +1,92 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "standard-of-iron",
+  "name": "Standard of Iron",
+  "mark": "SOI",
+  "tagline": "Command Rome and Carthage, build settlements and lead armies in a single-player real-time strategy game.",
+  "website": "https://github.com/djeada/Standard-of-Iron",
+  "accent": "#8c6a3e",
+  "cover": "https://raw.githubusercontent.com/djeada/Standard-of-Iron/main/docs/screenshots/main-menu.webp",
+  "screenshots": [
+    "https://raw.githubusercontent.com/djeada/Standard-of-Iron/main/docs/screenshots/campaign-war-table.webp"
+  ],
+  "tags": [
+    "Strategy",
+    "RTS"
+  ],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Tagged releases. The game is in early development.",
+      "source": {
+        "type": "github-releases",
+        "owner": "djeada",
+        "repo": "Standard-of-Iron",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": [
+          "-macos-"
+        ],
+        "exclude": [
+          ".sha256"
+        ],
+        "arch": {
+          "arm64": [
+            "arm64",
+            "universal"
+          ],
+          "x64": [
+            "x86_64",
+            "universal"
+          ]
+        }
+      },
+      "archive": "dmg",
+      "launch": {
+        "app": "standard_of_iron.app"
+      }
+    },
+    "win32": {
+      "asset": {
+        "include": [
+          "-win-"
+        ],
+        "exclude": [
+          ".sha256"
+        ],
+        "arch": {
+          "x64": [
+            "x64"
+          ]
+        }
+      },
+      "archive": "zip",
+      "launch": {
+        "binary": "standard_of_iron.exe"
+      }
+    },
+    "linux": {
+      "asset": {
+        "include": [
+          ".appimage"
+        ],
+        "exclude": [
+          ".sha256",
+          "zsync"
+        ],
+        "arch": {
+          "x64": [
+            "x86_64"
+          ]
+        }
+      },
+      "archive": "file"
+    }
+  }
+}
