@@ -4,7 +4,7 @@ Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, u
 
 ## Download
 
-Get the installer for your system from the [latest release](https://github.com/fabianfreund/OGL/releases/latest):
+Get the installer for your system from the [latest release](https://github.com/fabianfreund/OpenGameLuncher/releases/latest):
 
 - **macOS:** `OGL-x.y.z-arm64.dmg` for Apple silicon, `OGL-x.y.z.dmg` for Intel
 - **Windows:** `OGL-Setup-x.y.z.exe`
