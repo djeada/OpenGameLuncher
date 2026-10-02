@@ -140,6 +140,7 @@ export type ModSource =
   | { type: 'openttd-content'; kind: 'newgrf' }
   | { type: 'endless-sky-plugins' }
   | { type: 'openrct2-plugins' }
+  | { type: 'simutrans-paksets' }
 
 // What a game calls its mods, and where the player switches them on afterwards.
 export type ModSupport = {

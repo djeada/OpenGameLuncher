@@ -4,6 +4,7 @@ import { resolveArt } from '../shared/art'
 import openrct2 from '../../catalog/mods/openrct2.json'
 import { validateGames } from '../shared/games'
 import { readOpenrct2Plugins } from '../shared/plugin-lists'
+import { readPaksetInfo } from '../shared/simutrans-paksets'
 import type {
   GameBuild,
   InstallView,
@@ -38,6 +39,14 @@ function builds(prefix: string, prerelease: boolean): GameBuild[] {
   }))
 }
 
+const paksetInfo = `
+	{ "https://downloads.sourceforge.net/project/simutrans/pak64/125-0/simupak64-125-0.zip", "pak", "pak64 125.0 r2234M", 16552 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak128/simupak128-2-1023-for-125-0up.zip", "pak128", "pak128 2.10.3 for 125.0 up", 418031 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak192.comic/pak192-comic.zip", "pak192.comic", "Pak192.Comic V0.7.2 Rev 1296", 909748 },
+	{ "https://simutrans-germany.com/pak.german/pak64.german_0-124-5-1-1_full.zip", "pak64.german", "pak64.german 0.124.5.1.1", 29476 },
+	{ "https://github.com/wa-st/pak-nippon/releases/download/v0.6.2/pak.nippon-v0.6.2.zip", "pak.nippon", "pak.nippon v0.6.2", 50198 },
+	{ "https://downloads.sourceforge.net/project/simutrans/pak128.britain/pak128.Britain.1.18-120-3.zip", "pak128.Britain", "pak128.Britain 1.18 120.3 r1991", 241715 },
+`
 const modKinds = ['Trains', 'Town names', 'Objects', 'Road vehicles', 'Stations', 'Industries', 'Landscape']
 const modPictures: Record<number, string> = {
   0: 'grf/301/grfcrawler-large.png',
@@ -110,6 +119,7 @@ export const mockApi: OglApi = {
   getMods: async (gameId) => {
     await new Promise((resolve) => setTimeout(resolve, 500))
     if (gameId === 'openrct2') return readOpenrct2Plugins(openrct2)
+    if (gameId === 'simutrans') return readPaksetInfo(paksetInfo).mods
     return mods
   },
   getInstalledMods: async () => [...installedMods].map(([id, outdated]) => ({ id, outdated })),
