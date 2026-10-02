@@ -53,7 +53,9 @@ You can ignore the other files in the release (`.zip`, `.blockmap`, `.yml`). OGL
 
 ### Updates
 
-OGL checks for a new version when it starts and offers to install it. On macOS this does not work yet: download the new `.dmg` and replace the app in Applications.
+OGL checks for a new version when it starts, and when you press the refresh button at the bottom left. A new version shows up in the sidebar with an **Update** button.
+
+On macOS the button opens the download page instead: download the new `.dmg` and replace the app in Applications. OGL cannot update itself on a Mac until it is signed with a developer certificate.
 
 ## How it works
 

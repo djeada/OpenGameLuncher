@@ -26,6 +26,7 @@ export type OglApi = {
   showLog(gameId: string, channelId: string): Promise<void>
   onDownload(listener: (event: ProgressEvent) => void): () => void
   getLauncherUpdate(): Promise<LauncherUpdate>
+  checkLauncherUpdate(): Promise<LauncherUpdate>
   downloadLauncherUpdate(): Promise<void>
   installLauncherUpdate(): Promise<void>
   onLauncherUpdate(listener: (update: LauncherUpdate) => void): () => void

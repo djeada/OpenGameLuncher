@@ -8,6 +8,7 @@ import { readConfig } from './config'
 
 let current: LauncherUpdate = { state: 'checking' }
 let announcedVersion = ''
+let started = false
 const listeners = new Set<(update: LauncherUpdate) => void>()
 
 function emit(update: LauncherUpdate) {
@@ -72,10 +73,21 @@ export function startUpdater(): void {
     emit({ state: 'error', message })
   })
 
-  void autoUpdater.checkForUpdates().catch((error: unknown) => {
+  started = true
+  void checkLauncherUpdate()
+}
+
+// Asks GitHub for the newest release again. A download that is running or finished is left alone.
+export async function checkLauncherUpdate(): Promise<LauncherUpdate> {
+  if (!started || current.state === 'downloading' || current.state === 'ready') return current
+  emit({ state: 'checking' })
+  try {
+    await autoUpdater.checkForUpdates()
+  } catch (error) {
     const message = error instanceof Error ? error.message : 'Could not check for an OGL update'
     emit({ state: 'error', message })
-  })
+  }
+  return current
 }
 
 export async function downloadLauncherUpdate(): Promise<void> {

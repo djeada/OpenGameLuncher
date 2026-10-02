@@ -16,6 +16,7 @@ export const ipc = {
   showLog: 'game:log',
   download: 'game:download',
   getLauncherUpdate: 'launcher:get',
+  checkLauncherUpdate: 'launcher:check',
   downloadLauncherUpdate: 'launcher:download',
   installLauncherUpdate: 'launcher:install',
   launcherUpdate: 'launcher:update',
