@@ -107,4 +107,5 @@ npx electron-builder --config electron-builder.config.cjs --mac zip --arm64 --pu
 - **Two builds writing to one release.** The branch build and the publish build share a concurrency group, so they run one after the other.
 - **Windows tried to sign with the Apple certificate.** `CSC_LINK` is read by every platform, so the workflow passes it to the Mac job only.
 - **"MAC verification failed during PKCS12 import".** `CSC_KEY_PASSWORD` does not match the `.p12`. Set secrets one command at a time; pasting several `gh secret set` lines at once feeds the later lines into the first prompt.
+- **"SecKeychainUnlock: The user name or passphrase you entered is not correct".** electron-builder's own keychain handling failed on the GitHub Mac runner when given `CSC_LINK`. The workflow now loads the certificate into a temporary keychain itself and lets electron-builder find the identity there.
 - **Wrong repository.** `ogl.config.json`, the `origin` remote and the download link in the README must all name the same repository. The app reads its catalog and its updates from the one in `ogl.config.json`.

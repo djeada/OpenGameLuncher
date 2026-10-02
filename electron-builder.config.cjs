@@ -8,7 +8,8 @@ const placeholder = ogl.repository.owner === 'your-github-user'
 for (const name of ['CSC_LINK', 'CSC_KEY_PASSWORD', 'APPLE_ID', 'APPLE_APP_SPECIFIC_PASSWORD', 'APPLE_TEAM_ID']) {
   if (!process.env[name]) delete process.env[name]
 }
-const signed = Boolean(process.env.CSC_LINK)
+// In CI the workflow loads the certificate into a keychain and sets OGL_MAC_SIGNED.
+const signed = Boolean(process.env.CSC_LINK || process.env.OGL_MAC_SIGNED)
 
 /** @type {import('electron-builder').Configuration} */
 module.exports = {
