@@ -88,6 +88,7 @@ src/renderer         the interface
 
 - [Adding games](docs/catalog.md)
 - [Releasing OGL](docs/releasing.md)
+- [How we work on OGL](docs/workflow.md)
 - [AI usage policy](AI-POLICY.md): OGL is built with AI tools, and this is what that means for contributions
 
 ## Contact

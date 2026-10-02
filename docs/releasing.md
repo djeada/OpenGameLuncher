@@ -60,6 +60,25 @@ gh release list                                                     # the new ve
 
 The publish run waits for a draft build of the same branch that is still going, so it can sit in "pending" for a few minutes.
 
+Then clean up. All history stays reachable through the tag.
+
+```bash
+git switch main && git pull --tags
+git log main..origin/release/0.2.0        # must print nothing
+git push origin --delete release/0.2.0
+git branch -D release/0.2.0
+```
+
+## Publishing a draft without rebuilding
+
+A draft that was built and checked can be published as it is, without a merge. This was done for 0.1.4, so that a signed version existed to test the updater from.
+
+```bash
+gh release edit v0.1.4 --draft=false --latest --target <commit the draft was built from> --notes "..."
+```
+
+This creates the tag, which starts one more workflow run. That run fails at the first step with "already published". It is harmless.
+
 ## Files in a release
 
 | File | For |

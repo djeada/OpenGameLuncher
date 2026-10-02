@@ -13,14 +13,19 @@ npm test
 npm run typecheck
 ```
 
-## Releasing
+## How we work
 
-Read [docs/releasing.md](docs/releasing.md) before touching a release. In short:
+Read [docs/workflow.md](docs/workflow.md) at the start of a session and [docs/releasing.md](docs/releasing.md) before touching a release. In short:
 
-- Work for a version happens on a `release/X.Y.Z` branch. The branch name is the version; do not bump `package.json`.
-- Pushing the branch builds a draft release. Merging it into `main` through a pull request publishes it.
+- Start from an up-to-date `main` with a clean tree. If there is an unexpected branch, stash or uncommitted file, find out what it is first.
+- App changes go on a `release/X.Y.Z` branch. The branch name is the version; do not bump `package.json`. One version at a time.
+- Documentation-only changes go straight to `main`; that does not trigger a release.
+- Pushing a release branch builds a draft release. Merging it into `main` through a pull request publishes it.
 - Publishing is public and cannot be redone for the same version. Ask before merging a release branch, and write release notes on the draft first.
-- Small documentation changes can go straight to `main`; that does not trigger a release.
+- After publishing, delete the release branch on GitHub and locally. Tags (`vX.Y.Z`) keep the history.
+- Mac builds are signed and notarized through repository secrets. Never ask to see a secret value.
+- After a visible change, send a screenshot: `node scripts/preview-shot.mjs /tmp/shot.png` (see the workflow doc for options).
+- Report what was verified and what was not.
 
 ## Where things are
 
@@ -36,4 +41,4 @@ A new call between the window and the main process touches four files: `src/shar
 
 ## Checking UI changes
 
-The browser preview (`npx vite src/renderer`) is the quickest way to look at a change. The loading screen only shows for about a second after load.
+`npx vite src/renderer` runs the interface in a browser with mock data, and `scripts/preview-shot.mjs` takes screenshots of it. The loading screen only shows for about a second after load. The preview cannot show anything from `src/main`, such as the real update check; that needs a packaged build.
