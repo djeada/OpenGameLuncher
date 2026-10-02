@@ -10,7 +10,7 @@ Get the installer for your system from the [latest release](https://github.com/f
 - **Windows:** `OGL-Setup-x.y.z.exe`
 - **Linux:** `OGL-x.y.z.AppImage`
 
-The builds are not signed yet, so macOS and Windows warn the first time you open the app.
+The builds are not signed with a developer certificate yet, so both systems warn the first time you open the app. On macOS, try to open OGL once, then go to System Settings → Privacy & Security and choose **Open Anyway**. On Windows, choose **More info → Run anyway**.
 
 ## How it works
 
