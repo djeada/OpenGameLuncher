@@ -8,8 +8,6 @@ Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, u
 
 Download the file for your system from the [latest release](https://github.com/fabianfreund/OpenGameLuncher/releases/latest). The files are listed under **Assets** at the bottom of the release. `x.y.z` below stands for the version number.
 
-OGL is not signed with a paid developer certificate yet, so macOS and Windows show a warning the first time you open it. The steps below include how to get past it.
-
 ### macOS
 
 Which file you need depends on your Mac. Open the Apple menu → **About This Mac**:
@@ -20,21 +18,16 @@ Which file you need depends on your Mac. Open the Apple menu → **About This Ma
 | Processor: Intel | `OGL-x.y.z.dmg` |
 
 1. Open the downloaded `.dmg` and drag **OGL** into **Applications**.
-2. Open OGL from Applications. macOS says Apple could not verify the app. Click **Done** (not "Move to Trash").
-3. Open **System Settings → Privacy & Security** and scroll down to **Security**. You will see this:
+2. Open OGL from Applications. macOS asks once whether you want to open an app downloaded from the internet. Click **Open**.
 
-   <img src="docs/images/macos-open-anyway.png" alt="macOS message: OGL was blocked to protect your Mac, with an Open Anyway button" width="520">
-
-4. Click **Open Anyway**, confirm with **Open Anyway** again, and enter your password or use Touch ID.
-
-You only need to do this once. After that OGL opens like any other app.
+The Mac version is signed and checked by Apple, so there is no further warning.
 
 ### Windows
 
 Download `OGL-Setup-x.y.z.exe`.
 
 1. Run the downloaded file.
-2. If Windows shows "Windows protected your PC", click **More info**, then **Run anyway**.
+2. Windows shows "Windows protected your PC", because the Windows version is not signed yet. Click **More info**, then **Run anyway**.
 3. Follow the installer. OGL appears in the Start menu.
 
 ### Linux
@@ -53,15 +46,17 @@ You can ignore the other files in the release (`.zip`, `.blockmap`, `.yml`). OGL
 
 ### Updates
 
-OGL checks for a new version when it starts, and when you press the refresh button at the bottom left. A new version shows up in the sidebar with an **Update** button.
+OGL checks for a new version when it starts, and when you press the refresh button at the bottom left. A new version shows up in the sidebar with an **Update** button; OGL downloads it and restarts.
 
-On macOS the button opens the download page instead: download the new `.dmg` and replace the app in Applications. OGL cannot update itself on a Mac until it is signed with a developer certificate.
+Mac versions before 0.1.5 cannot update themselves. If you have one, download the new `.dmg` once and replace the app in Applications.
 
 ## How it works
 
 The games are a list of JSON files in [`catalog/games`](catalog/games). OGL reads that folder from this repository on launch, so a new game shows up without a new version of the launcher. Each game's versions come from that game's own GitHub releases.
 
 OGL updates itself from the releases of this repository.
+
+Some games have a mod browser on their page: NewGRFs for OpenTTD, plugins for OpenRCT2 and Endless Sky.
 
 ## Develop
 
