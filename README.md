@@ -4,6 +4,9 @@ Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, u
 
 ![OGL showing the OpenRCT2 game page with a Play button, version picker and release notes](docs/images/ogl.png)
 
+> [!WARNING]
+> OGL has only been tested on macOS so far, and only the Mac version is signed and checked by Apple. The Windows and Linux versions are built automatically but have not been tried on a real machine yet. If something does not work there, please [open an issue](https://github.com/fabianfreund/OpenGameLuncher/issues).
+
 ## Install
 
 Download the file for your system from the [latest release](https://github.com/fabianfreund/OpenGameLuncher/releases/latest). The files are listed under **Assets** at the bottom of the release. `x.y.z` below stands for the version number.
@@ -79,6 +82,13 @@ src/renderer         the interface
 
 - [Adding games](docs/catalog.md)
 - [Releasing OGL](docs/releasing.md)
+
+## Contact
+
+Questions, ideas, or a game that should be in the catalog? Reach me here:
+
+[![Reddit: u/Big_Whale_95](https://img.shields.io/badge/Reddit-u%2FBig__Whale__95-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/user/Big_Whale_95/)
+[![X: @FabianXR_Builds](https://img.shields.io/badge/X-%40FabianXR__Builds-000000?logo=x&logoColor=white)](https://x.com/FabianXR_Builds)
 
 ## License
 
