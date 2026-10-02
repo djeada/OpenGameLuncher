@@ -53,6 +53,12 @@ OGL checks for a new version when it starts, and when you press the refresh butt
 
 Mac versions before 0.1.5 cannot update themselves. If you have one, download the new `.dmg` once and replace the app in Applications.
 
+## Why this exists
+
+OGL is a hobby project. I love open-source games, but I got tired of the hassle: every game has its own website, its own download page, its own way of updating. I wanted one place that installs them, keeps them up to date, and starts them. So I built it.
+
+It is made in my spare time, so expect rough edges, and do not expect fast answers.
+
 ## How it works
 
 The games are a list of JSON files in [`catalog/games`](catalog/games). OGL reads that folder from this repository on launch, so a new game shows up without a new version of the launcher. Each game's versions come from that game's own GitHub releases.
@@ -82,6 +88,7 @@ src/renderer         the interface
 
 - [Adding games](docs/catalog.md)
 - [Releasing OGL](docs/releasing.md)
+- [AI usage policy](AI-POLICY.md): OGL is built with AI tools, and this is what that means for contributions
 
 ## Contact
 
