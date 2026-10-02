@@ -18,9 +18,14 @@ Which file you need depends on your Mac. Open the Apple menu → **About This Ma
 | Processor: Intel | `OGL-x.y.z.dmg` |
 
 1. Open the downloaded `.dmg` and drag **OGL** into **Applications**.
-2. Open OGL from Applications. macOS says it could not verify the app. Click **Done**.
-3. Open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to OGL.
-4. Confirm with **Open Anyway**. You only need to do this once.
+2. Open OGL from Applications. macOS says Apple could not verify the app. Click **Done** (not "Move to Trash").
+3. Open **System Settings → Privacy & Security** and scroll down to **Security**. You will see this:
+
+   <img src="docs/images/macos-open-anyway.png" alt="macOS message: OGL was blocked to protect your Mac, with an Open Anyway button" width="520">
+
+4. Click **Open Anyway**, confirm with **Open Anyway** again, and enter your password or use Touch ID.
+
+You only need to do this once. After that OGL opens like any other app.
 
 ### Windows
 
