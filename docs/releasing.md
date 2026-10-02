@@ -105,4 +105,6 @@ npx electron-builder --config electron-builder.config.cjs --mac zip --arm64 --pu
 - **"OGL is damaged and can't be opened".** The Mac build had no signature. Fixed by ad-hoc signing (`identity: '-'`) when there is no certificate.
 - **The Mac job failed with "not a file".** Secrets that are not set arrive as empty strings, and electron-builder read the empty `CSC_LINK` as a certificate path. The config now deletes empty signing variables.
 - **Two builds writing to one release.** The branch build and the publish build share a concurrency group, so they run one after the other.
+- **Windows tried to sign with the Apple certificate.** `CSC_LINK` is read by every platform, so the workflow passes it to the Mac job only.
+- **"MAC verification failed during PKCS12 import".** `CSC_KEY_PASSWORD` does not match the `.p12`. Set secrets one command at a time; pasting several `gh secret set` lines at once feeds the later lines into the first prompt.
 - **Wrong repository.** `ogl.config.json`, the `origin` remote and the download link in the README must all name the same repository. The app reads its catalog and its updates from the one in `ogl.config.json`.
