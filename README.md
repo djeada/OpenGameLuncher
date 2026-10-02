@@ -2,6 +2,8 @@
 
 Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, updates, and launches open-source games such as OpenRCT2, OpenTTD, and OpenLoco.
 
+![OGL showing the OpenRCT2 game page with a Play button, version picker and release notes](docs/images/ogl.png)
+
 ## Install
 
 Download the file for your system from the [latest release](https://github.com/fabianfreund/OpenGameLuncher/releases/latest). The files are listed under **Assets** at the bottom of the release. `x.y.z` below stands for the version number.
