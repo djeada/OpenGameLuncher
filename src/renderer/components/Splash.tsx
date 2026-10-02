@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Logo } from './Logo'
 
 const minimumMs = 1100
 const leaveMs = 450
@@ -30,10 +31,8 @@ export function Splash({ ready }: { ready: boolean }) {
         <span />
       </div>
       <div className="splash-center">
-        <span className="splash-logo" aria-hidden="true">
-          <svg viewBox="0 0 16 16">
-            <path d="M5 3.2v9.6l8-4.8-8-4.8z" fill="currentColor" />
-          </svg>
+        <span className="splash-logo">
+          <Logo size={76} />
         </span>
         <strong>OGL</strong>
         <p>Loading the library</p>
