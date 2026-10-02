@@ -55,7 +55,10 @@
         }
       },
       "archive": "zip",
-      "launch": { "app": "OpenTTD.app" }
+      "launch": {
+        "app": "OpenTTD.app",
+        "args": ["-d", "misc=1", "-d", "grf=1"]
+      }
     },
     "win32": {
       "asset": {
@@ -80,7 +83,10 @@
         }
       },
       "archive": "tar.xz",
-      "launch": { "binary": "openttd" }
+      "launch": {
+        "binary": "openttd",
+        "args": ["-d", "misc=1", "-d", "grf=1"]
+      }
     }
   }
 }

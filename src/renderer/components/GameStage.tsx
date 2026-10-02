@@ -41,6 +41,7 @@ type GameStageProps = {
   onOpenLink: (url: string) => void
   onUninstall: () => void
   onShowInstall: () => void
+  onShowLog: () => void
   onPlayWeb: () => void
 }
 
@@ -68,6 +69,7 @@ export function GameStage({
   onOpenLink,
   onUninstall,
   onShowInstall,
+  onShowLog,
   onPlayWeb
 }: GameStageProps) {
   const [shot, setShot] = useState<number | null>(null)
@@ -134,6 +136,7 @@ export function GameStage({
                 website={game.website}
                 onWebsite={onOpenWebsite}
                 onShow={onShowInstall}
+                onShowLog={onShowLog}
                 onUninstall={onUninstall}
               />
             </div>
@@ -247,6 +250,7 @@ function GameMenu({
   website,
   onWebsite,
   onShow,
+  onShowLog,
   onUninstall
 }: {
   platform: string
@@ -256,6 +260,7 @@ function GameMenu({
   website?: string
   onWebsite: () => void
   onShow: () => void
+  onShowLog: () => void
   onUninstall: () => void
 }) {
   const [open, setOpen] = useState(false)
@@ -306,9 +311,14 @@ function GameMenu({
           {installed ? (
             <>
               {web ? null : (
-                <button type="button" role="menuitem" onClick={() => (onShow(), setOpen(false))}>
-                  {folder}
-                </button>
+                <>
+                  <button type="button" role="menuitem" onClick={() => (onShow(), setOpen(false))}>
+                    {folder}
+                  </button>
+                  <button type="button" role="menuitem" onClick={() => (onShowLog(), setOpen(false))}>
+                    Show last launch log
+                  </button>
+                </>
               )}
               <hr />
               <button
