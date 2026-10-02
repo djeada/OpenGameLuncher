@@ -415,17 +415,19 @@ export async function launchGame(gameId: string, channelId: string): Promise<voi
   const record = store.find(gameId, channelId)
   if (!record) throw new Error('Install the game first')
 
+  // Arguments come from the current catalog, so a changed game file applies without reinstalling.
+  const args = catalog.game(gameId)?.platforms[process.platform as PlatformId]?.launch?.args ?? record.args
   const log = launchLogFile(gameId, channelId)
   const viaOpen = (target: string[]) => ['-n', '--stdout', log, '--stderr', log, ...target]
-  const withArgs = record.args.length > 0 ? ['--args', ...record.args] : []
+  const withArgs = args.length > 0 ? ['--args', ...args] : []
   const runtime = record.runtime
   const command = runtime
     ? process.platform === 'darwin' && runtime.kind === 'app'
       ? { file: 'open', args: viaOpen(['-a', runtime.executable, record.executable, ...withArgs]) }
-      : { file: runtime.executable, args: [record.executable, ...record.args] }
+      : { file: runtime.executable, args: [record.executable, ...args] }
     : process.platform === 'darwin' && record.kind === 'app'
       ? { file: 'open', args: viaOpen([record.executable, ...withArgs]) }
-      : { file: record.executable, args: record.args }
+      : { file: record.executable, args: args }
   const cwd = path.dirname(record.executable)
 
   await mkdir(path.dirname(log), { recursive: true })
@@ -436,7 +438,7 @@ export async function launchGame(gameId: string, channelId: string): Promise<voi
       `game: ${gameId} (${channelId}) ${record.tag}`,
       `executable: ${record.executable}`,
       ...(runtime ? [`runtime: ${runtime.executable}`] : []),
-      `arguments: ${record.args.length > 0 ? record.args.join(' ') : '(none)'}`,
+      `arguments: ${args.length > 0 ? args.join(' ') : '(none)'}`,
       `working directory: ${cwd}`,
       '--- game output ---',
       ''

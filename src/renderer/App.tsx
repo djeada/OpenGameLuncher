@@ -260,6 +260,12 @@ export function App() {
             }}
             onUninstall={() => void uninstall()}
             onShowInstall={() => channelId && void window.ogl.showInstall(selected.id, channelId)}
+            onShowLog={() => {
+              if (!channelId) return
+              window.ogl
+                .showLog(selected.id, channelId)
+                .catch((error: unknown) => setActionError(errorText(error, 'Could not open the log')))
+            }}
             onPlayWeb={() => void playWeb(selected.id)}
             onOpenLink={(url) => void window.ogl.openExternal(url)}
             onOpenWebsite={() => {
