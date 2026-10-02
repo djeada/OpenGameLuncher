@@ -2,7 +2,7 @@
 import type { OglApi } from '../shared/api'
 import { resolveArt } from '../shared/art'
 import { validateGames } from '../shared/games'
-import type { GameBuild, InstallView, ProgressEvent } from '../shared/types'
+import type { GameBuild, InstallView, LauncherUpdate, ProgressEvent } from '../shared/types'
 
 const files = import.meta.glob('../../catalog/games/[!_]*.json', { eager: true, import: 'default' })
 const { games } = validateGames(Object.values(files))
@@ -29,6 +29,7 @@ function builds(prefix: string, prerelease: boolean): GameBuild[] {
 }
 
 const downloadListeners = new Set<(event: ProgressEvent) => void>()
+const updateListeners = new Set<(update: LauncherUpdate) => void>()
 
 export const mockApi: OglApi = {
   getPlatform: async () => ({ platform: 'darwin', arch: 'arm64', version: '0.1.0', hostLabel: 'Mac · Apple silicon' }),
@@ -68,9 +69,22 @@ export const mockApi: OglApi = {
     return () => downloadListeners.delete(listener)
   },
   getLauncherUpdate: async () => ({ state: 'dev' }),
-  downloadLauncherUpdate: async () => undefined,
+  checkLauncherUpdate: async () => {
+    await new Promise((resolve) => setTimeout(resolve, 600))
+    return { state: 'available', version: '0.2.0' }
+  },
+  downloadLauncherUpdate: async () => {
+    for (let step = 1; step <= 10; step += 1) {
+      await new Promise((resolve) => setTimeout(resolve, 250))
+      for (const listener of updateListeners) listener({ state: 'downloading', version: '0.2.0', percent: step * 10 })
+    }
+    for (const listener of updateListeners) listener({ state: 'ready', version: '0.2.0' })
+  },
   installLauncherUpdate: async () => undefined,
-  onLauncherUpdate: () => () => undefined,
+  onLauncherUpdate: (listener) => {
+    updateListeners.add(listener)
+    return () => updateListeners.delete(listener)
+  },
   openExternal: async (url) => void window.open(url)
 }
 

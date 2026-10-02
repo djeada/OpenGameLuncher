@@ -17,7 +17,7 @@ import {
   showInstallFolder,
   uninstallGame
 } from './library'
-import { downloadLauncherUpdate, installLauncherUpdate, launcherUpdateState, onLauncherUpdate } from './updater'
+import { checkLauncherUpdate, downloadLauncherUpdate, installLauncherUpdate, launcherUpdateState, onLauncherUpdate } from './updater'
 
 function asString(value: unknown, label: string): string {
   if (typeof value !== 'string' || value.trim() === '' || value.length > 200) {
@@ -47,6 +47,7 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
   ipcMain.handle(ipc.refreshCatalog, () => catalog.refresh())
   ipcMain.handle(ipc.getInstalls, () => listInstalls())
   ipcMain.handle(ipc.getLauncherUpdate, () => launcherUpdateState())
+  ipcMain.handle(ipc.checkLauncherUpdate, () => checkLauncherUpdate())
 
   ipcMain.handle(ipc.getBuilds, (_event, gameId: unknown, channelId: unknown) => {
     const game = catalog.game(asString(gameId, 'Game'))

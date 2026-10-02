@@ -26,6 +26,7 @@ const api: OglApi = {
   showInstall: (gameId, channelId) => ipcRenderer.invoke(ipc.showInstall, gameId, channelId),
   onDownload: (listener) => listen(ipc.download, listener),
   getLauncherUpdate: () => ipcRenderer.invoke(ipc.getLauncherUpdate),
+  checkLauncherUpdate: () => ipcRenderer.invoke(ipc.checkLauncherUpdate),
   downloadLauncherUpdate: () => ipcRenderer.invoke(ipc.downloadLauncherUpdate),
   installLauncherUpdate: () => ipcRenderer.invoke(ipc.installLauncherUpdate),
   onLauncherUpdate: (listener) => listen(ipc.launcherUpdate, listener),

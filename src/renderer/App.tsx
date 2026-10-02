@@ -39,7 +39,15 @@ export function App() {
   const [downloads, setDownloads] = useState<Record<string, ProgressEvent>>({})
   const [launcherUpdate, setLauncherUpdate] = useState<LauncherUpdate>({ state: 'checking' })
   const [actionError, setActionError] = useState<string | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [checkNote, setCheckNote] = useState<string | null>(null)
   const [art, setArt] = useState<Record<string, GameArt>>({})
+
+  useEffect(() => {
+    if (!checkNote) return
+    const timer = setTimeout(() => setCheckNote(null), 4000)
+    return () => clearTimeout(timer)
+  }, [checkNote])
 
   useEffect(() => {
     const offCatalog = window.ogl.onCatalog((next) => setSnapshot(next))
@@ -144,9 +152,23 @@ export function App() {
     localStorage.setItem(selectedKey, id)
   }
 
+  // Reloads the catalog and asks GitHub for a newer OGL, then says what it found.
   async function refresh() {
-    const next = await window.ogl.refreshCatalog()
-    setSnapshot(next)
+    if (checking) return
+    setChecking(true)
+    setCheckNote(null)
+    const started = Date.now()
+    try {
+      const [next, update] = await Promise.all([window.ogl.refreshCatalog(), window.ogl.checkLauncherUpdate()])
+      setSnapshot(next)
+      setLauncherUpdate(update)
+      await new Promise((resolve) => setTimeout(resolve, Math.max(0, 700 - (Date.now() - started))))
+      setCheckNote(next.error ? 'Check failed' : checkResult(update))
+    } catch {
+      setCheckNote('Check failed')
+    } finally {
+      setChecking(false)
+    }
   }
 
   async function installSelected() {
@@ -194,8 +216,6 @@ export function App() {
     setInstalls(await window.ogl.getInstalls())
   }
 
-  const updateBanner = bannerCopy(launcherUpdate)
-
   return (
     <div className={platform?.platform === 'darwin' ? 'shell mac' : 'shell'}>
       {platform?.platform === 'darwin' ? <div className="drag" /> : null}
@@ -213,26 +233,20 @@ export function App() {
           onHome={() => chooseGame(homeId)}
           onCancel={(gameId, id) => void window.ogl.cancelInstall(gameId, id)}
           onRefresh={() => void refresh()}
+          launcherUpdate={launcherUpdate}
+          checking={checking}
+          checkNote={checkNote}
+          onUpdateDownload={() => {
+            window.ogl
+              .downloadLauncherUpdate()
+              .catch((error: unknown) => setLauncherUpdate({ state: 'error', message: errorText(error, 'Could not update OGL') }))
+          }}
+          onUpdateInstall={() => void window.ogl.installLauncherUpdate()}
         />
       ) : (
         <aside className="rail" />
       )}
       <main className="main" key={selected?.id ?? homeId}>
-        {updateBanner ? (
-          <div className="update-banner">
-            <span>{updateBanner}</span>
-            {launcherUpdate.state === 'available' ? (
-              <button type="button" className="small-button" onClick={() => void window.ogl.downloadLauncherUpdate()}>
-                {launcherUpdate.manual ? 'Open download page' : 'Download update'}
-              </button>
-            ) : null}
-            {launcherUpdate.state === 'ready' ? (
-              <button type="button" className="small-button" onClick={() => window.ogl.installLauncherUpdate()}>
-                Restart
-              </button>
-            ) : null}
-          </div>
-        ) : null}
         {platform && selected && (channelId || selected.web) ? (
           <GameStage
             game={selected}
@@ -302,10 +316,10 @@ function errorText(error: unknown, fallback: string): string {
   return message.replace(/^Error invoking remote method '[^']+': (?:[A-Za-z]*Error: )?/, '') || fallback
 }
 
-function bannerCopy(update: LauncherUpdate): string | null {
-  if (update.state === 'available') return `OGL ${update.version} is available.`
-  if (update.state === 'downloading') return `Downloading OGL ${update.version} · ${Math.round(update.percent)}%`
-  if (update.state === 'ready') return `OGL ${update.version} is ready.`
-  if (update.state === 'error') return update.message
-  return null
+function checkResult(update: LauncherUpdate): string {
+  if (update.state === 'available' || update.state === 'downloading' || update.state === 'ready') {
+    return `OGL ${update.version} found`
+  }
+  if (update.state === 'error') return 'Check failed'
+  return 'Up to date'
 }
