@@ -1,4 +1,6 @@
-import { app } from 'electron'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
+import { app, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import { isConfiguredRepository } from '../shared/catalog'
 import type { LauncherUpdate } from '../shared/types'
@@ -22,6 +24,18 @@ export function onLauncherUpdate(listener: (update: LauncherUpdate) => void): ()
   return () => listeners.delete(listener)
 }
 
+// macOS only installs an update into an app signed with a Developer ID.
+// The release build records whether it was, in the packaged package.json.
+function installsOwnUpdates(): boolean {
+  if (process.platform !== 'darwin') return true
+  try {
+    const meta = JSON.parse(readFileSync(path.join(app.getAppPath(), 'package.json'), 'utf8')) as { macSigned?: boolean }
+    return meta.macSigned === true
+  } catch {
+    return false
+  }
+}
+
 export function startUpdater(): void {
   let configured = false
   try {
@@ -42,7 +56,7 @@ export function startUpdater(): void {
   autoUpdater.autoInstallOnAppQuit = true
   autoUpdater.on('update-available', (info) => {
     announcedVersion = info.version
-    emit({ state: 'available', version: info.version })
+    emit({ state: 'available', version: info.version, ...(installsOwnUpdates() ? {} : { manual: true }) })
   })
   autoUpdater.on('update-not-available', () => emit({ state: 'none', version: app.getVersion() }))
   autoUpdater.on('download-progress', (progress) => {
@@ -67,6 +81,11 @@ export function startUpdater(): void {
 export async function downloadLauncherUpdate(): Promise<void> {
   if (current.state !== 'available' && current.state !== 'downloading') {
     throw new Error('There is no OGL update to download')
+  }
+  if (current.state === 'available' && current.manual) {
+    const { owner, name } = readConfig().repository
+    await shell.openExternal(`https://github.com/${owner}/${name}/releases/tag/v${current.version}`)
+    return
   }
   await autoUpdater.downloadUpdate()
 }

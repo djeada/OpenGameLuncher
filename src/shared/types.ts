@@ -140,7 +140,8 @@ export type LauncherUpdate =
   | { state: 'unconfigured' }
   | { state: 'checking' }
   | { state: 'none'; version: string }
-  | { state: 'available'; version: string }
+  // manual: this build cannot install the update itself, so the player downloads it.
+  | { state: 'available'; version: string; manual?: boolean }
   | { state: 'downloading'; version: string; percent: number }
   | { state: 'ready'; version: string }
   | { state: 'error'; message: string }

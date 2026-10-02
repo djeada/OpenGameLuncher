@@ -1079,6 +1079,68 @@ button.requires:hover { background: rgba(251, 191, 36, 0.22); }
   font-size: 12px;
 }
 
+/* Splash */
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--bg);
+  -webkit-app-region: drag;
+  transition: opacity 0.45s ease;
+}
+
+.splash.leaving { opacity: 0; pointer-events: none; }
+
+.splash-glow { position: absolute; inset: 0; filter: blur(90px); opacity: 0.55; }
+
+.splash-glow span {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  animation: splash-float 9s ease-in-out infinite alternate;
+}
+
+.splash-glow span:nth-child(1) { left: -8%; top: -30%; background: #2f6bff; }
+.splash-glow span:nth-child(2) { right: -10%; top: 10%; background: #7c3aed; animation-duration: 11s; animation-delay: -4s; }
+.splash-glow span:nth-child(3) { left: 28%; bottom: -45%; background: #0ea5a4; animation-duration: 13s; animation-delay: -7s; }
+
+.splash-center {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  animation: splash-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.splash-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #5a8fff, #2f5fe0);
+  color: white;
+  box-shadow: 0 18px 50px rgba(47, 107, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  animation: splash-pulse 2.4s ease-in-out infinite;
+}
+
+.splash-logo svg { width: 34px; height: 34px; }
+
+.splash-center strong { margin-top: 18px; font-size: 24px; letter-spacing: -0.03em; }
+.splash-center p { margin: 2px 0 20px; color: rgba(238, 241, 246, 0.6); }
+
+.splash-bar {
+  width: 132px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 35%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.1) 65%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
 .waiting {
   height: 100%;
   display: grid;
@@ -1110,4 +1172,17 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 
 @keyframes fade {
   from { opacity: 0; }
+}
+
+@keyframes splash-float {
+  from { transform: translate(-6%, -4%) scale(1); }
+  to { transform: translate(14%, 12%) scale(1.25); }
+}
+
+@keyframes splash-pulse {
+  50% { transform: scale(1.05); }
+}
+
+@keyframes splash-rise {
+  from { opacity: 0; transform: translateY(8px); }
 }
