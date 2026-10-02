@@ -1,8 +1,10 @@
 // Browser-only stand-in for the preload bridge, so the renderer can be previewed with `vite` alone.
 import type { OglApi } from '../shared/api'
 import { resolveArt } from '../shared/art'
+import openrct2 from '../../catalog/mods/openrct2.json'
 import { validateGames } from '../shared/games'
-import type { GameBuild, InstallView, LauncherUpdate, ProgressEvent } from '../shared/types'
+import { readOpenrct2Plugins } from '../shared/plugin-lists'
+import type { GameBuild, InstallView, LauncherUpdate, Mod, ModProgress, ProgressEvent } from '../shared/types'
 
 const files = import.meta.glob('../../catalog/games/[!_]*.json', { eager: true, import: 'default' })
 const { games } = validateGames(Object.values(files))
@@ -27,6 +29,31 @@ function builds(prefix: string, prerelease: boolean): GameBuild[] {
     asset: { name: `game-${minor}-macos-universal.zip`, url: '', size: 42_000_000 + index * 1_000_000 }
   }))
 }
+
+const modKinds = ['Trains', 'Town names', 'Objects', 'Road vehicles', 'Stations', 'Industries', 'Landscape']
+const modPictures: Record<number, string> = {
+  0: 'grf/301/grfcrawler-large.png',
+  2: 'grf/339/Objects_Big.png',
+  3: 'grf/128/ukrsbig.png',
+  7: 'grf/340/ko_trainset_grfcrawler_big.png'
+}
+const mods: Mod[] = Array.from({ length: 180 }, (_, index) => ({
+  id: (0x4f472b00 + index).toString(16),
+  name: index === 0 ? 'OpenGFX+ Landscape' : `${modKinds[index % modKinds.length]} Set ${index}`,
+  description:
+    'Supplies gridless alternative landscape, a variable snowline, an optional alpine theme and some objects for eye candy.',
+  authors: index % 3 === 0 ? ['planetmaker', 'Zephyris'] : ['andythenorth'],
+  version: `1.${index % 9}.2`,
+  updatedAt: new Date(Date.now() - index * 9 * 86_400_000).toISOString(),
+  size: 140_000 + index * 310_000,
+  category: index === 0 ? 'Landscape' : modKinds[index % modKinds.length],
+  tags: index % 4 === 0 ? ['32bpp', 'High-res'] : [],
+  ...(modPictures[index] ? { image: `https://grfcrawler.tt-forums.net/${modPictures[index]}` } : {}),
+  ...(index % 2 === 0 ? { url: 'https://www.tt-forums.net/viewtopic.php?t=52396' } : {}),
+  license: 'GPL v2'
+}))
+const installedMods = new Map<string, boolean>([[mods[0].id, false], [mods[3].id, true]])
+const modListeners = new Set<(event: ModProgress) => void>()
 
 const downloadListeners = new Set<(event: ProgressEvent) => void>()
 const updateListeners = new Set<(update: LauncherUpdate) => void>()
@@ -68,7 +95,34 @@ export const mockApi: OglApi = {
     downloadListeners.add(listener)
     return () => downloadListeners.delete(listener)
   },
-  getLauncherUpdate: async () => ({ state: 'dev' }),
+  getMods: async (gameId) => {
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    if (gameId === 'openrct2') return readOpenrct2Plugins(openrct2)
+    return mods
+  },
+  getInstalledMods: async () => [...installedMods].map(([id, outdated]) => ({ id, outdated })),
+  installMod: async (gameId, modId) => {
+    for (let step = 0; step <= 10; step += 1) {
+      await new Promise((resolve) => setTimeout(resolve, 150))
+      const event: ModProgress = { gameId, modId, phase: step === 10 ? 'done' : 'downloading', received: step * 10, total: 100 }
+      if (step === 10) installedMods.set(modId, false)
+      for (const listener of modListeners) listener(event)
+    }
+  },
+  uninstallMod: async (_gameId, modId) => void installedMods.delete(modId),
+  showMods: async () => undefined,
+  onModProgress: (listener) => {
+    modListeners.add(listener)
+    return () => modListeners.delete(listener)
+  },
+  getLauncherUpdate: async () =>
+    new URLSearchParams(location.search).has('update-error')
+      ? {
+          state: 'error',
+          message: 'This copy of OGL cannot install updates by itself. Download the new version instead.',
+          version: '0.2.0'
+        }
+      : { state: 'dev' },
   checkLauncherUpdate: async () => {
     await new Promise((resolve) => setTimeout(resolve, 600))
     return { state: 'available', version: '0.2.0' }

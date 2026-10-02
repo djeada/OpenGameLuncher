@@ -6,6 +6,7 @@ import type {
   GameArt,
   GameBuild,
   InstallView,
+  ModSupport,
   OriginalGame,
   PlatformInfo,
   ProgressEvent
@@ -31,6 +32,8 @@ type GameStageProps = {
   download?: ProgressEvent
   actionError?: string | null
   autoUpdate: boolean
+  mods?: ModSupport
+  onOpenMods: () => void
   onChannel: (channelId: string) => void
   onSelectTag: (tag: string) => void
   onInstall: () => void
@@ -59,6 +62,8 @@ export function GameStage({
   download,
   actionError,
   autoUpdate,
+  mods,
+  onOpenMods,
   onChannel,
   onSelectTag,
   onInstall,
@@ -212,6 +217,14 @@ export function GameStage({
                 onChange={(event) => onAutoUpdate(event.target.checked)}
               />
             </label>
+            {mods ? (
+              <button type="button" className="panel-link" onClick={onOpenMods}>
+                {mods.label}
+                <svg viewBox="0 0 12 12" aria-hidden="true">
+                  <path d="m4.5 3 3 3-3 3" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                </svg>
+              </button>
+            ) : null}
           </aside>
         )}
       </div>

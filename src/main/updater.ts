@@ -3,6 +3,7 @@ import path from 'node:path'
 import { app, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import { isConfiguredRepository } from '../shared/catalog'
+import { describeUpdateError } from '../shared/update-error'
 import type { LauncherUpdate } from '../shared/types'
 import { readConfig } from './config'
 
@@ -37,6 +38,22 @@ function installsOwnUpdates(): boolean {
   }
 }
 
+function fail(error: unknown) {
+  const raw = error instanceof Error ? error.message : String(error)
+  console.error('OGL update failed:', raw)
+  const failure = describeUpdateError(raw)
+  emit({
+    state: 'error',
+    message: failure.message,
+    ...(failure.manual && announcedVersion ? { version: announcedVersion } : {})
+  })
+}
+
+function openReleasePage(version: string): Promise<void> {
+  const { owner, name } = readConfig().repository
+  return shell.openExternal(`https://github.com/${owner}/${name}/releases/tag/v${version}`)
+}
+
 export function startUpdater(): void {
   let configured = false
   try {
@@ -68,10 +85,7 @@ export function startUpdater(): void {
     })
   })
   autoUpdater.on('update-downloaded', (info) => emit({ state: 'ready', version: info.version }))
-  autoUpdater.on('error', (error) => {
-    const message = error instanceof Error ? error.message : 'Could not update OGL'
-    emit({ state: 'error', message })
-  })
+  autoUpdater.on('error', (error) => fail(error))
 
   started = true
   void checkLauncherUpdate()
@@ -84,21 +98,17 @@ export async function checkLauncherUpdate(): Promise<LauncherUpdate> {
   try {
     await autoUpdater.checkForUpdates()
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Could not check for an OGL update'
-    emit({ state: 'error', message })
+    fail(error)
   }
   return current
 }
 
 export async function downloadLauncherUpdate(): Promise<void> {
+  if (current.state === 'error' && current.version) return openReleasePage(current.version)
   if (current.state !== 'available' && current.state !== 'downloading') {
     throw new Error('There is no OGL update to download')
   }
-  if (current.state === 'available' && current.manual) {
-    const { owner, name } = readConfig().repository
-    await shell.openExternal(`https://github.com/${owner}/${name}/releases/tag/v${current.version}`)
-    return
-  }
+  if (current.state === 'available' && current.manual) return openReleasePage(current.version)
   await autoUpdater.downloadUpdate()
 }
 

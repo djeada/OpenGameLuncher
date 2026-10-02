@@ -135,6 +135,53 @@ export type ProgressEvent = {
   message?: string
 }
 
+// Where a game's mods come from. Each type has a provider in src/main/mods.ts.
+export type ModSource =
+  | { type: 'openttd-content'; kind: 'newgrf' }
+  | { type: 'endless-sky-plugins' }
+  | { type: 'openrct2-plugins' }
+
+// What a game calls its mods, and where the player switches them on afterwards.
+export type ModSupport = {
+  label: string
+  hint?: string
+  // Hand-picked well-known mods, best first. Shown as the first category.
+  popular?: string[]
+  source: ModSource
+}
+
+export type Mod = {
+  id: string
+  name: string
+  description: string
+  authors: string[]
+  version: string
+  updatedAt: string
+  size: number
+  category: string
+  tags: string[]
+  // icon: small square for the list. image: a preview, shown large and used as the icon when there is none.
+  icon?: string
+  image?: string
+  url?: string
+  license?: string
+}
+
+// outdated: the files on disk are an older version than the one listed.
+export type InstalledMod = {
+  id: string
+  outdated: boolean
+}
+
+export type ModProgress = {
+  gameId: string
+  modId: string
+  phase: 'downloading' | 'done' | 'error'
+  received: number
+  total: number
+  message?: string
+}
+
 export type LauncherUpdate =
   | { state: 'dev' }
   | { state: 'unconfigured' }
@@ -144,7 +191,8 @@ export type LauncherUpdate =
   | { state: 'available'; version: string; manual?: boolean }
   | { state: 'downloading'; version: string; percent: number }
   | { state: 'ready'; version: string }
-  | { state: 'error'; message: string }
+  // version: the update is known, so the player can still download it by hand.
+  | { state: 'error'; message: string; version?: string }
 
 export type OglConfig = {
   repository: {

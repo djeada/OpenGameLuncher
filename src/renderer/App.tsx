@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supportsPlatform } from '../shared/labels'
+import { modSupport } from '../shared/mods'
 import type {
   CatalogSnapshot,
   GameArt,
@@ -12,6 +13,7 @@ import type {
 import { GameStage } from './components/GameStage'
 import { Splash } from './components/Splash'
 import { Home } from './components/Home'
+import { ModBrowser } from './components/ModBrowser'
 import { Sidebar } from './components/Sidebar'
 
 type BuildState = {
@@ -42,6 +44,7 @@ export function App() {
   const [checking, setChecking] = useState(false)
   const [checkNote, setCheckNote] = useState<string | null>(null)
   const [art, setArt] = useState<Record<string, GameArt>>({})
+  const [modsOpen, setModsOpen] = useState(false)
 
   useEffect(() => {
     if (!checkNote) return
@@ -106,6 +109,7 @@ export function App() {
   const buildState = buildKey ? builds[buildKey] : undefined
   // Browser games sit in the library under the 'web' channel once played.
   const libraryChannel = channelId ?? (selected?.web ? 'web' : undefined)
+  const mods = selected ? modSupport(selected.id) : undefined
   const currentInstall = installs.find((item) => item.gameId === selected?.id && item.channelId === libraryChannel)
 
   useEffect(() => {
@@ -148,6 +152,7 @@ export function App() {
 
   function chooseGame(id: string) {
     setSelectedId(id)
+    setModsOpen(false)
     setActionError(null)
     localStorage.setItem(selectedKey, id)
   }
@@ -262,6 +267,8 @@ export function App() {
             download={downloads[buildKey]}
             actionError={actionError}
             autoUpdate={autoUpdate[buildKey] ?? currentInstall?.autoUpdate ?? true}
+            mods={mods}
+            onOpenMods={() => setModsOpen(true)}
             onChannel={(id) => {
               setActionError(null)
               setChannelByGame((current) => ({ ...current, [selected.id]: id }))
@@ -306,6 +313,7 @@ export function App() {
           </div>
         )}
       </main>
+      {selected && mods && modsOpen ? <ModBrowser game={selected} support={mods} onClose={() => setModsOpen(false)} /> : null}
     </div>
   )
 }

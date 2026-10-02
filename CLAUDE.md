@@ -29,6 +29,7 @@ Read [docs/releasing.md](docs/releasing.md) before touching a release. In short:
 - `src/preload`: the bridge exposed as `window.ogl`
 - `src/renderer`: the interface; `components/Logo.tsx` is the one logo, `components/Splash.tsx` the loading screen
 - `docs/catalog.md`: how to add a game
+- `docs/mods.md`: mod browser; games with mods are listed in `src/shared/mods.ts`, sources are providers in `src/main/mods.ts`
 
 A new call between the window and the main process touches four files: `src/shared/channels.ts`, `src/shared/api.ts`, `src/preload/index.ts`, `src/main/ipc.ts`, plus the mock in `src/renderer/dev-mock.ts`.
 

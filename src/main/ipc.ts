@@ -17,6 +17,7 @@ import {
   showInstallFolder,
   uninstallGame
 } from './library'
+import { installedMods, installMod, listMods, modsFolder, onModProgress, uninstallMod } from './mods'
 import { checkLauncherUpdate, downloadLauncherUpdate, installLauncherUpdate, launcherUpdateState, onLauncherUpdate } from './updater'
 
 function asString(value: unknown, label: string): string {
@@ -34,6 +35,7 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
 
   catalog.subscribe((snapshot) => send(ipc.catalogUpdated, snapshot))
   onDownload((event) => send(ipc.download, event))
+  onModProgress((event) => send(ipc.modProgress, event))
   onLauncherUpdate((update) => send(ipc.launcherUpdate, update))
 
   ipcMain.handle(ipc.getPlatform, () => ({
@@ -99,6 +101,22 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
   ipcMain.handle(ipc.showInstall, async (_event, gameId: unknown, channelId: unknown) => {
     const file = await showInstallFolder(asString(gameId, 'Game'), asString(channelId, 'Channel'))
     if (file) shell.showItemInFolder(file)
+  })
+
+  ipcMain.handle(ipc.getMods, (_event, gameId: unknown) => listMods(asString(gameId, 'Game')))
+  ipcMain.handle(ipc.getInstalledMods, (_event, gameId: unknown) => installedMods(asString(gameId, 'Game')))
+
+  ipcMain.handle(ipc.installMod, (_event, gameId: unknown, modId: unknown) => {
+    return installMod(asString(gameId, 'Game'), asString(modId, 'Mod'))
+  })
+
+  ipcMain.handle(ipc.uninstallMod, (_event, gameId: unknown, modId: unknown) => {
+    return uninstallMod(asString(gameId, 'Game'), asString(modId, 'Mod'))
+  })
+
+  ipcMain.handle(ipc.showMods, async (_event, gameId: unknown) => {
+    const problem = await shell.openPath(await modsFolder(asString(gameId, 'Game')))
+    if (problem) throw new Error(problem)
   })
 
   ipcMain.handle(ipc.downloadLauncherUpdate, () => downloadLauncherUpdate())

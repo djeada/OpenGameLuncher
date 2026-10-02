@@ -3,7 +3,10 @@ import type {
   GameArt,
   GameBuild,
   InstallView,
+  InstalledMod,
   LauncherUpdate,
+  Mod,
+  ModProgress,
   PlatformInfo,
   ProgressEvent
 } from './types'
@@ -25,6 +28,12 @@ export type OglApi = {
   showInstall(gameId: string, channelId: string): Promise<void>
   showLog(gameId: string, channelId: string): Promise<void>
   onDownload(listener: (event: ProgressEvent) => void): () => void
+  getMods(gameId: string): Promise<Mod[]>
+  getInstalledMods(gameId: string): Promise<InstalledMod[]>
+  installMod(gameId: string, modId: string): Promise<void>
+  uninstallMod(gameId: string, modId: string): Promise<void>
+  showMods(gameId: string): Promise<void>
+  onModProgress(listener: (event: ModProgress) => void): () => void
   getLauncherUpdate(): Promise<LauncherUpdate>
   checkLauncherUpdate(): Promise<LauncherUpdate>
   downloadLauncherUpdate(): Promise<void>

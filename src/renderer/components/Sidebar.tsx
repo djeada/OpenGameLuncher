@@ -112,8 +112,12 @@ export function Sidebar({
                   <button type="button" className="small-button" onClick={onUpdateInstall}>
                     Restart
                   </button>
+                ) : launcherUpdate.state === 'error' && launcherUpdate.version ? (
+                  <button type="button" className="small-button" onClick={onUpdateDownload}>
+                    Download
+                  </button>
                 ) : (
-                  <small>{launcherUpdate.state === 'error' ? 'Failed' : 'Updating'}</small>
+                  <small>{launcherUpdate.state === 'error' ? 'Update failed' : 'Updating'}</small>
                 )}
               </div>
               {launcherUpdate.state === 'downloading' ? (

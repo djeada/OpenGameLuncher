@@ -1,9 +1,11 @@
 const ASSET_HOSTS = new Set([
   'github.com',
+  'codeload.github.com',
   'objects.githubusercontent.com',
   'release-assets.githubusercontent.com',
   'github-releases.githubusercontent.com',
-  'cdn.openttd.org'
+  'cdn.openttd.org',
+  'bananas-cdn.openttd.org'
 ])
 
 const CATALOG_HOSTS = new Set([
