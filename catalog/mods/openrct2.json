@@ -1,0 +1,1319 @@
+{
+  "plugins": [
+    {
+      "id": "mgovea/openrct2-ride-price-manager",
+      "name": "openrct2-ride-price-manager",
+      "description": "A plugin for OpenRCT2 that automatically manages ride prices.",
+      "author": "mgovea",
+      "stars": 63,
+      "version": "v1.3.2",
+      "updatedAt": "2021-04-07T23:19:23Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Sadret/openrct2-scenery-manager",
+      "name": "openrct2-scenery-manager",
+      "description": "An OpenRCT2 plug-in to copy & paste scenery with many more features.",
+      "author": "Sadret",
+      "stars": 57,
+      "version": "v2.0.9",
+      "updatedAt": "2026-02-17T18:35:50Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "Sadret/openrct2-price-manager",
+      "name": "openrct2-price-manager",
+      "description": "An OpenRCT2 plug-in that manages and automatically updates prices for park entry, rides and shops.",
+      "author": "Sadret",
+      "stars": 52,
+      "version": "v1.1.7",
+      "updatedAt": "2025-11-05T19:14:55Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "tubbo/openrct2-benchwarmer",
+      "name": "openrct2-benchwarmer",
+      "description": "An OpenRCT2 plugin that adds alternating benches and bins to your park's footpaths with a single click.",
+      "author": "tubbo",
+      "stars": 49,
+      "version": "v1.2.0",
+      "updatedAt": "2024-09-23T20:15:29Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Sadret/openrct2-soft-guest-cap-calculator",
+      "name": "openrct2-soft-guest-cap-calculator",
+      "description": "This OpenRCT2 plugin calculates the soft guest cap for your park and automatically notifies you if it changes.",
+      "author": "Sadret",
+      "stars": 32,
+      "version": "v2.0.3",
+      "updatedAt": "2026-07-04T10:44:17Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "oli414/AdvancedTrack",
+      "name": "AdvancedTrack",
+      "description": "OpenRCT2 plugin that adds extra track features like dual loading stations.",
+      "author": "oli414",
+      "stars": 30,
+      "version": "1.3.6",
+      "updatedAt": "2025-04-06T15:37:11Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/272213185/7f363280-b244-11ea-804f-bcab75bb5d99"
+    },
+    {
+      "id": "Phelicks/openrct2-live-ride-measurements",
+      "name": "openrct2-live-ride-measurements",
+      "description": "An OpenRCT2 plugin which shows live ride measurements.",
+      "author": "Phelicks",
+      "stars": 22,
+      "version": "v0.4.0",
+      "updatedAt": "2026-04-03T15:39:39Z"
+    },
+    {
+      "id": "Manticore-007/OpenRCT2-PeepEditor",
+      "name": "OpenRCT2-PeepEditor",
+      "description": "A plug-in for OpenRCT2 to modify properties of guests and staff members.",
+      "author": "Manticore-007",
+      "stars": 21,
+      "version": "v26.9.18",
+      "updatedAt": "2026-09-18T19:45:30Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/443727878/0be8baa1-f50d-4bae-9491-90856bff6dd5"
+    },
+    {
+      "id": "nickgal/openrct2-rain-cleans-vomit",
+      "name": "openrct2-rain-cleans-vomit",
+      "description": "An OpenRCT2 plugin that gives rain a chance to clean vomit.",
+      "author": "nickgal",
+      "stars": 21,
+      "version": "1.0",
+      "updatedAt": "2021-12-03T02:44:00Z",
+      "license": "MIT"
+    },
+    {
+      "id": "fidwell/OpenRct2-Cartographer",
+      "name": "OpenRct2-Cartographer",
+      "description": "A plugin for OpenRCT2 to draw an orthogonal view of the map.",
+      "author": "fidwell",
+      "stars": 19,
+      "version": "v4.1",
+      "updatedAt": "2025-03-01T20:58:16Z",
+      "license": "MIT"
+    },
+    {
+      "id": "OpenRCT2/plugin-devtools",
+      "name": "plugin-devtools",
+      "description": "Plugin for OpenRCT2 providing tools to aid development of OpenRCT2",
+      "author": "OpenRCT2",
+      "stars": 16,
+      "version": "v1.3.1",
+      "updatedAt": "2026-02-28T18:41:01Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/335124425/3cbe0d00-791e-11eb-9de5-d6b10a133cd0"
+    },
+    {
+      "id": "Die4Ever/rollercoaster-tycoon-randomizer",
+      "name": "rollercoaster-tycoon-randomizer",
+      "description": "RollerCoaster Tycoon Randomizer mod for RCT1 and RCT2 inside of OpenRCT2",
+      "author": "Die4Ever",
+      "stars": 15,
+      "version": "v0.9.3",
+      "updatedAt": "2025-08-26T03:40:49Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "Sadret/openrct2-worldpainter",
+      "name": "openrct2-worldpainter",
+      "description": "An OpenRCT2 landscaping and terraforming plugin",
+      "author": "Sadret",
+      "stars": 14,
+      "version": "v1.0.1",
+      "updatedAt": "2026-01-18T19:29:17Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "oli414/OliUI",
+      "name": "OliUI",
+      "description": "OliUI is an OpenRCT2 plugin module to easily construct and control UI windows of any complexity.",
+      "author": "oli414",
+      "stars": 12,
+      "version": "1.0",
+      "updatedAt": "2020-10-02T22:49:22Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/270059881/f218f100-a99a-11ea-8103-74ae30fc550c"
+    },
+    {
+      "id": "Alfinch/OpenRCT2-Force-Visualiser",
+      "name": "OpenRCT2-Force-Visualiser",
+      "description": "A plugin for OpenRCT2 which visualises G forces on tracked rides by colouring the track.",
+      "author": "Alfinch",
+      "stars": 10,
+      "version": "v1.2.3",
+      "updatedAt": "2024-04-24T21:11:52Z",
+      "license": "MIT"
+    },
+    {
+      "id": "beam41/openrct2-maze-generator",
+      "name": "openrct2-maze-generator",
+      "description": "Generate Maze of any size quickly!",
+      "author": "beam41",
+      "stars": 10,
+      "version": "v0.1.3",
+      "updatedAt": "2023-04-21T17:48:41Z",
+      "license": "MIT"
+    },
+    {
+      "id": "AT41/StatRequirementChecklist",
+      "name": "StatRequirementChecklist",
+      "description": "",
+      "author": "AT41",
+      "stars": 8,
+      "version": "1.0.1",
+      "updatedAt": "2024-03-02T08:29:55Z",
+      "license": "MIT"
+    },
+    {
+      "id": "MarcelVos96/OpenRCT2-Ride-ticket-price-calculator",
+      "name": "OpenRCT2-Ride-ticket-price-calculator",
+      "description": "OpenRCT2 Ride ticket price calculator plugin",
+      "author": "MarcelVos96",
+      "stars": 8,
+      "version": "v0.1.2",
+      "updatedAt": "2025-10-10T13:51:35Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "OpenRCT2/title-sequence-editor",
+      "name": "title-sequence-editor",
+      "description": "Title sequence editor plugin for OpenRCT2",
+      "author": "OpenRCT2",
+      "stars": 8,
+      "version": "v1.2",
+      "updatedAt": "2022-04-06T17:56:17Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/332500796/61b18080-791c-11eb-98eb-5052d37a8e82"
+    },
+    {
+      "id": "peterwooley/openrct2-award-eligibility",
+      "name": "openrct2-award-eligibility",
+      "description": "Keep track of which awards your park is eligible for in OpenRCT2",
+      "author": "peterwooley",
+      "stars": 8,
+      "version": "1.0.0-alpha",
+      "updatedAt": "2025-04-25T05:49:29Z",
+      "license": "MIT"
+    },
+    {
+      "id": "telk5093/MoveViewport",
+      "name": "MoveViewport",
+      "description": "An OpenRCT2 CCTV plugin",
+      "author": "telk5093",
+      "stars": 8,
+      "version": "1.0",
+      "updatedAt": "2021-01-31T12:08:23Z",
+      "license": "MIT"
+    },
+    {
+      "id": "WesselAmmerlaan/OpenRCT2-FixVandalismWithStaff",
+      "name": "OpenRCT2-FixVandalismWithStaff",
+      "description": "An OpenRCT2 plugin that enables you to fix vandalized path additions with selected staff",
+      "author": "WesselAmmerlaan",
+      "stars": 8,
+      "version": "Latest",
+      "updatedAt": "2025-01-12T13:58:34Z",
+      "license": "MIT"
+    },
+    {
+      "id": "EnoxRCT/OpenRCT2-LitterEditor",
+      "name": "OpenRCT2-LitterEditor",
+      "description": "Plugin for OpenRCT2 to modify litter properties.",
+      "author": "EnoxRCT",
+      "stars": 7,
+      "version": "v1.1",
+      "updatedAt": "2023-01-16T19:57:24Z",
+      "license": "MIT"
+    },
+    {
+      "id": "jacknull1991/OpenRCT2.RideRequirements",
+      "name": "OpenRCT2.RideRequirements",
+      "description": "",
+      "author": "jacknull1991",
+      "stars": 7,
+      "version": "v1.0.1",
+      "updatedAt": "2022-10-15T22:35:37Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KatieZeldaKat/openrct2-invention-manager",
+      "name": "openrct2-invention-manager",
+      "description": "An OpenRCT2 plugin which acts as an alternative to the built-in inventions list under the cheat menu.",
+      "author": "KatieZeldaKat",
+      "stars": 7,
+      "version": "v1.2.0",
+      "updatedAt": "2024-11-27T00:29:27Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/788657841/e6578fc9-f6d3-4b01-8766-7cf338bdf61d"
+    },
+    {
+      "id": "oli414/StreamIntegrationPlugin",
+      "name": "StreamIntegrationPlugin",
+      "description": "Project aiming to add the OpenRCT2 Twitch stream integration back in using a plugin. Sponsored by https://www.twitch.tv/wafflesthegoodboy",
+      "author": "oli414",
+      "stars": 7,
+      "version": "1.5",
+      "updatedAt": "2024-07-09T15:58:36Z",
+      "license": "MIT"
+    },
+    {
+      "id": "autosysops/OpenRct2RideEditor",
+      "name": "OpenRct2RideEditor",
+      "description": "Plugin for OpenRCT2 to edit rides based on colour schemes.",
+      "author": "autosysops",
+      "stars": 6,
+      "version": "2.4",
+      "updatedAt": "2026-05-21T13:17:23Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/521070654/fa35d100-08bd-4768-b1d6-f8ce9314084f"
+    },
+    {
+      "id": "Die4Ever/openrct2-touch-plugin",
+      "name": "openrct2-touch-plugin",
+      "description": "OpenRCT2 Touch Screen controls improvements",
+      "author": "Die4Ever",
+      "stars": 6,
+      "version": "v0.2",
+      "updatedAt": "2022-06-19T12:43:02Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "jpknen/openrct2-animated-vandalism-repairing",
+      "name": "openrct2-animated-vandalism-repairing",
+      "description": "OpenRCT2 plugin for repairing the vandalized additions with random repairing animations.",
+      "author": "jpknen",
+      "stars": 6,
+      "version": "v1.2.1",
+      "updatedAt": "2024-07-30T16:20:20Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KatieZeldaKat/openrct2-auto-object-loader",
+      "name": "openrct2-auto-object-loader",
+      "description": "Plugin to load all objects into a park in OpenRCT2.",
+      "author": "KatieZeldaKat",
+      "stars": 6,
+      "version": "v1.0.1",
+      "updatedAt": "2025-02-23T06:25:02Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/936831203/868211b7-670c-4a16-822c-cfd7dcb03dcf"
+    },
+    {
+      "id": "nparshook/openrct2-queue-assist",
+      "name": "openrct2-queue-assist",
+      "description": "Plugin for OpenRCT2 to assist with laying out queues for rides.",
+      "author": "nparshook",
+      "stars": 6,
+      "version": "v.02",
+      "updatedAt": "2022-07-19T13:22:44Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Sadret/openrct2-minesweeper",
+      "name": "openrct2-minesweeper",
+      "description": "An OpenRCT2 plug-in to play Minesweeper within RCT.",
+      "author": "Sadret",
+      "stars": 6,
+      "version": "v1.0.0",
+      "updatedAt": "2021-07-11T19:23:18Z"
+    },
+    {
+      "id": "aelindeman/openrct2-ride-inspection-manager",
+      "name": "openrct2-ride-inspection-manager",
+      "description": "",
+      "author": "aelindeman",
+      "stars": 5,
+      "version": "v1.0.0",
+      "updatedAt": "2020-07-14T00:01:11Z",
+      "license": "MIT"
+    },
+    {
+      "id": "autosysops/OpenRCT2ParkMessageManager",
+      "name": "OpenRCT2ParkMessageManager",
+      "description": "This plugin for OpenRCT2 allows you to add/delete messages in the park.",
+      "author": "autosysops",
+      "stars": 5,
+      "version": "1.5",
+      "updatedAt": "2026-05-21T13:13:45Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/526165879/b8e689d8-e404-4c81-86f2-612b7955a6a8"
+    },
+    {
+      "id": "Harry-Hopkinson/openrct2-plugin-manager",
+      "name": "openrct2-plugin-manager",
+      "description": "A plugin manager for OpenRCT2",
+      "author": "Harry-Hopkinson",
+      "stars": 5,
+      "version": "1.0.2",
+      "updatedAt": "2024-03-25T16:56:52Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KatieZeldaKat/openrct2-now-you-see-it",
+      "name": "openrct2-now-you-see-it",
+      "description": "A plugin for OpenRCT2 that allows you to modify the visibility of map elements, including park fences.",
+      "author": "KatieZeldaKat",
+      "stars": 5,
+      "version": "v1.2.0",
+      "updatedAt": "2025-02-27T17:27:18Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/656420493/ea35e80a-e72d-466e-bb20-75194ae67067"
+    },
+    {
+      "id": "MaxMallon/OpenRCT2-FireworksPlugin",
+      "name": "OpenRCT2-FireworksPlugin",
+      "description": "A plugin for OpenRCT2 to create and view fireworks shows.",
+      "author": "MaxMallon",
+      "stars": 5,
+      "version": "v1.0",
+      "updatedAt": "2026-09-12T14:28:14Z",
+      "license": "MIT"
+    },
+    {
+      "id": "oli414/CheatSaver",
+      "name": "CheatSaver",
+      "description": "An OpenRCT2 plugin to save your cheat setup",
+      "author": "oli414",
+      "stars": 5,
+      "version": "1.2",
+      "updatedAt": "2022-03-04T14:56:30Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/271255679/f9203a80-ab25-11ea-9e80-df3e1a7391a0"
+    },
+    {
+      "id": "oli414/RoadLines",
+      "name": "RoadLines",
+      "description": "OpenRCT2 plugin to easily create roadlines at surface level",
+      "author": "oli414",
+      "stars": 5,
+      "version": "1.2.1",
+      "updatedAt": "2021-11-27T17:54:30Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/268142724/80f19200-a339-11ea-824b-9a9a2820d058"
+    },
+    {
+      "id": "fidwell/OpenRct2-GrassGrower",
+      "name": "OpenRct2-GrassGrower",
+      "description": "A plugin for OpenRCT2 to manually edit the grass lengths of your map.",
+      "author": "fidwell",
+      "stars": 4,
+      "version": "v1.0",
+      "updatedAt": "2021-11-16T18:31:07Z",
+      "license": "MIT"
+    },
+    {
+      "id": "fidwell/OpenRct2-Screenshotter",
+      "name": "OpenRct2-Screenshotter",
+      "description": "A plugin for OpenRCT2 to automatically create screenshots on a timed interval.",
+      "author": "fidwell",
+      "stars": 4,
+      "version": "v1.4",
+      "updatedAt": "2021-06-15T13:43:41Z",
+      "license": "MIT"
+    },
+    {
+      "id": "fidwell/OpenRct2-TrafficManager",
+      "name": "OpenRct2-TrafficManager",
+      "description": "A plugin for OpenRCT2 to randomize vehicles on a ride to simulate diversity in appearance.",
+      "author": "fidwell",
+      "stars": 4,
+      "version": "v3.2",
+      "updatedAt": "2023-07-09T17:26:52Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Harry-Hopkinson/openrct2-soft-guest-cap-editor",
+      "name": "openrct2-soft-guest-cap-editor",
+      "description": "A plugin that allows you to change the soft guest cap in OpenRCT2",
+      "author": "Harry-Hopkinson",
+      "stars": 4,
+      "version": "1.0.4",
+      "updatedAt": "2024-09-12T19:53:29Z",
+      "license": "MIT"
+    },
+    {
+      "id": "jcristy/RideNamer",
+      "name": "RideNamer",
+      "description": "Automatically Name Your OpenRCT2 Rides",
+      "author": "jcristy",
+      "stars": 4,
+      "version": "v0.3.0",
+      "updatedAt": "2026-03-03T04:24:19Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KatieZeldaKat/openrct2-statistics",
+      "name": "openrct2-statistics",
+      "description": "A plugin for OpenRCT2 that tracks in-game statistics (currently only time).",
+      "author": "KatieZeldaKat",
+      "stars": 4,
+      "version": "v1.1.1",
+      "updatedAt": "2024-03-14T04:47:46Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/733297671/a668116c-3bf5-4938-a6fb-2c44a8213272"
+    },
+    {
+      "id": "KuestenKeks/OpenRCT2-PauseToggle-For-Multiplayer",
+      "name": "OpenRCT2-PauseToggle-For-Multiplayer",
+      "description": "Simple OpenRCT2 plugin that allows clients to pause multiplayer games via chat message",
+      "author": "KuestenKeks",
+      "stars": 4,
+      "version": "v1.1",
+      "updatedAt": "2021-04-04T15:19:24Z",
+      "license": "MIT"
+    },
+    {
+      "id": "lia-xim/OpenRCT2-WorldParkLeague",
+      "name": "OpenRCT2-WorldParkLeague",
+      "description": "OpenRCT2 plugin that adds a global rival economy, market share, prestige, investments, and endgame competition. https://crawlfoundry.com/",
+      "author": "lia-xim",
+      "stars": 4,
+      "version": "v0.25.0",
+      "updatedAt": "2026-06-23T13:55:08Z",
+      "license": "MIT"
+    },
+    {
+      "id": "MarkAlliban/openrct2-objective-assistant",
+      "name": "openrct2-objective-assistant",
+      "description": "Your virtual assistant to help you complete any scenario objective!",
+      "author": "MarkAlliban",
+      "stars": 4,
+      "version": "v2.0.1",
+      "updatedAt": "2026-08-21T07:44:41Z",
+      "license": "MIT"
+    },
+    {
+      "id": "oli414/PathExpander",
+      "name": "PathExpander",
+      "description": "An OpenRCT2 plugin that lets you expand paths to their full size.",
+      "author": "oli414",
+      "stars": 4,
+      "version": "1.2",
+      "updatedAt": "2021-06-11T19:56:34Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/261710568/3d4b5800-a33a-11ea-98c3-9c7af188f313"
+    },
+    {
+      "id": "PhasecoreX/openrct2-auto-mow",
+      "name": "openrct2-auto-mow",
+      "description": "Automatically keep the grass in OpenRCT2 at a specific length",
+      "author": "PhasecoreX",
+      "stars": 4,
+      "version": "v1.0.0",
+      "updatedAt": "2022-04-13T23:19:03Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "StixsmasterHD4k/Enhanced-Pathfinding-System",
+      "name": "Enhanced-Pathfinding-System",
+      "description": "Enhanced Pathfinding System replaces the vanilla guest navigation with a smarter A* pathfinding algorithm. The plugin analyzes your entire park layout at load time, identifying paths, rides, shops, entrances, and dead ends. When guests become genuinely lost, it guides them toward attractions—not back to the exit.",
+      "author": "StixsmasterHD4k",
+      "stars": 4,
+      "version": "v2.6.0",
+      "updatedAt": "2025-12-02T05:12:31Z",
+      "license": "MIT"
+    },
+    {
+      "id": "authorblues/openrct2-twitch-tools",
+      "name": "openrct2-twitch-tools",
+      "description": "",
+      "author": "authorblues",
+      "stars": 3,
+      "version": "v1.1.0",
+      "updatedAt": "2020-11-16T01:27:51Z"
+    },
+    {
+      "id": "autosysops/RCTAnimator",
+      "name": "RCTAnimator",
+      "description": "Animation plugin for OpenRCT2",
+      "author": "autosysops",
+      "stars": 3,
+      "version": "0.7",
+      "updatedAt": "2026-05-19T11:55:46Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/822307058/47077ae5-61c5-48f6-8d8e-17eae13a0a7d"
+    },
+    {
+      "id": "beam41/openrct2-soft-guest-cap-inspector",
+      "name": "openrct2-soft-guest-cap-inspector",
+      "description": "Inspect soft guest cap for each ride type.",
+      "author": "beam41",
+      "stars": 3,
+      "version": "v0.1",
+      "updatedAt": "2023-04-09T12:25:01Z",
+      "license": "MIT"
+    },
+    {
+      "id": "dixonw2/OpenRCT2-SecretGuests",
+      "name": "OpenRCT2-SecretGuests",
+      "description": "A highly configurable plugin for OpenRCT2 to spawn guests with the Easter Egg names",
+      "author": "dixonw2",
+      "stars": 3,
+      "version": "v1.3.0",
+      "updatedAt": "2026-08-06T18:41:26Z",
+      "license": "MIT"
+    },
+    {
+      "id": "fidwell/OpenRct2-MapResizer",
+      "name": "OpenRct2-MapResizer",
+      "description": "A plugin for OpenRCT2 that allows you to adjust the size of your park map by adjusting in all four directions.",
+      "author": "fidwell",
+      "stars": 3,
+      "version": "v3",
+      "updatedAt": "2024-07-08T22:07:44Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Harry-Hopkinson/openrct2-variable-editor",
+      "name": "openrct2-variable-editor",
+      "description": "An easy to use plugin for OpenRCT2 that provides a UI for changing core variables. ",
+      "author": "Harry-Hopkinson",
+      "stars": 3,
+      "version": "1.0.2",
+      "updatedAt": "2024-04-18T20:30:57Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Liru/openrct2-automatic-loan-repayer",
+      "name": "openrct2-automatic-loan-repayer",
+      "description": "An automatic loan repayer plugin for OpenRCT2",
+      "author": "Liru",
+      "stars": 3,
+      "version": "v0.2.0",
+      "updatedAt": "2024-07-14T03:27:12Z",
+      "license": "MIT"
+    },
+    {
+      "id": "mrmagic2020/openrct2-millionaire",
+      "name": "openrct2-millionaire",
+      "description": "An OpenRCT2 plugin capable of hacking into guests' wallets.",
+      "author": "mrmagic2020",
+      "stars": 3,
+      "version": "v1.2",
+      "updatedAt": "2023-05-02T08:40:14Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rinode/openrct2-plugin-undo",
+      "name": "openrct2-plugin-undo",
+      "description": "Undo/redo plugin for OpenRCT2",
+      "author": "rinode",
+      "stars": 3,
+      "version": "v0.3.3",
+      "updatedAt": "2026-04-05T20:43:37Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rubenrichtering/openrct2-automarketing",
+      "name": "openrct2-automarketing",
+      "description": "",
+      "author": "rubenrichtering",
+      "stars": 3,
+      "version": "v1.0.0",
+      "updatedAt": "2025-01-12T09:13:46Z",
+      "license": "MIT"
+    },
+    {
+      "id": "SkylineIndustries/MaxGuestPlugin",
+      "name": "MaxGuestPlugin",
+      "description": "",
+      "author": "SkylineIndustries",
+      "stars": 3,
+      "version": "v3.0.0",
+      "updatedAt": "2026-02-17T21:47:43Z",
+      "license": "MIT"
+    },
+    {
+      "id": "StixsmasterHD4k/Ultimate-Park-Manager",
+      "name": "Ultimate-Park-Manager",
+      "description": "Ultimate Park Manager is an all-in-one automation plugin for OpenRCT2 that takes the tedious micromanagement out of running a successful theme park. It automatically calculates and sets optimal prices for rides, park admission, and shops based on proven algorithms from the RollerCoaster Tycoon community.",
+      "author": "StixsmasterHD4k",
+      "stars": 3,
+      "version": "v2.4.2",
+      "updatedAt": "2025-12-02T03:40:33Z",
+      "license": "MIT"
+    },
+    {
+      "id": "WantDiscussion/openrct2-abandonedpark",
+      "name": "openrct2-abandonedpark",
+      "description": "Subject your park to the ravages of time.",
+      "author": "WantDiscussion",
+      "stars": 3,
+      "version": "v1.0.4",
+      "updatedAt": "2021-03-01T22:07:52Z"
+    },
+    {
+      "id": "WillbyH/ParkFenceManager",
+      "name": "ParkFenceManager",
+      "description": "Remove or Restore the park fences in a park.",
+      "author": "WillbyH",
+      "stars": 3,
+      "version": "1.0",
+      "updatedAt": "2020-10-03T05:50:10Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Harry-Hopkinson/close-all-windows-openrct2",
+      "name": "close-all-windows-openrct2",
+      "description": "Close All Windows Plugin for OpenRCT2",
+      "author": "Harry-Hopkinson",
+      "stars": 2,
+      "version": "1.0.3",
+      "updatedAt": "2024-08-19T15:58:30Z",
+      "license": "MIT"
+    },
+    {
+      "id": "jpknen/openrct2-mechanic-manager-plus",
+      "name": "openrct2-mechanic-manager-plus",
+      "description": "An OpenRCT2 plugin for managering mechanics, also brings a new job order for fixing the vandalism.",
+      "author": "jpknen",
+      "stars": 2,
+      "version": "v0.0.3",
+      "updatedAt": "2024-08-05T17:09:25Z",
+      "license": "MIT"
+    },
+    {
+      "id": "jpknen/openrct2-multi-teleport",
+      "name": "openrct2-multi-teleport",
+      "description": "Simple OpenRCT2 plugin to make multiple teleports for guests.",
+      "author": "jpknen",
+      "stars": 2,
+      "version": "v1.1",
+      "updatedAt": "2024-08-09T18:36:36Z",
+      "license": "MIT"
+    },
+    {
+      "id": "ltsSmitty/OpenRCT-Ride-Painter",
+      "name": "OpenRCT-Ride-Painter",
+      "description": "",
+      "author": "ltsSmitty",
+      "stars": 2,
+      "version": "v1.2.0",
+      "updatedAt": "2022-08-05T19:02:09Z",
+      "license": "MIT"
+    },
+    {
+      "id": "ltsSmitty/Wet-Paint-Plugin",
+      "name": "Wet-Paint-Plugin",
+      "description": "An OpenRCT2 plugin to paint tracks whenever a vehicle rolls over them",
+      "author": "ltsSmitty",
+      "stars": 2,
+      "version": "0.1.1",
+      "updatedAt": "2023-02-13T21:17:07Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rinode/openrct2-plugin-peepsim",
+      "name": "openrct2-plugin-peepsim",
+      "description": "Guest simulator plugin for OpenRCT2",
+      "author": "rinode",
+      "stars": 2,
+      "version": "v0.3.1",
+      "updatedAt": "2026-04-05T11:30:56Z",
+      "license": "MIT"
+    },
+    {
+      "id": "RYJASM/favorite-scenery-openrct2",
+      "name": "favorite-scenery-openrct2",
+      "description": "An OpenRCT2 plug-in to create custom collections of your favorite scenery for quick access",
+      "author": "RYJASM",
+      "stars": 2,
+      "version": "v1.2.4",
+      "updatedAt": "2026-04-06T17:01:26Z"
+    },
+    {
+      "id": "RYJASM/scenery-manager-multiplayer-edition",
+      "name": "scenery-manager-multiplayer-edition",
+      "description": "",
+      "author": "RYJASM",
+      "stars": 2,
+      "version": "v1.7.2",
+      "updatedAt": "2026-04-01T16:14:31Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "Sadret/openrct2-rctris",
+      "name": "openrct2-rctris",
+      "description": "An OpenRCT2 plug-in inspired by the gameplay of Tetris (c).",
+      "author": "Sadret",
+      "stars": 2,
+      "version": "v1.0.1",
+      "updatedAt": "2024-01-05T21:06:32Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "spacek531/map-mover-by-spacek",
+      "name": "map-mover-by-spacek",
+      "description": "Move the entire map. Rolls over the edges.",
+      "author": "spacek531",
+      "stars": 2,
+      "version": "v0.1",
+      "updatedAt": "2021-12-10T08:15:17Z"
+    },
+    {
+      "id": "StixsmasterHD4k/advanced-staff-ai-manager",
+      "name": "advanced-staff-ai-manager",
+      "description": "The Staff AI Manager is a powerful OpenRCT2 plugin that provides intelligent, automated management of all park staff types. It analyzes your park in real-time, automatically assigns patrol zones, dispatches staff to problem areas, and can even auto-hire staff based on park needs.",
+      "author": "StixsmasterHD4k",
+      "stars": 2,
+      "version": "v3",
+      "updatedAt": "2025-12-03T03:35:49Z",
+      "license": "MIT"
+    },
+    {
+      "id": "StixsmasterHD4k/guest-personality-expander",
+      "name": "guest-personality-expander",
+      "description": "The Guest Personality & Behavior Expander is a comprehensive OpenRCT2 plugin that dramatically enhances the depth and realism of guest AI by introducing a multi-dimensional personality system. Each guest in your park becomes a unique individual with their own traits, moods, preferences, and behaviors that dynamically influence their park experience",
+      "author": "StixsmasterHD4k",
+      "stars": 2,
+      "version": "v1.0.1",
+      "updatedAt": "2025-12-03T02:44:33Z",
+      "license": "MIT"
+    },
+    {
+      "id": "thiebert/OpenRCT2-floodfill",
+      "name": "OpenRCT2-floodfill",
+      "description": "Floodfill plugin for filling in an object across open areas in OpenRCT2",
+      "author": "thiebert",
+      "stars": 2,
+      "version": "1.0.0",
+      "updatedAt": "2020-10-03T07:21:50Z"
+    },
+    {
+      "id": "tygrysek90/OpenRCT2-Measuring-Tape",
+      "name": "OpenRCT2-Measuring-Tape",
+      "description": "OpenRCT2 plugin for measuring distance and area on map",
+      "author": "tygrysek90",
+      "stars": 2,
+      "version": "v0.3",
+      "updatedAt": "2025-10-09T17:20:31Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "WillbyH/CorruptionManager",
+      "name": "CorruptionManager",
+      "description": "Drag area to change the visibility of elements.",
+      "author": "WillbyH",
+      "stars": 2,
+      "version": "1.1",
+      "updatedAt": "2020-10-03T06:01:08Z",
+      "license": "MIT"
+    },
+    {
+      "id": "WillbyH/StuffCounter",
+      "name": "StuffCounter",
+      "description": "Get a list of everything in your park with the amount.",
+      "author": "WillbyH",
+      "stars": 2,
+      "version": "1.1",
+      "updatedAt": "2020-10-03T05:54:16Z",
+      "license": "MIT"
+    },
+    {
+      "id": "bdekok/openrct2-real-rollercoaster-names",
+      "name": "openrct2-real-rollercoaster-names",
+      "description": "",
+      "author": "bdekok",
+      "stars": 1,
+      "version": "v1.0.0",
+      "updatedAt": "2024-03-30T19:08:26Z",
+      "license": "MIT"
+    },
+    {
+      "id": "ellsclytn/openrct2-refurbish-manager",
+      "name": "openrct2-refurbish-manager",
+      "description": "An OpenRCT2 plugin to simplify the refurbishment process",
+      "author": "ellsclytn",
+      "stars": 1,
+      "version": "1.0.0",
+      "updatedAt": "2026-05-27T09:51:48Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Harry-Hopkinson/openrct2-peep-remover",
+      "name": "openrct2-peep-remover",
+      "description": "A Plugin for OpenRCT2 that allows you to mass remove Peeps by clicking on them.",
+      "author": "Harry-Hopkinson",
+      "stars": 1,
+      "version": "1.0.5",
+      "updatedAt": "2024-09-01T16:30:01Z",
+      "license": "MIT"
+    },
+    {
+      "id": "jbodner09/openrct2-waittime",
+      "name": "openrct2-waittime",
+      "description": "Sets the minimum and maximum wait times to a specific value for all newly-created rides",
+      "author": "jbodner09",
+      "stars": 1,
+      "version": "0.2",
+      "updatedAt": "2023-08-19T00:21:21Z",
+      "license": "MIT"
+    },
+    {
+      "id": "kcghost/openrct2-window-preferences",
+      "name": "openrct2-window-preferences",
+      "description": "Permanently organize windows in OpenRCT2",
+      "author": "kcghost",
+      "stars": 1,
+      "version": "1.2",
+      "updatedAt": "2026-09-07T01:31:23Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KiameV/openrct2.mod.queuetv",
+      "name": "openrct2.mod.queuetv",
+      "description": "Mod for OpenRCT2 that places queue tvs on every queue empty queue line tile.",
+      "author": "KiameV",
+      "stars": 1,
+      "version": "1.1.0",
+      "updatedAt": "2024-06-01T16:55:57Z",
+      "license": "MIT"
+    },
+    {
+      "id": "KingCatto/openrct2-StaffManager",
+      "name": "openrct2-StaffManager",
+      "description": "Staff Manager for openrct2",
+      "author": "KingCatto",
+      "stars": 1,
+      "version": "v0.0.4",
+      "updatedAt": "2023-03-03T17:24:48Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/609153269/c75fc900-e51c-464e-8e6e-80c78c7d1ca9"
+    },
+    {
+      "id": "Logg-y/openrct2-object-selection-randomiser",
+      "name": "openrct2-object-selection-randomiser",
+      "description": "A configurable OpenRCT2 plugin that changes the available and researchable objects in a scenario.",
+      "author": "Logg-y",
+      "stars": 1,
+      "version": "v0.0.2",
+      "updatedAt": "2024-07-11T17:27:30Z",
+      "license": "MIT"
+    },
+    {
+      "id": "ltsSmitty/consistent-guest-stats",
+      "name": "consistent-guest-stats",
+      "description": "A plugin for setting guest stat values. Choose values and have them reset to those each day.",
+      "author": "ltsSmitty",
+      "stars": 1,
+      "version": "v1.1.3",
+      "updatedAt": "2026-04-04T15:09:53Z",
+      "license": "MIT"
+    },
+    {
+      "id": "ltsSmitty/guest-teleporter",
+      "name": "guest-teleporter",
+      "description": "",
+      "author": "ltsSmitty",
+      "stars": 1,
+      "version": "V1.1.4alt",
+      "updatedAt": "2024-05-07T12:47:13Z",
+      "license": "MIT"
+    },
+    {
+      "id": "Manticore-007/OpenRCT2-Snake",
+      "name": "OpenRCT2-Snake",
+      "description": "This is a plugin version for OpenRCT2 of the classic arcade game Snake.",
+      "author": "Manticore-007",
+      "stars": 1,
+      "version": "2026.06.11",
+      "updatedAt": "2026-06-07T11:53:26Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/652140868/ea7ad8e4-4811-495a-bfd9-099ba2a44082"
+    },
+    {
+      "id": "PlateGlassArmour/OpenRCT2-research-randomizer",
+      "name": "OpenRCT2-research-randomizer",
+      "description": "A small plugin for OpenRCT2 that randomizes research to give the player access to a different assortment of rides and stalls in old scenarios.",
+      "author": "PlateGlassArmour",
+      "stars": 1,
+      "version": "3.1",
+      "updatedAt": "2025-11-19T17:06:21Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rickdepeer/openrct2-lift-speed-maximizer",
+      "name": "openrct2-lift-speed-maximizer",
+      "description": "OpenRCT2 Plugin that maximizes lift hill speed automatically.",
+      "author": "rickdepeer",
+      "stars": 1,
+      "version": "1.0.0",
+      "updatedAt": "2024-03-02T17:13:30Z",
+      "license": "MIT"
+    },
+    {
+      "id": "RickHuizing/openrct2-shop-price-manager",
+      "name": "openrct2-shop-price-manager",
+      "description": "",
+      "author": "RickHuizing",
+      "stars": 1,
+      "version": "v1.2",
+      "updatedAt": "2024-01-22T22:59:44Z",
+      "license": "MIT"
+    },
+    {
+      "id": "RickHuizing/openrct2-staff-repairs-vandalism",
+      "name": "openrct2-staff-repairs-vandalism",
+      "description": "",
+      "author": "RickHuizing",
+      "stars": 1,
+      "version": "v1.0",
+      "updatedAt": "2024-01-22T20:06:36Z",
+      "license": "MIT"
+    },
+    {
+      "id": "RYJASM/proximity-boost-counter",
+      "name": "proximity-boost-counter",
+      "description": "",
+      "author": "RYJASM",
+      "stars": 1,
+      "version": "v1.2.3",
+      "updatedAt": "2026-04-03T00:31:52Z"
+    },
+    {
+      "id": "Sadret/openrct2-scenery-group-loader",
+      "name": "openrct2-scenery-group-loader",
+      "description": "",
+      "author": "Sadret",
+      "stars": 1,
+      "version": "v1.0.0",
+      "updatedAt": "2026-01-05T08:50:45Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "Sun-gd00/OpenRCT2-SecretCharacterSpawner",
+      "name": "OpenRCT2-SecretCharacterSpawner",
+      "description": "OpenRCT2 Plugin, Adds a 0.5% of encountering Easteregg Characters without the need to manually rename them.",
+      "author": "Sun-gd00",
+      "stars": 1,
+      "version": "ORCT2",
+      "updatedAt": "2026-06-21T14:09:09Z",
+      "license": "MIT"
+    },
+    {
+      "id": "thertyRct/litterEditor",
+      "name": "litterEditor",
+      "description": "Plugin for OpenRCT2 to modify litter properties.",
+      "author": "thertyRct",
+      "stars": 1,
+      "version": "v2.0",
+      "updatedAt": "2026-04-07T00:17:02Z",
+      "license": "MIT"
+    },
+    {
+      "id": "thiebert/openrct2-repainter",
+      "name": "openrct2-repainter",
+      "description": "Plugin for OpenRCT2 for repainting all objects in an area",
+      "author": "thiebert",
+      "stars": 1,
+      "version": "1.0.0",
+      "updatedAt": "2020-10-03T07:18:22Z",
+      "license": "MIT"
+    },
+    {
+      "id": "TwinCrows/RCT2_GhoulPark",
+      "name": "RCT2_GhoulPark",
+      "description": "A modded scenario for Open RCT2, featuring hungrier guests.",
+      "author": "TwinCrows",
+      "stars": 1,
+      "version": "scenario",
+      "updatedAt": "2022-05-22T01:55:36Z"
+    },
+    {
+      "id": "ZoeyBonaventura/OpenRCT2-Tileman",
+      "name": "OpenRCT2-Tileman",
+      "description": "Tileman plugin for OpenRCT2",
+      "author": "ZoeyBonaventura",
+      "stars": 1,
+      "version": "1.2",
+      "updatedAt": "2024-09-09T04:20:51Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "autosysops/OpenRCT2TileCounter",
+      "name": "OpenRCT2TileCounter",
+      "description": "OpenRCT2 Plugin to count tiles with specific landtypes",
+      "author": "autosysops",
+      "stars": 0,
+      "version": "1.0",
+      "updatedAt": "2024-05-29T12:28:25Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/807603325/22e53d84-b5c1-4ff6-94aa-316fcb75b64c"
+    },
+    {
+      "id": "c-hickling/rct2-free-play",
+      "name": "rct2-free-play",
+      "description": "",
+      "author": "c-hickling",
+      "stars": 0,
+      "version": "V1.0.0",
+      "updatedAt": "2026-04-13T17:59:41Z"
+    },
+    {
+      "id": "Cendwar/openrct2-fixVandalism",
+      "name": "openrct2-fixVandalism",
+      "description": "Fixes Vandalism in OpenRCT2",
+      "author": "Cendwar",
+      "stars": 0,
+      "version": "latest",
+      "updatedAt": "2023-11-25T08:00:52Z",
+      "license": "MIT"
+    },
+    {
+      "id": "csm10495/openrct2-csm10495-plugin",
+      "name": "openrct2-csm10495-plugin",
+      "description": "",
+      "author": "csm10495",
+      "stars": 0,
+      "version": "latest",
+      "updatedAt": "2022-06-23T01:38:33Z",
+      "license": "MIT"
+    },
+    {
+      "id": "deurklink/OpenRCT2-Double-Surface-Remover",
+      "name": "OpenRCT2-Double-Surface-Remover",
+      "description": "OpenRCT2 plugin that removes duplicate surface elements from map tiles.",
+      "author": "deurklink",
+      "stars": 0,
+      "version": "v0.2.0",
+      "updatedAt": "2026-05-15T09:33:00Z",
+      "license": "MIT"
+    },
+    {
+      "id": "deurklink/OpenRCT2-Multiplayer-Plot-Generator",
+      "name": "OpenRCT2-Multiplayer-Plot-Generator",
+      "description": "An OpenRCT2 plugin that generates a map with plots for people to build on in a multiplayer server.",
+      "author": "deurklink",
+      "stars": 0,
+      "version": "v0.2.1",
+      "updatedAt": "2026-09-03T18:03:37Z",
+      "license": "MIT"
+    },
+    {
+      "id": "deurklink/OpenRCT2-Sandbox-Mode-Disabler",
+      "name": "OpenRCT2-Sandbox-Mode-Disabler",
+      "description": "OpenRCT2 plugin that disables sandbox mode whenever loaded; useful for multiplayer servers where admins allow cheats but want to protect entrances and owned park land.",
+      "author": "deurklink",
+      "stars": 0,
+      "version": "v0.1.0",
+      "updatedAt": "2026-05-17T16:42:08Z",
+      "license": "MIT"
+    },
+    {
+      "id": "fidwell/OpenRct2-Rampifier",
+      "name": "OpenRct2-Rampifier",
+      "description": "A plugin for OpenRCT2 to automatically create the \"sloped path illusion\" hack for NCSO paths.",
+      "author": "fidwell",
+      "stars": 0,
+      "version": "v2.0",
+      "updatedAt": "2025-03-11T01:16:40Z"
+    },
+    {
+      "id": "floatey/openrct2-eras",
+      "name": "openrct2-eras",
+      "description": "OpenRCT2 Plugin",
+      "author": "floatey",
+      "stars": 0,
+      "version": "v0.5.3",
+      "updatedAt": "2026-02-12T05:35:04Z"
+    },
+    {
+      "id": "fnielson1/openrct2-benchwarmer",
+      "name": "openrct2-benchwarmer",
+      "description": "An OpenRCT2 plugin that adds alternating benches and bins, at configurable distances, to your park's footpaths with a single click.",
+      "author": "fnielson1",
+      "stars": 0,
+      "version": "1.0.0",
+      "updatedAt": "2025-10-08T23:26:24Z",
+      "license": "MIT"
+    },
+    {
+      "id": "GylesGyles/openrct2-evil-entertainers",
+      "name": "openrct2-evil-entertainers",
+      "description": "Create entertainers who cause explosions",
+      "author": "GylesGyles",
+      "stars": 0,
+      "version": "v1.0.1",
+      "updatedAt": "2025-08-13T15:34:19Z",
+      "license": "MIT"
+    },
+    {
+      "id": "GylesGyles/openrct2-floaty-balloons",
+      "name": "openrct2-floaty-balloons",
+      "description": "Balloons float guests away",
+      "author": "GylesGyles",
+      "stars": 0,
+      "version": "v1.0.0",
+      "updatedAt": "2025-08-28T09:37:52Z",
+      "license": "MIT"
+    },
+    {
+      "id": "GylesGyles/openrct2-happy-guest-remover",
+      "name": "openrct2-happy-guest-remover",
+      "description": "Remove guests who are too happy or not happy enough",
+      "author": "GylesGyles",
+      "stars": 0,
+      "version": "v1.0.0",
+      "updatedAt": "2025-08-21T06:48:13Z",
+      "license": "MIT"
+    },
+    {
+      "id": "JohannesHolzhaeuer/openrct2-staff-manager",
+      "name": "openrct2-staff-manager",
+      "description": "plugin for openrct2 for managing staff",
+      "author": "JohannesHolzhaeuer",
+      "stars": 0,
+      "version": "v0.14.2",
+      "updatedAt": "2026-09-18T12:36:50Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/1336858047/4cec5f67-0bbf-4613-8f3e-a56be2f93a71"
+    },
+    {
+      "id": "Logg-y/openrct2-configurable-objective-setter",
+      "name": "openrct2-configurable-objective-setter",
+      "description": "A configurable OpenRCT2 plugin that can hugely change the difficulty of your favourite scenarios.",
+      "author": "Logg-y",
+      "stars": 0,
+      "version": "v0.0.3",
+      "updatedAt": "2024-06-13T21:15:34Z",
+      "license": "MIT"
+    },
+    {
+      "id": "MaukWM/openrct2-bridge",
+      "name": "openrct2-bridge",
+      "description": "OpenRCT2 plugin exposing game actions, state queries, and tick-stepping over TCP for programmatic control.",
+      "author": "MaukWM",
+      "stars": 0,
+      "version": "v1.8.0",
+      "updatedAt": "2026-05-10T21:58:22Z",
+      "license": "MIT"
+    },
+    {
+      "id": "nodigit/OpenRCT2-Litter-Bugs",
+      "name": "OpenRCT2-Litter-Bugs",
+      "description": "Guests will cause extreme litter to your park in OpenRCT2",
+      "author": "nodigit",
+      "stars": 0,
+      "version": "OpenRCT2-Litte-Bugs",
+      "updatedAt": "2024-05-26T01:47:48Z"
+    },
+    {
+      "id": "nodigit/OpenRCT2-Pooping-Peeps",
+      "name": "OpenRCT2-Pooping-Peeps",
+      "description": "Peeps will defecate all over your park in Open RCT2",
+      "author": "nodigit",
+      "stars": 0,
+      "version": "pooping-peeps-v1.2",
+      "updatedAt": "2024-05-26T02:10:09Z"
+    },
+    {
+      "id": "RickHuizing/openrct2-forest-nothing",
+      "name": "openrct2-forest-nothing",
+      "description": "",
+      "author": "RickHuizing",
+      "stars": 0,
+      "version": "v1.0",
+      "updatedAt": "2024-01-22T05:23:10Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rinode/openrct2-plugin-boilerplate",
+      "name": "openrct2-plugin-boilerplate",
+      "description": "An ES6 boilerplate to create OpenRCT2 plugins with",
+      "author": "rinode",
+      "stars": 0,
+      "version": "v0.0.3",
+      "updatedAt": "2026-03-21T13:48:24Z",
+      "license": "MIT"
+    },
+    {
+      "id": "rinode/openrct2-plugin-pathfinding",
+      "name": "openrct2-plugin-pathfinding",
+      "description": "Pathfinding debugging plugin, testing various algorithms.",
+      "author": "rinode",
+      "stars": 0,
+      "version": "v0.2.1",
+      "updatedAt": "2026-06-23T18:46:26Z"
+    },
+    {
+      "id": "rinode/openrct2-plugin-vim",
+      "name": "openrct2-plugin-vim",
+      "description": "Vim commands for OpenRCT2",
+      "author": "rinode",
+      "stars": 0,
+      "version": "v0.0.1",
+      "updatedAt": "2026-03-21T12:58:31Z",
+      "license": "MIT"
+    },
+    {
+      "id": "spacek531/ParkPauser",
+      "name": "ParkPauser",
+      "description": "Sets the paused state when loading and saving OpenRCT2 parks",
+      "author": "spacek531",
+      "stars": 0,
+      "version": "0.1.3",
+      "updatedAt": "2024-08-05T22:51:39Z",
+      "license": "Other"
+    },
+    {
+      "id": "sturosenberg/openrc2-no-loitering",
+      "name": "openrc2-no-loitering",
+      "description": "",
+      "author": "sturosenberg",
+      "stars": 0,
+      "version": "1.0.0",
+      "updatedAt": "2025-02-22T05:12:17Z",
+      "license": "MIT"
+    },
+    {
+      "id": "t-milan/OpenRCT2-Ride-Stat-Requirements",
+      "name": "OpenRCT2-Ride-Stat-Requirements",
+      "description": "An OpenRCT2 plugin that shows live ride rating requirements while building and testing rides.",
+      "author": "t-milan",
+      "stars": 0,
+      "version": "1.2.0",
+      "updatedAt": "2026-08-20T03:18:57Z",
+      "license": "MIT",
+      "image": "https://repository-images.githubusercontent.com/1336822860/6d7c7967-72d2-4041-b003-4aba68dff60b"
+    },
+    {
+      "id": "tassaron/openrct2-food-prefs-plugin",
+      "name": "openrct2-food-prefs-plugin",
+      "description": "OpenRCT2 guests prefer certain foods 🍔🍕 A reason to build every shop!",
+      "author": "tassaron",
+      "stars": 0,
+      "version": "v1.0-alpha",
+      "updatedAt": "2025-12-24T15:52:18Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "tygrysek90/OpenRCT2-Just-Textbox",
+      "name": "OpenRCT2-Just-Textbox",
+      "description": "",
+      "author": "tygrysek90",
+      "stars": 0,
+      "version": "v0.1",
+      "updatedAt": "2025-10-25T11:10:40Z",
+      "license": "GNU GPLv3"
+    },
+    {
+      "id": "tygrysek90/OpenRCT2-PathBuilder",
+      "name": "OpenRCT2-PathBuilder",
+      "description": "OpenRCT2 plugin for natural path building",
+      "author": "tygrysek90",
+      "stars": 0,
+      "version": "v0.1",
+      "updatedAt": "2025-08-24T20:23:00Z",
+      "license": "GNU GPLv3"
+    }
+  ]
+}
