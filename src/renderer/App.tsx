@@ -10,6 +10,7 @@ import type {
   ProgressEvent
 } from '../shared/types'
 import { GameStage } from './components/GameStage'
+import { Splash } from './components/Splash'
 import { Home } from './components/Home'
 import { Sidebar } from './components/Sidebar'
 
@@ -198,6 +199,7 @@ export function App() {
   return (
     <div className={platform?.platform === 'darwin' ? 'shell mac' : 'shell'}>
       {platform?.platform === 'darwin' ? <div className="drag" /> : null}
+      <Splash ready={Boolean(platform && snapshot)} />
       {platform && snapshot ? (
         <Sidebar
           platform={platform}
@@ -221,7 +223,7 @@ export function App() {
             <span>{updateBanner}</span>
             {launcherUpdate.state === 'available' ? (
               <button type="button" className="small-button" onClick={() => void window.ogl.downloadLauncherUpdate()}>
-                Download update
+                {launcherUpdate.manual ? 'Open download page' : 'Download update'}
               </button>
             ) : null}
             {launcherUpdate.state === 'ready' ? (

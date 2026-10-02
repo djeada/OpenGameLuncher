@@ -1,5 +1,6 @@
 import type { Game, GameArt, InstallView, PlatformInfo, ProgressEvent } from '../../shared/types'
 import { GameIcon } from './GameIcon'
+import { Logo } from './Logo'
 
 type SidebarProps = {
   platform: PlatformInfo
@@ -37,11 +38,7 @@ export function Sidebar({
   return (
     <aside className="rail">
       <div className="brand">
-        <span className="logo" aria-hidden="true">
-          <svg viewBox="0 0 16 16">
-            <path d="M5 3.2v9.6l8-4.8-8-4.8z" fill="currentColor" />
-          </svg>
-        </span>
+        <Logo />
         <strong>OGL</strong>
       </div>
 

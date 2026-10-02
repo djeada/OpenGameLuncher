@@ -20,6 +20,7 @@ module.exports = {
     buildResources: 'build'
   },
   files: ['out/**/*', 'package.json'],
+  extraMetadata: { macSigned: signed },
   extraResources: [
     { from: 'catalog', to: 'catalog' },
     { from: 'ogl.config.json', to: 'ogl.config.json' }

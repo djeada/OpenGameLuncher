@@ -89,16 +89,34 @@ img { user-select: none; }
 .mac .brand { padding-left: 84px; }
 
 .logo {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  --logo-size: 22px;
+  position: relative;
+  flex: none;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  border-radius: calc(var(--logo-size) * 0.28);
   display: grid;
   place-items: center;
-  background: var(--blue);
-  color: white;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6aa0ff, #2f63f0, #6d4bff, #22b8d6, #2f63f0, #6aa0ff);
+  background-size: 400% 400%;
+  box-shadow:
+    inset 0 calc(var(--logo-size) * 0.04) 0 rgba(255, 255, 255, 0.45),
+    inset 0 calc(var(--logo-size) * -0.08) calc(var(--logo-size) * 0.12) rgba(8, 20, 80, 0.45),
+    0 calc(var(--logo-size) * 0.1) calc(var(--logo-size) * 0.3) rgba(47, 99, 240, 0.4);
+  animation: logo-flow 9s ease-in-out infinite;
 }
 
-.logo svg { width: 11px; height: 11px; }
+/* Gloss across the top half */
+.logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.04) 48%, transparent 52%);
+  pointer-events: none;
+}
+
+.logo svg { position: relative; width: 78%; height: 78%; overflow: visible; }
 
 .rail-nav { padding: 4px 8px 0; }
 
@@ -1079,6 +1097,56 @@ button.requires:hover { background: rgba(251, 191, 36, 0.22); }
   font-size: 12px;
 }
 
+/* Splash */
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--bg);
+  -webkit-app-region: drag;
+  transition: opacity 0.45s ease;
+}
+
+.splash.leaving { opacity: 0; pointer-events: none; }
+
+.splash-glow { position: absolute; inset: 0; filter: blur(90px); opacity: 0.55; }
+
+.splash-glow span {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  animation: splash-float 9s ease-in-out infinite alternate;
+}
+
+.splash-glow span:nth-child(1) { left: -8%; top: -30%; background: #2f6bff; }
+.splash-glow span:nth-child(2) { right: -10%; top: 10%; background: #7c3aed; animation-duration: 11s; animation-delay: -4s; }
+.splash-glow span:nth-child(3) { left: 28%; bottom: -45%; background: #0ea5a4; animation-duration: 13s; animation-delay: -7s; }
+
+.splash-center {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  animation: splash-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.splash-logo { display: grid; animation: splash-pulse 2.4s ease-in-out infinite; }
+
+.splash-center strong { margin-top: 18px; font-size: 24px; letter-spacing: -0.03em; }
+.splash-center p { margin: 2px 0 20px; color: rgba(238, 241, 246, 0.6); }
+
+.splash-bar {
+  width: 132px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 35%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.1) 65%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
 .waiting {
   height: 100%;
   display: grid;
@@ -1110,4 +1178,22 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 
 @keyframes fade {
   from { opacity: 0; }
+}
+
+@keyframes splash-float {
+  from { transform: translate(-6%, -4%) scale(1); }
+  to { transform: translate(14%, 12%) scale(1.25); }
+}
+
+@keyframes splash-pulse {
+  50% { transform: scale(1.05); }
+}
+
+@keyframes splash-rise {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes logo-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
