@@ -68,7 +68,14 @@ export const mockApi: OglApi = {
     downloadListeners.add(listener)
     return () => downloadListeners.delete(listener)
   },
-  getLauncherUpdate: async () => ({ state: 'dev' }),
+  getLauncherUpdate: async () =>
+    new URLSearchParams(location.search).has('update-error')
+      ? {
+          state: 'error',
+          message: 'This copy of OGL cannot install updates by itself. Download the new version instead.',
+          version: '0.2.0'
+        }
+      : { state: 'dev' },
   checkLauncherUpdate: async () => {
     await new Promise((resolve) => setTimeout(resolve, 600))
     return { state: 'available', version: '0.2.0' }

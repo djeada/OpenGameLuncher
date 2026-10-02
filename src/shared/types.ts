@@ -144,7 +144,8 @@ export type LauncherUpdate =
   | { state: 'available'; version: string; manual?: boolean }
   | { state: 'downloading'; version: string; percent: number }
   | { state: 'ready'; version: string }
-  | { state: 'error'; message: string }
+  // version: the update is known, so the player can still download it by hand.
+  | { state: 'error'; message: string; version?: string }
 
 export type OglConfig = {
   repository: {
