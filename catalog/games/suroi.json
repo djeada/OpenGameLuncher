@@ -1,0 +1,16 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "suroi",
+  "name": "Suroi",
+  "mark": "SU",
+  "tagline": "Open-source 2D battle royale in the browser, in the spirit of the late surviv.io. Loot, snipe, and outlast the shrinking circle.",
+  "website": "https://github.com/HasangerGames/suroi",
+  "accent": "#ff7a00",
+  "cover": "https://raw.githubusercontent.com/HasangerGames/suroi/master/client/public/img/backgrounds/github_background.png",
+  "icon": "https://raw.githubusercontent.com/HasangerGames/suroi/master/client/public/img/logos/suroi_favicon_512x512.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/HasangerGames/suroi/master/client/public/img/backgrounds/menu/normal.png"
+  ],
+  "tags": ["Shooter", "Battle royale"],
+  "web": { "url": "https://suroi.io/" }
+}

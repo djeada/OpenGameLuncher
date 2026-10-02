@@ -1,0 +1,17 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "openfront",
+  "name": "OpenFront",
+  "mark": "OF",
+  "tagline": "Browser-based territorial conquest. Expand, trade, ally, and go nuclear against dozens of real players on real-world maps.",
+  "website": "https://github.com/openfrontio/OpenFrontIO",
+  "accent": "#2b6e7a",
+  "cover": "https://raw.githubusercontent.com/openfrontio/OpenFrontIO/main/resources/images/GameplayScreenshot.png",
+  "icon": "https://raw.githubusercontent.com/openfrontio/OpenFrontIO/main/resources/icons/icon512_rounded.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/openfrontio/OpenFrontIO/main/resources/images/GameplayScreenshot.png",
+    "https://raw.githubusercontent.com/openfrontio/OpenFrontIO/main/resources/images/TerrainMapFrontPage.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "web": { "url": "https://openfront.io/" }
+}
