@@ -1,6 +1,6 @@
 # Releasing OGL
 
-OGL updates itself from the GitHub releases of the repository named in `ogl.config.json` (`fabianfreund/OpenSourceGameLauncher`; the file still says `OpenGameLuncher` until the next release, which GitHub redirects). Releases are built by [`.github/workflows/release.yml`](../.github/workflows/release.yml). The version comes from the branch name, so `package.json` is never bumped by hand; CI stamps it at build time.
+OGL updates itself from the GitHub releases of the repository named in `ogl.config.json` (`fabianfreund/OpenSourceGameLauncher`). Releases are built by [`.github/workflows/release.yml`](../.github/workflows/release.yml). The version comes from the branch name, so `package.json` is never bumped by hand; CI stamps it at build time.
 
 ## The short version
 

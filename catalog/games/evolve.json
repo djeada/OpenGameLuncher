@@ -1,0 +1,11 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "evolve",
+  "name": "Evolve",
+  "mark": "EV",
+  "tagline": "Evolve a civilization from primordial ooze into a space-faring empire. Part clicker, part idler, with plenty to manage.",
+  "website": "https://github.com/pmotschmann/Evolve",
+  "accent": "#3f8f5f",
+  "tags": ["Idle", "Strategy", "Management"],
+  "web": { "url": "https://pmotschmann.github.io/Evolve/" }
+}

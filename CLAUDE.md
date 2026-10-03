@@ -2,7 +2,7 @@
 
 Open Game Launcher: an Electron app (electron-vite, React, TypeScript) that installs, updates and launches open-source games from the catalog in `catalog/games`.
 
-GitHub repository: `fabianfreund/OpenSourceGameLauncher`, renamed from `OpenGameLuncher` on 3 October 2026. The packaged app reads its catalog and its own updates from the repository named in `ogl.config.json`. That file and every copy up to 0.1.7 still use the old name, which GitHub redirects; never create a repository called `OpenGameLuncher`, and change `ogl.config.json` in the next release.
+GitHub repository: `fabianfreund/OpenSourceGameLauncher`, renamed from `OpenGameLuncher` on 3 October 2026. The packaged app reads its catalog and its own updates from the repository named in `ogl.config.json`. Copies up to 0.1.7 still ask for the old name, which GitHub redirects; never create a repository called `OpenGameLuncher`.
 
 ## Commands
 
