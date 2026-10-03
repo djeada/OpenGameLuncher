@@ -318,7 +318,10 @@ img { user-select: none; }
   margin-bottom: -56px;
   padding: 12px 24px 0;
   pointer-events: none;
+  transition: background 150ms;
 }
+
+.home-top-solid { background: var(--bg); pointer-events: auto; }
 
 .search {
   position: relative;
@@ -389,7 +392,8 @@ img { user-select: none; }
 
 .search-clear svg { width: 9px; height: 9px; }
 
-.home-filtering { padding-top: 44px; }
+/* Without the banner the search bar takes its own row above the results. */
+.home-filtering .home-top { margin-bottom: -12px; }
 
 .block-head {
   display: flex;
@@ -404,8 +408,11 @@ img { user-select: none; }
 .filters {
   display: flex;
   gap: 4px;
+  min-width: 0;
+  padding-right: 20px;
   overflow-x: auto;
   scrollbar-width: none;
+  mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent);
 }
 
 .filters::-webkit-scrollbar { display: none; }

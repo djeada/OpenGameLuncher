@@ -61,6 +61,7 @@ The maintainer wants a screenshot after every visible change.
 node scripts/preview-shot.mjs /tmp/shot.png                          # home screen
 node scripts/preview-shot.mjs /tmp/shot.png --wait 800               # loading screen
 node scripts/preview-shot.mjs /tmp/shot.png --query "?game=openrct2" # a game page
+node scripts/preview-shot.mjs /tmp/shot.png --scroll 330              # scrolled down past the banner
 node scripts/preview-shot.mjs /tmp/shot.png --click ".rail-foot button" --after 1500 --clip 0,440,200,240
 node scripts/preview-shot.mjs /tmp/shot.png --query "?game=openloco" --click ".menu-button" --click ".menu [role=menuitem]:nth-child(2)"   # several clicks, in order
 ```

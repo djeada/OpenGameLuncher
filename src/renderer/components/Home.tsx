@@ -66,7 +66,10 @@ export function Home({ games, art, installs, downloads, actionError, onOpen, onL
   const [paused, setPaused] = useState(false)
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<string | null>(null)
+  const [heroVisible, setHeroVisible] = useState(true)
   const searchRef = useRef<HTMLInputElement>(null)
+  const heroRef = useRef<HTMLElement>(null)
+  const filtersRef = useRef<HTMLDivElement>(null)
   const installedIds = new Set(installs.map((item) => item.gameId))
   const installed = games.filter((game) => installedIds.has(game.id))
   const filtering = query.trim() !== '' || filter !== null
@@ -117,6 +120,33 @@ export function Home({ games, art, installs, downloads, actionError, onOpen, onL
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  // The search floats over the banner. Once the banner is gone it gets a solid bar, so it does not cover the page.
+  useEffect(() => {
+    const banner = heroRef.current
+    if (!banner) return
+    const observer = new IntersectionObserver(([entry]) => setHeroVisible(entry?.isIntersecting ?? true), {
+      root: banner.closest('.main'),
+      rootMargin: '-56px 0px 0px 0px'
+    })
+    observer.observe(banner)
+    return () => observer.disconnect()
+  }, [filtering, games.length])
+
+  // A mouse wheel scrolls the filter row sideways, until it reaches the end.
+  useEffect(() => {
+    const row = filtersRef.current
+    if (!row) return
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return
+      const atEnd = event.deltaY > 0 ? row.scrollLeft + row.clientWidth >= row.scrollWidth - 1 : row.scrollLeft <= 0
+      if (atEnd) return
+      event.preventDefault()
+      row.scrollLeft += event.deltaY
+    }
+    row.addEventListener('wheel', onWheel, { passive: false })
+    return () => row.removeEventListener('wheel', onWheel)
+  }, [games.length])
+
   const hero = spotlight[featured % spotlight.length] ?? games[0]
   if (!hero) return null
   const heroInstall = latestInstall(installs, hero.id)
@@ -130,7 +160,7 @@ export function Home({ games, art, installs, downloads, actionError, onOpen, onL
 
   return (
     <section className={filtering ? 'home home-filtering' : 'home'}>
-      <div className="home-top">
+      <div className={filtering || !heroVisible ? 'home-top home-top-solid' : 'home-top'}>
         <label className="search">
           <svg viewBox="0 0 16 16" aria-hidden="true">
             <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -166,6 +196,7 @@ export function Home({ games, art, installs, downloads, actionError, onOpen, onL
 
       {filtering ? null : (
         <header
+          ref={heroRef}
           className="feature"
           style={{ '--accent': hero.accent } as CSSProperties}
           onMouseEnter={() => setPaused(true)}
@@ -249,7 +280,7 @@ export function Home({ games, art, installs, downloads, actionError, onOpen, onL
           <h3 className="block-title">
             {filtering ? `${results.length} ${results.length === 1 ? 'game' : 'games'}` : 'All games'}
           </h3>
-          <div className="filters" role="group" aria-label="Filter">
+          <div ref={filtersRef} className="filters" role="group" aria-label="Filter">
             {filters.map((item) => (
               <button
                 key={item}

@@ -182,6 +182,8 @@ export const mockApi: OglApi = {
     return { state: 'available', version: '0.2.0' }
   },
   downloadLauncherUpdate: async () => {
+    for (const listener of updateListeners) listener({ state: 'downloading', version: '0.2.0', percent: 0 })
+    await new Promise((resolve) => setTimeout(resolve, 2000))
     for (let step = 1; step <= 10; step += 1) {
       await new Promise((resolve) => setTimeout(resolve, 250))
       for (const listener of updateListeners) listener({ state: 'downloading', version: '0.2.0', percent: step * 10 })

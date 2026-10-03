@@ -121,15 +121,23 @@ export function Sidebar({
                 )}
               </div>
               {launcherUpdate.state === 'downloading' ? (
-                <div className="bar">
-                  <span style={{ width: `${Math.round(launcherUpdate.percent)}%` }} />
-                </div>
+                launcherUpdate.percent > 0 ? (
+                  <div className="bar">
+                    <span style={{ width: `${Math.round(launcherUpdate.percent)}%` }} />
+                  </div>
+                ) : (
+                  <div className="bar bar-waiting">
+                    <span />
+                  </div>
+                )
               ) : null}
               <small>
                 {launcherUpdate.state === 'available'
                   ? `${launcherUpdate.version} is available`
                   : launcherUpdate.state === 'downloading'
-                    ? `${launcherUpdate.version} · ${Math.round(launcherUpdate.percent)}%`
+                    ? launcherUpdate.percent > 0
+                      ? `${launcherUpdate.version} · ${Math.round(launcherUpdate.percent)}%`
+                      : `${launcherUpdate.version} · starting download`
                     : launcherUpdate.state === 'ready'
                       ? `${launcherUpdate.version} is ready to install`
                       : launcherUpdate.message}
