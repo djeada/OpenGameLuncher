@@ -13,10 +13,10 @@ New to OGL? The [project page](https://fabianbuilds.com/opengamelauncher) shows 
 
 <!-- downloads:start -->
 <p align="center">
-  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8-arm64.dmg"><img src="docs/buttons/download-macos-arm64.svg" alt="Download OGL for macOS (Apple silicon)" height="52"></a>
-  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8.dmg"><img src="docs/buttons/download-macos-intel.svg" alt="Download OGL for macOS (Intel)" height="52"></a>
-  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-Setup-0.1.8.exe"><img src="docs/buttons/download-windows.svg" alt="Download OGL for Windows (Installer)" height="52"></a>
-  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8.AppImage"><img src="docs/buttons/download-linux.svg" alt="Download OGL for Linux (AppImage)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.9/OGL-0.1.9-arm64.dmg"><img src="docs/buttons/download-macos-arm64.svg" alt="Download OGL for macOS (Apple silicon)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.9/OGL-0.1.9.dmg"><img src="docs/buttons/download-macos-intel.svg" alt="Download OGL for macOS (Intel)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.9/OGL-Setup-0.1.9.exe"><img src="docs/buttons/download-windows.svg" alt="Download OGL for Windows (Installer)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.9/OGL-0.1.9.AppImage"><img src="docs/buttons/download-linux.svg" alt="Download OGL for Linux (AppImage)" height="52"></a>
 </p>
 <!-- downloads:end -->
 
