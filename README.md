@@ -93,6 +93,23 @@ src/renderer         the interface
 - [How we work on OGL](docs/workflow.md)
 - [AI usage policy](AI-POLICY.md): OGL is built with AI tools, and this is what that means for contributions
 
+## Code signing policy
+
+The Mac version is signed with the Developer ID of Digital Vibes GmbH and notarized by Apple.
+
+The Windows installer is not signed yet. OGL is applying for free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Every release is built from this repository by [GitHub Actions](.github/workflows/release.yml); no release file is built or changed by hand.
+
+- Committers and reviewers: [@fabianfreund](https://github.com/fabianfreund)
+- Approvers: [@fabianfreund](https://github.com/fabianfreund)
+
+Changes from anyone else arrive as pull requests and are reviewed before they are merged.
+
+### Privacy
+
+OGL has no account, no analytics and no tracking. It will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it. To do its job it downloads from the internet: the game catalog and its own updates from GitHub, and the games, their pictures and release notes from each project's own download location. Those servers see the request and the IP address it comes from, as with any download. Browser games open the game's own website, and getting original game files from Steam runs Valve's SteamCMD with the account you enter; both are subject to those services' own policies.
+
 ## Contact
 
 Questions, ideas, or a game that should be in the catalog? Reach me here:
