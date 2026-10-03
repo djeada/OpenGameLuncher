@@ -1,7 +1,7 @@
 {
   "repository": {
     "owner": "fabianfreund",
-    "name": "OpenSourceGameLauncher"
+    "name": "OpenGameLauncher"
   },
   "catalog": {
     "branch": "main",
