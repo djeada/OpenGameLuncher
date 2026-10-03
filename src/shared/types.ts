@@ -48,11 +48,19 @@ export type ItchSource = {
   page: string
 }
 
+// A download page that lists the project's files, one per table row, on a host OGL knows.
+// The version comes from the file name.
+export type FileListSource = {
+  type: 'file-list'
+  page: string
+  prerelease?: PrereleaseFilter
+}
+
 export type GameChannel = {
   id: string
   label: string
   description?: string
-  source: GithubSource | ItchSource
+  source: GithubSource | ItchSource | FileListSource
 }
 
 export type OriginalGame = {

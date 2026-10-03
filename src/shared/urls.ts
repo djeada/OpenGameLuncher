@@ -6,6 +6,8 @@ const ASSET_HOSTS = new Set([
   'github-releases.githubusercontent.com',
   'cdn.openttd.org',
   'bananas-cdn.openttd.org',
+  // 0 A.D.
+  'releases.wildfiregames.com',
   // Simutrans paksets
   'downloads.sourceforge.net',
   'simutrans-germany.com',

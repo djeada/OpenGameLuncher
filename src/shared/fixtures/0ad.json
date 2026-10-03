@@ -1,0 +1,21 @@
+{
+  "assets": [
+    "0ad-0.28.0-macos-aarch64.dmg",
+    "0ad-0.28.0-macos-aarch64.dmg.sha256sum",
+    "0ad-0.28.0-macos-x86_64.dmg",
+    "0ad-0.28.0-unix-build.tar.gz",
+    "0ad-0.28.0-unix-build.tar.xz",
+    "0ad-0.28.0-unix-data.tar.gz",
+    "0ad-0.28.0-unix-data.tar.xz",
+    "0ad-0.28.0-win32.exe",
+    "0ad-0.28.0-win64.exe",
+    "0ad-0.28.0-x86_64.AppImage"
+  ],
+  "picks": [
+    ["darwin", "arm64", "0ad-0.28.0-macos-aarch64.dmg"],
+    ["darwin", "x64", "0ad-0.28.0-macos-x86_64.dmg"],
+    ["win32", "x64", null],
+    ["linux", "x64", "0ad-0.28.0-x86_64.AppImage"],
+    ["linux", "arm64", null]
+  ]
+}

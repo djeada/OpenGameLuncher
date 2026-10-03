@@ -1,0 +1,51 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "0ad",
+  "name": "0 A.D.",
+  "mark": "0AD",
+  "tagline": "Real-time strategy game of ancient warfare. Build a city, raise an army and lead a historical civilization against its rivals.",
+  "website": "https://play0ad.com",
+  "note": "A large download of about 1.7 GB. Windows is not offered because the project only publishes an installer.",
+  "accent": "#8c2f1b",
+  "cover": "https://wildfiregames.com/forum/uploads/monthly_2026_01/screenshot0012.png.e49fa4b706fd25270bb460d40aed8727.png",
+  "icon": "https://raw.githubusercontent.com/0ad/0ad/master/build/resources/0ad.png",
+  "screenshots": [
+    "https://wildfiregames.com/forum/uploads/monthly_2026_01/screenshot0012.png.e49fa4b706fd25270bb460d40aed8727.png",
+    "https://wildfiregames.com/forum/uploads/monthly_2026_01/screenshot0010.png.e2814c0b00cfa54d7539fbaa8bca5711.png",
+    "https://wildfiregames.com/forum/uploads/monthly_2026_01/screenshot0011.png.58fcb1830dcc4d5e7a3b133b53de12e8.png",
+    "https://wildfiregames.com/forum/uploads/monthly_2026_01/screenshot0013.png.2160420d0f833c205b15b5a9435b28be.png"
+  ],
+  "tags": ["Strategy", "RTS"],
+  "channels": [
+    {
+      "id": "release",
+      "label": "Release",
+      "description": "Stable releases.",
+      "source": {
+        "type": "file-list",
+        "page": "https://releases.wildfiregames.com/",
+        "prerelease": "exclude"
+      }
+    }
+  ],
+  "platforms": {
+    "darwin": {
+      "asset": {
+        "include": ["macos"],
+        "arch": {
+          "arm64": ["aarch64"],
+          "x64": ["x86_64"]
+        }
+      },
+      "archive": "dmg",
+      "launch": { "app": "0 A.D*.app" }
+    },
+    "linux": {
+      "asset": {
+        "include": [".appimage"],
+        "arch": { "x64": ["x86_64"] }
+      },
+      "archive": "file"
+    }
+  }
+}

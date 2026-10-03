@@ -227,6 +227,37 @@
                 "type",
                 "page"
               ],
+              "description": "A download page that lists the project's files, one per table row, such as a web server's folder listing. OGL takes each version from the file name. The host must be one OGL already downloads from (src/shared/urls.ts).",
+              "properties": {
+                "type": {
+                  "const": "file-list"
+                },
+                "page": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^https://",
+                  "examples": [
+                    "https://releases.wildfiregames.com/"
+                  ]
+                },
+                "prerelease": {
+                  "enum": [
+                    "exclude",
+                    "only",
+                    "include"
+                  ],
+                  "default": "exclude",
+                  "description": "A file name with alpha, beta or rc after the version counts as a pre-release."
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "page"
+              ],
               "description": "A free itch.io game page. OGL reads the uploads listed on the page and takes the version from the file name, so there is one version at a time.",
               "properties": {
                 "type": {

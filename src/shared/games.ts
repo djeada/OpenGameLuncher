@@ -8,6 +8,7 @@ import type {
   PlatformId,
   PrereleaseFilter
 } from './types'
+import { isAllowedAssetUrl } from './urls'
 
 const PLATFORMS = ['darwin', 'win32', 'linux'] as const
 const ARCHS = ['arm64', 'x64', 'ia32'] as const
@@ -238,10 +239,6 @@ function readSource(value: Record<string, unknown>, where: string, errors: strin
     }
     return { type: 'itch', page: page.replace(/\/$/, '') }
   }
-  pushUnknown(value, new Set(['type', 'owner', 'repo', 'prerelease', 'cdn']), where, errors)
-  if (value.type !== 'github-releases') errors.push(`${where}.type must be github-releases or itch`)
-  const owner = readString(value.owner, `${where}.owner`, errors, /^[A-Za-z0-9_.-]+$/, 80)
-  const repo = readString(value.repo, `${where}.repo`, errors, /^[A-Za-z0-9_.-]+$/, 100)
   let prerelease: PrereleaseFilter | undefined
   if (value.prerelease !== undefined) {
     if (!FILTERS.includes(value.prerelease as PrereleaseFilter)) {
@@ -250,6 +247,20 @@ function readSource(value: Record<string, unknown>, where: string, errors: strin
       prerelease = value.prerelease as PrereleaseFilter
     }
   }
+  if (value.type === 'file-list') {
+    pushUnknown(value, new Set(['type', 'page', 'prerelease']), where, errors)
+    const page = readHttps(value.page, `${where}.page`, errors)
+    if (!page) return null
+    if (!isAllowedAssetUrl(page)) {
+      errors.push(`${where}.page must be on a download host OGL knows`)
+      return null
+    }
+    return { type: 'file-list', page, prerelease }
+  }
+  pushUnknown(value, new Set(['type', 'owner', 'repo', 'prerelease', 'cdn']), where, errors)
+  if (value.type !== 'github-releases') errors.push(`${where}.type must be github-releases, itch, or file-list`)
+  const owner = readString(value.owner, `${where}.owner`, errors, /^[A-Za-z0-9_.-]+$/, 80)
+  const repo = readString(value.repo, `${where}.repo`, errors, /^[A-Za-z0-9_.-]+$/, 100)
   let cdn: CdnKind | undefined
   if (value.cdn !== undefined) {
     if (!CDNS.includes(value.cdn as CdnKind)) errors.push(`${where}.cdn must be openttd`)

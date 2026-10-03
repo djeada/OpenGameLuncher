@@ -37,6 +37,8 @@ Projects that do not attach files to GitHub releases can still work if their fil
 
 A channel can also read a free itch.io page with `"source": { "type": "itch", "page": "https://creator.itch.io/game" }`. OGL requests the file the same way the page's Download button does, and takes the version from the file name. [Stone Kingdoms](../catalog/games/stone-kingdoms.json) works this way. That endpoint is not a public API, so it can change.
 
+A project that publishes its files on its own download page can use `"source": { "type": "file-list", "page": "https://releases.wildfiregames.com/" }`. The page must list one file per table row, as a web server's folder listing does. OGL groups the files by the version in their names and reads the date and size from the row; a name with `alpha`, `beta` or `rc` after the version is a pre-release, and `prerelease` works as it does for GitHub. The host must be in the download list in `src/shared/urls.ts`, so a new host needs a new OGL version. [0 A.D.](../catalog/games/0ad.json) works this way.
+
 Games shipped as a `.love` file add a `runtime` to the platform: a GitHub release to download once (such as `love2d/love` `11.5`) and share between games. OGL starts the runtime with the game file as its argument.
 
 `requires` names the original game a project needs files from, with an optional store link. It shows as a "Needs …" tag on the game page and a "Needs original" chip and filter on Home.
@@ -66,6 +68,6 @@ GitHub allows 60 anonymous API requests an hour. OGL keeps what it has already f
 - **Release lists** are stored with their ETag and revalidated; a "not modified" answer does not count against the limit. When the limit is hit, the stored copy is used.
 - **No stored copy and the limit is hit:** OGL reads GitHub's public release pages instead (tags, pre-release labels, files, notes) and keeps that for 30 minutes. `OGL_NO_GITHUB_API=1` uses this route all the time.
 - **Images** load through `ogl-img://`, which downloads each picture once and serves it from disk after that, including offline. They refresh in the background after two weeks.
-- **Website art lookups** are kept for a week, **itch.io pages** for five minutes with the old copy as fallback, and **OpenTTD file lists** for good, since a released version does not change.
+- **Website art lookups** are kept for a week, **itch.io pages and download pages** for five minutes with the old copy as fallback, and **OpenTTD file lists** for good, since a released version does not change.
 
 Set `OGL_GITHUB_TOKEN` to raise GitHub's limit to 5,000 requests an hour. Deleting `ogl-cache` is always safe.
