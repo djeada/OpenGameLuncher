@@ -5,6 +5,7 @@
 //   node scripts/preview-shot.mjs out.png --wait 800                 the loading screen
 //   node scripts/preview-shot.mjs out.png --click ".rail-foot button" --after 1500
 //   node scripts/preview-shot.mjs out.png --clip 0,440,200,240       x,y,width,height
+//   node scripts/preview-shot.mjs out.png --scroll 400               scroll the page down first
 //
 // Needs Google Chrome. The window is 1040x680, captured at 2x.
 import { spawn } from 'node:child_process'
@@ -12,7 +13,7 @@ import { writeFileSync } from 'node:fs'
 
 const [output, ...rest] = process.argv.slice(2)
 if (!output) {
-  console.error('Usage: node scripts/preview-shot.mjs <out.png> [--query ?x] [--wait ms] [--click selector] [--after ms] [--clip x,y,w,h]')
+  console.error('Usage: node scripts/preview-shot.mjs <out.png> [--query ?x] [--wait ms] [--click selector] [--after ms] [--scroll px] [--clip x,y,w,h]')
   process.exit(1)
 }
 const option = (name, fallback) => {
@@ -25,6 +26,7 @@ const wait = Number(option('wait', 3500))
 const clicks = rest.flatMap((value, index) => (value === '--click' ? [rest[index + 1]] : []))
 const after = Number(option('after', 1000))
 const clip = option('clip', null)
+const scroll = Number(option('scroll', 0))
 
 const vitePort = 5199
 const debugPort = 9333
@@ -73,6 +75,10 @@ try {
   for (const click of clicks) {
     await send('Runtime.evaluate', { expression: `document.querySelector(${JSON.stringify(click)}).click()` })
     await sleep(after)
+  }
+  if (scroll) {
+    await send('Runtime.evaluate', { expression: `document.querySelector('.main').scrollTop = ${scroll}` })
+    await sleep(400)
   }
   const [x, y, width, height] = clip ? clip.split(',').map(Number) : []
   const { data } = await send('Page.captureScreenshot', {

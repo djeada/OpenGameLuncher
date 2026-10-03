@@ -109,6 +109,8 @@ export async function downloadLauncherUpdate(): Promise<void> {
     throw new Error('There is no OGL update to download')
   }
   if (current.state === 'available' && current.manual) return openReleasePage(current.version)
+  // The first progress event takes a few seconds; show the download as started right away.
+  if (current.state === 'available') emit({ state: 'downloading', version: current.version, percent: 0 })
   await autoUpdater.downloadUpdate()
 }
 
