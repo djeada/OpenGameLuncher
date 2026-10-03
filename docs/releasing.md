@@ -1,6 +1,6 @@
 # Releasing OGL
 
-OGL updates itself from the GitHub releases of the repository named in `ogl.config.json` (`fabianfreund/OpenGameLuncher`). Releases are built by [`.github/workflows/release.yml`](../.github/workflows/release.yml). The version comes from the branch name, so `package.json` is never bumped by hand; CI stamps it at build time.
+OGL updates itself from the GitHub releases of the repository named in `ogl.config.json` (`fabianfreund/OpenSourceGameLauncher`; the file still says `OpenGameLuncher` until the next release, which GitHub redirects). Releases are built by [`.github/workflows/release.yml`](../.github/workflows/release.yml). The version comes from the branch name, so `package.json` is never bumped by hand; CI stamps it at build time.
 
 ## The short version
 
@@ -144,4 +144,5 @@ npx electron-builder --config electron-builder.config.cjs --mac zip --arm64 --pu
 - **"MAC verification failed during PKCS12 import".** `CSC_KEY_PASSWORD` does not match the `.p12`. Set secrets one command at a time; pasting several `gh secret set` lines at once feeds the later lines into the first prompt.
 - **"SecKeychainUnlock: The user name or passphrase you entered is not correct".** electron-builder's own keychain handling failed on the GitHub Mac runner when given `CSC_LINK`. The workflow now loads the certificate into a temporary keychain itself and lets electron-builder find the identity there.
 - **The `.p12` held the wrong certificate.** The first export contained an "Apple Development" identity, not "Developer ID Application". The downloaded `.cer` has to be opened first so it joins its private key in the keychain; then export that entry from **My Certificates**. `security find-identity -v -p codesigning` must list a "Developer ID Application" line before exporting.
+- **The repository was renamed.** It was `OpenGameLuncher` until 3 October 2026. Copies of OGL up to 0.1.7 still ask for the old name and only work because GitHub redirects it. A new repository with the old name would cut them off from the catalog and from updates.
 - **Wrong repository.** `ogl.config.json`, the `origin` remote and the download link in the README must all name the same repository. The app reads its catalog and its updates from the one in `ogl.config.json`.
