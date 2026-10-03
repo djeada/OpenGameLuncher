@@ -3,6 +3,21 @@ import { mkdir, rename, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { assertAssetUrl } from '../shared/urls'
 
+const STALL_MS = 60 * 1000
+
+// A connection that dies without closing, as when the computer sleeps, would otherwise wait forever.
+async function readOrStall<T>(reader: ReadableStreamDefaultReader<T>): Promise<ReadableStreamReadResult<T>> {
+  let timer: NodeJS.Timeout | undefined
+  const stalled = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error('The download stopped. Check the connection and try again.')), STALL_MS)
+  })
+  try {
+    return await Promise.race([reader.read(), stalled])
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 export async function downloadFile(
   url: string,
   destination: string,
@@ -33,10 +48,10 @@ export async function downloadFile(
   const file = createWriteStream(partial)
   const total = Number(response.headers.get('content-length') ?? 0)
   let received = 0
+  const reader = response.body.getReader()
   try {
-    const reader = response.body.getReader()
     while (true) {
-      const chunk = await reader.read()
+      const chunk = await readOrStall(reader)
       if (chunk.done) break
       received += chunk.value.byteLength
       onProgress(received, total)
@@ -51,6 +66,7 @@ export async function downloadFile(
     })
     await rename(partial, destination)
   } catch (error) {
+    void reader.cancel().catch(() => undefined)
     file.destroy()
     await rm(partial, { force: true })
     throw error
