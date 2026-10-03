@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="186" height="52" viewBox="0 0 186 52" role="img" aria-label="Download OGL for Windows (Installer)">
+  <title>Download OGL for Windows (Installer)</title>
+  <defs>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6aa0ff"/>
+      <stop offset="0.45" stop-color="#3d7bff"/>
+      <stop offset="1" stop-color="#5b4bf0"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0.04"/>
+      <stop offset="0.54" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="depth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.7" stop-color="#081450" stop-opacity="0"/>
+      <stop offset="1" stop-color="#081450" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="186" height="52" rx="14" fill="url(#flow)"/>
+  <rect width="186" height="52" rx="14" fill="url(#depth)"/>
+  <rect width="186" height="52" rx="14" fill="url(#gloss)"/>
+  <rect x="0.5" y="0.5" width="185" height="51" rx="13.5" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+  <g transform="translate(18 16)"><path transform="translate(1 1) scale(1.125)" fill="#fff" d="M1 1h6.5v6.5H1zM8.5 1H15v6.5H8.5zM1 8.5h6.5V15H1zM8.5 8.5H15V15H8.5z"/></g>
+  <text x="50" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">Windows</text>
+  <text x="50" y="39" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#fff" fill-opacity="0.78">Installer</text>
+  <g transform="translate(154 18)"><path fill="none" stroke="#fff" stroke-opacity="0.85" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0L4.8 6.8M8 10l3.2-3.2M2.5 13.5h11"/></g>
+</svg>

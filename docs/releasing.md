@@ -60,6 +60,15 @@ gh release list                                                     # the new ve
 
 The publish run waits for a draft build of the same branch that is still going, so it can sit in "pending" for a few minutes.
 
+Point the download buttons in the README at the new version. This is a documentation change, so it goes straight to `main`:
+
+```bash
+node scripts/buttons.mjs        # reads the latest published release
+git commit -am "Point the README download buttons at 0.2.0" && git push
+```
+
+Until this is done the buttons download the previous version, which then updates itself.
+
 Then clean up. All history stays reachable through the tag.
 
 ```bash

@@ -71,3 +71,21 @@ GitHub allows 60 anonymous API requests an hour. OGL keeps what it has already f
 - **Website art lookups** are kept for a week, **itch.io pages and download pages** for five minutes with the old copy as fallback, and **OpenTTD file lists** for good, since a released version does not change.
 
 Set `OGL_GITHUB_TOKEN` to raise GitHub's limit to 5,000 requests an hour. Deleting `ogl-cache` is always safe.
+
+## A button for the game's own README
+
+Once a game is in the catalog, its project can show that it is playable through OGL:
+
+[![Play on OGL, the Open Game Launcher](buttons/play-on-ogl.svg)](https://fabianbuilds.com/opengamelauncher)
+
+```bash
+node scripts/buttons.mjs --snippet openttd    # the game's id in catalog/games
+```
+
+This prints one line of Markdown to paste into the game's README. Without a checkout of OGL, copy this and put the game's name in:
+
+```markdown
+[![Play this game on OGL, the Open Game Launcher](https://raw.githubusercontent.com/fabianfreund/OpenGameLauncher/main/docs/buttons/play-on-ogl.svg)](https://fabianbuilds.com/opengamelauncher)
+```
+
+The picture is loaded from this repository and the link goes to the OGL project page, which offers the download for the visitor's system. Nothing in it names a version, so it never needs updating.

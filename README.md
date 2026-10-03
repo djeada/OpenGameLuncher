@@ -11,7 +11,16 @@ Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, u
 
 New to OGL? The [project page](https://fabianbuilds.com/opengamelauncher) shows what it does before you download anything.
 
-Download the file for your system from the [latest release](https://github.com/fabianfreund/OpenGameLauncher/releases/latest). The files are listed under **Assets** at the bottom of the release. `x.y.z` below stands for the version number.
+<!-- downloads:start -->
+<p align="center">
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8-arm64.dmg"><img src="docs/buttons/download-macos-arm64.svg" alt="Download OGL for macOS (Apple silicon)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8.dmg"><img src="docs/buttons/download-macos-intel.svg" alt="Download OGL for macOS (Intel)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-Setup-0.1.8.exe"><img src="docs/buttons/download-windows.svg" alt="Download OGL for Windows (Installer)" height="52"></a>
+  <a href="https://github.com/fabianfreund/OpenGameLauncher/releases/download/v0.1.8/OGL-0.1.8.AppImage"><img src="docs/buttons/download-linux.svg" alt="Download OGL for Linux (AppImage)" height="52"></a>
+</p>
+<!-- downloads:end -->
+
+The buttons download the newest version. Every version, with all its files, is on the [releases page](https://github.com/fabianfreund/OpenGameLauncher/releases/latest), under **Assets** at the bottom. `x.y.z` below stands for the version number.
 
 ### macOS
 
@@ -92,6 +101,23 @@ src/renderer         the interface
 - [Releasing OGL](docs/releasing.md)
 - [How we work on OGL](docs/workflow.md)
 - [AI usage policy](AI-POLICY.md): OGL is built with AI tools, and this is what that means for contributions
+
+## Code signing policy
+
+The Mac version is signed with the Developer ID of Digital Vibes GmbH and notarized by Apple.
+
+The Windows installer is not signed yet. OGL is applying for free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Every release is built from this repository by [GitHub Actions](.github/workflows/release.yml); no release file is built or changed by hand.
+
+- Committers and reviewers: [@fabianfreund](https://github.com/fabianfreund)
+- Approvers: [@fabianfreund](https://github.com/fabianfreund)
+
+Changes from anyone else arrive as pull requests and are reviewed before they are merged.
+
+### Privacy
+
+OGL has no account, no analytics and no tracking. It will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it. To do its job it downloads from the internet: the game catalog and its own updates from GitHub, and the games, their pictures and release notes from each project's own download location. Those servers see the request and the IP address it comes from, as with any download. Browser games open the game's own website, and getting original game files from Steam runs Valve's SteamCMD with the account you enter; both are subject to those services' own policies.
 
 ## Contact
 
