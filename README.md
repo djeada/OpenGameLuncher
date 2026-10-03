@@ -9,6 +9,8 @@ Open Game Launcher. A desktop app for macOS, Windows, and Linux that installs, u
 
 ## Install
 
+New to OGL? The [project page](https://fabianbuilds.com/opengamelauncher) shows what it does before you download anything.
+
 Download the file for your system from the [latest release](https://github.com/fabianfreund/OpenSourceGameLauncher/releases/latest). The files are listed under **Assets** at the bottom of the release. `x.y.z` below stands for the version number.
 
 ### macOS
