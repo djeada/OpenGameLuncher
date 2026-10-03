@@ -1,0 +1,12 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "a-dark-room",
+  "name": "A Dark Room",
+  "mark": "DR",
+  "tagline": "A minimalist text adventure that starts with one fire in a cold room and slowly grows into something much larger.",
+  "website": "https://github.com/doublespeakgames/adarkroom",
+  "accent": "#3a3a3a",
+  "icon": "https://adarkroom.doublespeakgames.com/img/adr.png",
+  "tags": ["Idle", "Adventure"],
+  "web": { "url": "https://adarkroom.doublespeakgames.com/" }
+}

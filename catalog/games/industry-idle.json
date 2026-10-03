@@ -1,0 +1,17 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "industry-idle",
+  "name": "Industry Idle",
+  "mark": "II",
+  "tagline": "Build factories on a hex map, balance power and supply chains, trade on the market, and prestige into bigger cities.",
+  "website": "https://industryidle.com/",
+  "accent": "#3b5573",
+  "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1574000/ss_516ee1711516b0cf66b7748122b0fa74073dc36f.1920x1080.jpg",
+  "screenshots": [
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1574000/ss_516ee1711516b0cf66b7748122b0fa74073dc36f.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1574000/ss_67c17d8edb0fdaf2c07844afee37808f35ad29d5.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1574000/ss_527cd9e055c4ddd24f332e6bf69c5e0ef9574849.1920x1080.jpg"
+  ],
+  "tags": ["Idle", "Management", "Simulation"],
+  "web": { "url": "https://play.industryidle.com/" }
+}

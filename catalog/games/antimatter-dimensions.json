@@ -1,0 +1,18 @@
+{
+  "$schema": "../game.schema.json",
+  "id": "antimatter-dimensions",
+  "name": "Antimatter Dimensions",
+  "mark": "AD",
+  "tagline": "Produce antimatter through ever higher dimensions, reach infinity, collapse the universe and start again with more.",
+  "website": "https://github.com/IvarK/AntimatterDimensionsSourceCode",
+  "accent": "#1f9e89",
+  "cover": "https://cdn.akamai.steamstatic.com/steam/apps/1399720/library_hero.jpg",
+  "icon": "https://raw.githubusercontent.com/IvarK/AntimatterDimensionsSourceCode/master/public/icon.png",
+  "screenshots": [
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1399720/ss_681ae972983e32ebb54abe0424c47a54323dd871.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1399720/ss_7f56c5b8d5c42bf2668fa72ae155ccc90a93de5a.1920x1080.jpg",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1399720/ss_21b5bd7663d1e612fd63ce0c94692a10695fa35f.1920x1080.jpg"
+  ],
+  "tags": ["Idle"],
+  "web": { "url": "https://ivark.github.io/AntimatterDimensions/" }
+}

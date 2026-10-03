@@ -66,6 +66,8 @@ export function openWebGame(game: Game): void {
     if (!isMainFrame || code === -3) return
     void window.loadURL(errorPage(game, url, `${description} (${code})`))
   })
+  // A page that sets no background expects the browser's white. Black only covers the wait before it loads.
+  window.webContents.on('dom-ready', () => window.setBackgroundColor('#ffffff'))
   window.on('closed', () => windows.delete(game.id))
   windows.set(game.id, window)
   void window.loadURL(url.toString())
