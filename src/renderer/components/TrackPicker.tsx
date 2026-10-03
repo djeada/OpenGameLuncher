@@ -8,7 +8,7 @@ type TrackPickerProps = {
 }
 
 export function isBetaTrack(channel: GameChannel): boolean {
-  return channel.source.type === 'github-releases' && (channel.source.prerelease === 'include' || channel.source.prerelease === 'only')
+  return channel.source.type !== 'itch' && (channel.source.prerelease === 'include' || channel.source.prerelease === 'only')
 }
 
 export function TrackPicker({ channels, channelId, installedChannels, onChange }: TrackPickerProps) {

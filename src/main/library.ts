@@ -1,6 +1,6 @@
 import { execFile, spawn } from 'node:child_process'
 import { closeSync, existsSync, openSync } from 'node:fs'
-import { chmod, mkdir, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
+import { chmod, mkdir, open, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { promisify } from 'node:util'
 import { app } from 'electron'
@@ -8,10 +8,12 @@ import extractZip from 'extract-zip'
 import { extract as extractTar } from 'tar'
 import { channelAccepts, nameMatches, pickAsset } from '../shared/assets'
 import { openttdManifestUrl, readOpenttdManifest } from '../shared/cdn'
+import { fileListUrl, fileVersion } from '../shared/file-list'
 import { itchFileEndpoint, itchVersion } from '../shared/itch'
 import { safeTag } from '../shared/urls'
 import type {
   ArchiveKind,
+  FileListSource,
   Game,
   GameBuild,
   InstallView,
@@ -24,6 +26,7 @@ import type {
 import { cached as diskCached } from './cache'
 import { catalog } from './catalog'
 import { downloadFile } from './download'
+import { listedFiles } from './file-list'
 import { fetchRelease, fetchReleases, type RemoteAsset, type RemoteRelease } from './github'
 import { itchUploads, resolveItchDownload } from './itch'
 import { installStore, WEB_CHANNEL, type InstallRecord } from './install-store'
@@ -90,6 +93,7 @@ export async function listBuilds(game: Game, channelId: string): Promise<GameBui
   const platform = game.platforms[process.platform as PlatformId]
   if (!platform) return []
   if (channel.source.type === 'itch') return itchBuilds(channel.source.page, platform)
+  if (channel.source.type === 'file-list') return fileListBuilds(channel.source, platform)
   const source = channel.source
   const releases = (await releasesFor(source.owner, source.repo))
     .filter((release) => !release.draft && channelAccepts(source.prerelease, release.prerelease))
@@ -124,6 +128,30 @@ async function itchBuilds(page: string, platform: PlatformBuild): Promise<GameBu
   if (!asset) return []
   const tag = itchVersion(asset.name)
   return [{ tag, title: tag, publishedAt: '', prerelease: false, notes: '', asset }]
+}
+
+// A download page lists every version's files together, so they are grouped by the version in the file name.
+async function fileListBuilds(source: FileListSource, platform: PlatformBuild): Promise<GameBuild[]> {
+  const versions = new Map<string, { prerelease: boolean; publishedAt: string; assets: RemoteAsset[] }>()
+  for (const file of await listedFiles(source.page)) {
+    const version = fileVersion(file.name)
+    if (!version || !channelAccepts(source.prerelease, version.prerelease)) continue
+    const entry = versions.get(version.tag) ?? { prerelease: version.prerelease, publishedAt: '', assets: [] }
+    if (file.publishedAt > entry.publishedAt) entry.publishedAt = file.publishedAt
+    entry.assets.push({ name: file.name, url: fileListUrl(source.page, file.name), size: file.size })
+    versions.set(version.tag, entry)
+  }
+  const builds: GameBuild[] = []
+  for (const [tag, entry] of versions) {
+    const asset = pickAsset(platform.asset, process.arch, entry.assets)
+    if (asset) builds.push({ tag, title: tag, publishedAt: entry.publishedAt, prerelease: entry.prerelease, notes: '', asset })
+  }
+  return builds
+    .sort(
+      (left, right) =>
+        right.publishedAt.localeCompare(left.publishedAt) || right.tag.localeCompare(left.tag, undefined, { numeric: true })
+    )
+    .slice(0, 12)
 }
 
 // Mac apps are bundle folders; everything else must be a file, so a folder named like the binary is skipped.
@@ -162,24 +190,55 @@ async function findApps(root: string, depth = 0): Promise<string[]> {
   return apps
 }
 
+// Finds the programs and libraries (Mach-O files) in a bundle, wherever the project put them.
+async function findMachO(root: string): Promise<string[]> {
+  const found: string[] = []
+  for (const entry of await readdir(root, { withFileTypes: true })) {
+    const full = path.join(root, entry.name)
+    if (entry.isDirectory()) found.push(...(await findMachO(full)))
+    else if (entry.isFile()) {
+      const handle = await open(full, 'r').catch(() => null)
+      if (!handle) continue
+      try {
+        const magic = (await handle.read(Buffer.alloc(4), 0, 4, 0)).buffer.toString('hex')
+        if (['cffaedfe', 'cefaedfe', 'cafebabe', 'feedfacf', 'feedface'].includes(magic)) found.push(full)
+      } finally {
+        await handle.close()
+      }
+    }
+  }
+  return found
+}
+
 // Apple silicon kills code whose signature does not match. Some projects bundle libraries they changed
 // after signing, so the download never starts. Those apps carry no developer identity, only a local
 // (ad-hoc) signature, and get a fresh one. An app signed by a real developer is left alone.
+// Libraries outside the usual folders (SuperTux keeps them in Resources) are not covered by the bundle's
+// signature check or by signing the bundle, so each file is checked and signed on its own first.
 async function repairSignatures(directory: string): Promise<void> {
   if (process.platform !== 'darwin') return
   for (const bundle of await findApps(directory)) {
-    try {
-      await execFileAsync('codesign', ['--verify', '--deep', '--strict', bundle])
-      continue
-    } catch {
-      // Falls through to the repair below.
-    }
     const details = await execFileAsync('codesign', ['-dv', bundle]).then(
       (result) => `${result.stdout}${result.stderr}`,
       (error: { stderr?: string }) => error.stderr ?? ''
     )
     const hasDeveloper = /TeamIdentifier=(?!not set)\S+/.test(details)
     if (hasDeveloper) continue
+    let repaired = false
+    for (const file of await findMachO(bundle)) {
+      const valid = await execFileAsync('codesign', ['--verify', '--strict', file]).then(() => true, () => false)
+      if (valid) continue
+      await execFileAsync('codesign', ['--force', '--sign', '-', file]).catch(() => undefined)
+      repaired = true
+    }
+    if (!repaired) {
+      try {
+        await execFileAsync('codesign', ['--verify', '--deep', '--strict', bundle])
+        continue
+      } catch {
+        // Falls through to the repair below.
+      }
+    }
     await execFileAsync('codesign', ['--force', '--deep', '--sign', '-', bundle]).catch(() => undefined)
   }
 }
