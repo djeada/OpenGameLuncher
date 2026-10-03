@@ -4,7 +4,7 @@ This is the working agreement between the maintainer and whoever (person or AI a
 
 ## State of the project
 
-- Home: `github.com/fabianfreund/OpenSourceGameLauncher`. One maintainer with write access. Public, MIT, issues on, forks allowed.
+- Home: `github.com/fabianfreund/OpenGameLauncher`. One maintainer with write access. Public, MIT, issues on, forks allowed.
 - `main` is the only long-lived branch. Every published version has a tag (`v0.1.0` and up) on the commit it was built from.
 - Mac builds are signed with a Developer ID and notarized. In-app updates are confirmed working on the Mac (0.1.4 to 0.1.5). Windows and Linux builds are produced by CI but have never been run on a real machine; the README says so.
 - OGL is a hobby project. Keep changes small and the docs plain.
@@ -16,7 +16,7 @@ git switch main && git pull --tags
 git status --short           # should be empty
 git branch -a                # should be main only, plus a release branch if one is in progress
 git stash list               # should be empty
-git remote -v                # must be fabianfreund/OpenSourceGameLauncher
+git remote -v                # must be fabianfreund/OpenGameLauncher
 ```
 
 If any of these show something unexpected, find out what it is before starting new work. Work has been lost here before: a commit with two browser games sat unpushed on an old release branch after that version was already published, and it missed two releases.
